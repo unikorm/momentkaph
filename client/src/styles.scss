@@ -1,0 +1,33 @@
+:root {
+    /* color */
+    --primary-color: #436850;
+    --secondary-color: #12372a;
+    --smooth-primary-color: #adbc9f;
+    --smooth-secondary-color: #fbfada;
+    --vintage-white: #eeedeb;
+    --vintage-bodily: #e0ccbe;
+    --vintage-green: #747264;
+    --vintage-dark: #3c3633;
+
+    /* fonts */
+    --font-primary: 400 normal 1rem "Cutive Mono", monospace;
+    --font-label: 700 italic 5rem "Courier Prime", monospace;
+
+    /* text */
+    --font-base: 1rem;
+    --font-smaller: 0.75rem;
+    --font-title: 2rem;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: block;
+    font: var(--font-primary);
+}
+
+* {
+    box-sizing: border-box;
+}

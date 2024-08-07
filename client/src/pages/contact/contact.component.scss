@@ -1,0 +1,32 @@
+:host {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--vintage-bodily);
+}
+
+.contact_container {
+    width: 100%;
+    padding: 3rem;
+
+    &__content {
+        display: flex;
+        flex: 1;
+
+        &_title {
+            display: flex;
+            flex: 1;
+
+            & > p {
+                margin: 0;
+                font: var(--font-label);
+                color: var(--vintage-dark);
+            }
+        }
+
+        &_form {
+            display: flex;
+            flex: 1;
+        }
+    }
+}

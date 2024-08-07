@@ -1,0 +1,46 @@
+<div class="contact_container">
+  <div class="contact_container__content">
+    <div class="contact_container__content_title">
+      <p>GET IN TOUCH</p>
+    </div>
+    <div class="contact_container__content_form">
+      <form [formGroup]="newMessageForm" (ngSubmit)="onSubmit()">
+        <div>
+          <input
+            id="name"
+            type="text"
+            formControlName="name"
+            placeholder="Name"
+          />
+        </div>
+        <div>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            placeholder="Email"
+          />
+        </div>
+
+        <div>
+          <input
+            id="phone"
+            type="tel"
+            formControlName="phone"
+            placeholder="Phone"
+          />
+        </div>
+
+        <div>
+          <input
+            id="message"
+            type="text"
+            formControlName="message"
+            placeholder="Message"
+          />
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
