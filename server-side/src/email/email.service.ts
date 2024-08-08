@@ -1,11 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import * as nodemailer from 'nodemailer'
+import { MailerService } from '@nestjs-modules/mailer';
+import { error } from 'console';
 
 @Injectable()
 export class EmailService {
-    public transporter;
+  constructor(private readonly mailService: MailerService) {}
 
-    constructor(private readonly nodemailer: nodemailer) {
-        this.transporter = this.nodemailer.crea
-    }
+  sendEmail = async (message: any) => {
+    const { to, subject, text } = message;
+    await this.mailService
+      .sendMail({
+        to: 'test reciever',
+        subject: 'Test Subject',
+        text: 'test message',
+      })
+      .catch((error) => console.log(error))
+      .finally(() => console.log('it is done'));
+  };
 }
