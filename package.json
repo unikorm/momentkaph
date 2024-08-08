@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "scripts": {
       "start:client": "cd client && ng serve",
-      "start:server": "cd server && npm run start:dev",
+      "start:server": "cd server-side && npm run start:dev",
       "start": "concurrently \"npm run start:client\" \"npm run start:server\""
     },
     "devDependencies": {
