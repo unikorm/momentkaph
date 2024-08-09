@@ -44,3 +44,4 @@ Thumbs.db
 # local files
 environment.ts
 .env
+secrets.ts

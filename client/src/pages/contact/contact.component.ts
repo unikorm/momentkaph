@@ -24,14 +24,12 @@ export class ContactComponent {
     ]),
   });
 
-  formSubmitted = signal<boolean>(false);
+  // formSubmitted = signal<boolean>(false);
 
   onSubmit() {
-    this.formSubmitted.set(true);
     if (this.newMessageForm.valid) {
       console.log(this.newMessageForm.value);
       this.newMessageForm.reset();
-      this.formSubmitted.set(false);
     }
   }
 }

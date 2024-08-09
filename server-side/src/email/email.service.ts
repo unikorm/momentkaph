@@ -1,22 +1,18 @@
 import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { SendEmailDto } from './dtos';
-import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class EmailService {
-  constructor(
-    private readonly mailService: MailerService,
-    private readonly cS: ConfigService,
-  ) {}
+  constructor(private readonly mailService: MailerService) {}
 
   sendEmail = async (sendEmailDto: SendEmailDto) => {
     const { name, email, phone, message } = sendEmailDto;
     try {
       await this.mailService.sendMail({
-        to: this.cS.get<string>('EMAIL_USERNAME'),
+        to: 'adaled00@gmail.com',
         subject: 'Test Subject',
-        text: message,
+        text: message + name + email + phone,
       });
       console.log('Email sent successfully');
     } catch (error) {
