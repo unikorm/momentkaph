@@ -1,10 +1,12 @@
-import { Component, signal, computed, effect } from '@angular/core';
+import { Component, signal, computed, effect, inject } from '@angular/core';
 import {
   FormGroup,
   FormControl,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { EmailService } from '../../services/email.service';
+import { SendEmailType } from '../../shared/dtos';
 
 @Component({
   standalone: true,
@@ -14,6 +16,8 @@ import {
   styleUrl: './contact.component.scss',
 })
 export class ContactComponent {
+  readonly emailService = inject(EmailService);
+
   newMessageForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -29,6 +33,9 @@ export class ContactComponent {
   onSubmit() {
     if (this.newMessageForm.valid) {
       console.log(this.newMessageForm.value);
+      this.emailService.sendEmail(
+        this.newMessageForm.value as SendEmailType
+      );
       this.newMessageForm.reset();
     }
   }
