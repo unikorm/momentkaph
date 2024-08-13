@@ -4,3 +4,7 @@ export type SendEmailType = {
   phone: string;
   message: string;
 };
+
+export type SendEmailResponseType = {
+  message: string;
+};
