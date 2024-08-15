@@ -39,7 +39,7 @@ export class ContactComponent {
                 return error;
               })
             )
-            .subscribe(); // i want this works without subscribe :((
+            .subscribe();
         }
       },
       { allowSignalWrites: true }

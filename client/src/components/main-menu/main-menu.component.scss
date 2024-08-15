@@ -5,19 +5,26 @@ nav {
     padding-right: 4.5rem;
 }
 
-ul {
-    margin: 0;
-    padding: 0;
+nav {
     display: flex;
-    list-style: none;
-}
-
-li {
-    margin: 2rem 1rem 0 0;
-    cursor: pointer;
-    color: var(--vintage-bodily);
+    padding: 2rem 2rem 1rem;
 }
 
 a {
     all: unset;
+    cursor: pointer;
+    color: var(--vintage-bodily);
+}
+
+a:not(:last-of-type) {
+    margin-right: 1rem;
+}
+
+.link {
+    color: var(--vintage-bodily);
+}
+
+.activeLink {
+    color: var(--vintage-bodily);
+    text-decoration: underline;
 }

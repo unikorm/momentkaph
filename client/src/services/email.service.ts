@@ -11,7 +11,6 @@ export class EmailService {
   private apiUrl = 'http://localhost:3000';
 
   sendEmail(data: SendEmailType): Observable<SendEmailResponseType> {
-    // i want something return here
     console.log(data, 'data');
     return this.http.post<SendEmailResponseType>(
       `${this.apiUrl}/email_sending`,
