@@ -24,18 +24,15 @@ export class ContactComponent {
       () => {
         const data = this.emailData();
         if (data) {
-          this.emailSendingStatus.set('sending');
           this.emailService
             .sendEmail(data)
             .pipe(
               tap((value) => {
                 console.log(value);
-                this.emailSendingStatus.set('success');
                 this.newMessageForm.reset();
               }),
               catchError((error) => {
                 console.error(error);
-                this.emailSendingStatus.set('error');
                 return error;
               })
             )
@@ -56,18 +53,11 @@ export class ContactComponent {
     ]),
   });
 
-  // Computed property for form validity
-  isFormValid = computed(() => this.newMessageForm.valid);
-  // Computed property for submit button state
-  isSubmitDisabled = computed(
-    () => !this.isFormValid() || this.emailSendingStatus() === 'sending'
-  );
-
   emailData = signal<SendEmailType | null>(null);
-  emailSendingStatus = signal<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   onSubmit() {
-    if (this.isFormValid()) {
+    console.log('submit');
+    if (this.newMessageForm.valid) {
       console.log(this.newMessageForm.value);
       this.emailData.set(this.newMessageForm.value as SendEmailType);
     }
