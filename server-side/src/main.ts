@@ -8,6 +8,6 @@ async function bootstrap() {
     origin: 'http://localhost:4200',
   });
   await app.listen(3000);
-  Logger.log(`🚀 Application is running on: http://localhost:3000`);
+  Logger.log(`🚀 server running on: http://localhost:3000`);
 }
 bootstrap();

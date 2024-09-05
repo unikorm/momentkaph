@@ -1,6 +1,7 @@
 <div class="contact_container">
   <div class="contact_container__content">
     <div class="contact_container__content_title">
+      <img src="assets/contact-photo.jpg" alt="contact photo" />
       <p>GET IN TOUCH</p>
     </div>
     <div class="contact_container__content_form">
@@ -10,7 +11,7 @@
             id="name"
             type="text"
             formControlName="name"
-            placeholder="Name"
+            placeholder="Your name"
           />
         </div>
         <div>
@@ -18,7 +19,7 @@
             id="email"
             type="email"
             formControlName="email"
-            placeholder="Email"
+            placeholder="Your email"
           />
         </div>
 
@@ -27,17 +28,18 @@
             id="phone"
             type="tel"
             formControlName="phone"
-            placeholder="Phone"
+            placeholder="Your phone"
           />
         </div>
 
         <div>
-          <input
+          <textarea
             id="message"
             type="text"
             formControlName="message"
-            placeholder="Message"
-          />
+            placeholder="Message to me..."
+            rows="3"
+          ></textarea>
         </div>
         <button type="submit">Send Message</button>
       </form>
