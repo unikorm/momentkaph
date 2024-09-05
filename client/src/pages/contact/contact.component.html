@@ -1,7 +1,15 @@
 <div class="contact_container">
   <div class="contact_container__content">
     <div class="contact_container__content_title">
-      <img src="assets/contact-photo.jpg" alt="contact photo" />
+      <div class="image-container">
+        <img
+          src="assets/contact-photo.jpg"
+          alt="contact photo"
+          [@imageHover]="imageState"
+          (mouseenter)="onImageHover()"
+          (mouseleave)="onImageLeave()"
+        />
+      </div>
       <p>GET IN TOUCH</p>
     </div>
     <div class="contact_container__content_form">

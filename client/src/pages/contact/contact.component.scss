@@ -112,13 +112,18 @@ button:hover {
 }
 
 // img logic
-img {
+.image-container {
   max-width: 450px;
   width: 100%;
   height: auto;
-  margin: 3rem 0 0;
-  padding: 0;
-  border: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 // media queries

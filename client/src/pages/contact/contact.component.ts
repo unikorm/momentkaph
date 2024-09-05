@@ -8,6 +8,13 @@ import {
 import { EmailService } from '../../services/email.service';
 import { SendEmailType } from '../../shared/dtos';
 import { catchError, tap } from 'rxjs';
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   standalone: true,
@@ -15,9 +22,38 @@ import { catchError, tap } from 'rxjs';
   imports: [ReactiveFormsModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
+  animations: [
+    trigger('imageHover', [
+      state(
+        'normal',
+        style({
+          transform: 'scale(1)',
+        })
+      ),
+      state(
+        'hovered',
+        style({
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%) scale(0.8)',
+        })
+      ),
+      transition('normal <=> hovered', animate('300ms ease-in-out')),
+    ]),
+  ],
 })
 export class ContactComponent {
   readonly emailService = inject(EmailService);
+  imageState = 'normal';
+
+  onImageHover() {
+    this.imageState = 'hovered';
+  }
+
+  onImageLeave() {
+    this.imageState = 'normal';
+  }
 
   constructor() {
     effect(
