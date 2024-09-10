@@ -53,12 +53,12 @@ input {
   width: 100%;
   margin: 0;
   padding: 0.5rem;
-  border: 0.25rem solid var(--smooth-primary-color);
+  border: 0.23rem solid var(--primary-color);
   font: var(--font-primary);
   color: var(--vintage-dark);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.9rem;
   background-color: transparent;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   box-sizing: border-box;
 }
 
@@ -68,19 +68,36 @@ input::placeholder {
 
 input:focus {
   outline: none;
-  border-color: var(--smooth-secondary-color);
+  border-color: var(--smooth-primary-color);
+}
+
+// for preventing autofill styles
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: transparent !important;
+  -webkit-text-fill-color: var(--vintage-dark) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+input:autofill,
+input:autofill:hover,
+input:autofill:focus,
+input:autofill:active {
+  box-shadow: transparent !important;
+  -webkit-text-fill-color: var(--vintage-dark) !important;
 }
 
 textarea {
   width: 100%;
   margin: 0;
   padding: 0.5rem;
-  border: 0.25rem solid var(--smooth-primary-color);
+  border: 0.23rem solid var(--primary-color);
   font: var(--font-primary);
   color: var(--vintage-dark);
   margin-bottom: 0.8rem;
   background-color: transparent;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   box-sizing: border-box;
   resize: none;
 }
@@ -91,7 +108,7 @@ textarea::placeholder {
 
 textarea:focus {
   outline: none;
-  border-color: var(--smooth-secondary-color);
+  border-color: var(--smooth-primary-color);
 }
 
 button {
@@ -100,15 +117,16 @@ button {
   padding: 0.5rem;
   font: var(--font-primary);
   border: none;
-  color: var(--vintage-dark);
-  background-color: var(--smooth-primary-color);
+  color: var(--vintage-bodily);
+  background-color: var(--primary-color);
   cursor: pointer;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   box-sizing: border-box;
 }
 
 button:hover {
-  background-color: var(--smooth-secondary-color);
+  background-color: var(--smooth-primary-color);
+  color: var(--primary-color);
 }
 
 // img logic
@@ -118,16 +136,30 @@ button:hover {
   height: auto;
   overflow: hidden;
   position: relative;
+  margin-top: 4rem;
+  background-color: var(--vintage-green);
 }
 
 .image-container img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  z-index: 2;
+  position: relative;
+}
+
+.image-container span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font: var(--font-primary);
+  color: var(--vintage-bodily);
+  font-size: 1.05rem;
+  z-index: 1;
 }
 
 // media queries
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   :host {
     height: auto;
   }
@@ -135,7 +167,7 @@ button:hover {
   .contact_container__content {
     flex-direction: column;
     gap: 3rem;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
   }
 
   .contact_container__content_title {

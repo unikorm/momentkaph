@@ -6,9 +6,13 @@
           src="assets/contact-photo.jpg"
           alt="contact photo"
           [@imageHover]="imageState"
-          (mouseenter)="onImageHover()"
-          (mouseleave)="onImageLeave()"
+          (mouseenter)="onHover()"
+          (mouseleave)="onLeave()"
+          (touchstart)="
+            imageState = imageState === 'normal' ? 'hovered' : 'normal'
+          "
         />
+        <span>that's me</span>
       </div>
       <p>GET IN TOUCH</p>
     </div>

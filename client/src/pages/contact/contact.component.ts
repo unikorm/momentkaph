@@ -33,10 +33,7 @@ import {
       state(
         'hovered',
         style({
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%) scale(0.8)',
+          transform: 'scale(0.875)',
         })
       ),
       transition('normal <=> hovered', animate('300ms ease-in-out')),
@@ -47,11 +44,10 @@ export class ContactComponent {
   readonly emailService = inject(EmailService);
   imageState = 'normal';
 
-  onImageHover() {
+  onHover() {
     this.imageState = 'hovered';
   }
-
-  onImageLeave() {
+  onLeave() {
     this.imageState = 'normal';
   }
 

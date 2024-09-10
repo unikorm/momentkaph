@@ -1,12 +1,12 @@
 :root {
     /* color */
-    --primary-color: #436850;
+    --primary-color: #b3b792;
     --secondary-color: #12372a;
     --smooth-primary-color: #adbc9f;
     --smooth-secondary-color: #fbfada;
     --vintage-white: #eeedeb;
-    --vintage-bodily: #e0ccbe;
-    --vintage-green: #747264;
+    --vintage-bodily: #e5d2b8;
+    --vintage-green: #6b7464;
     --vintage-dark: #3c3633;
 
     /* fonts */
@@ -26,6 +26,7 @@ body {
     width: 100%;
     display: block;
     font: var(--font-primary);
+    background-color: var(--vintage-bodily);
 }
 
 * {
