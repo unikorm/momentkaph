@@ -16,10 +16,10 @@ export class EmailService {
         subject: 'Test Subject',
         text: message + name + email + phone,
       });
-      return { message: 'Email sent successfully' };
+      return { status: true };
     } catch (error) {
       const errorMessage = error.message || 'Unknown error';
-      return { message: `Email sending failed: ${errorMessage}` };
+      return { status: false, error: errorMessage };
     }
   };
 }

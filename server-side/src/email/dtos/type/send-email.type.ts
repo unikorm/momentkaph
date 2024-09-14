@@ -6,5 +6,6 @@ export type SendEmailType = {
 };
 
 export type SendEmailResponseType = {
-  message: string;
+  status: boolean;
+  error?: string;
 };

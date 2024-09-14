@@ -44,8 +44,8 @@ export class ContactComponent {
   readonly emailService = inject(EmailService);
   imageState = 'normal';
   formSubmitted = signal<boolean>(false);
-  submitting = signal<boolean>(false);
-  submitStatus: 'idle' | 'success' | 'error' = 'idle';
+  // submitting = signal<boolean>(false);
+  submitStatus: 'idle' | 'sending' | 'success' | 'error' = 'idle';
 
   onHover() {
     this.imageState = 'hovered';
@@ -59,7 +59,7 @@ export class ContactComponent {
       () => {
         const data = this.emailData();
         if (data) {
-          this.submitting.set(true);
+          this.submitStatus = 'sending';
           this.emailService
             .sendEmail(data)
             .pipe(
@@ -76,8 +76,7 @@ export class ContactComponent {
                 return error;
               }),
               finalize(() => {
-                this.submitting.set(false);
-                setTimeout(() => this.submitStatus = 'idle', 3000);
+                setTimeout(() => (this.submitStatus = 'idle'), 3000);
               })
             )
             .subscribe();
@@ -90,7 +89,10 @@ export class ContactComponent {
   newMessageForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.pattern(/^\+?[0-9\s-]{10,}$/)]),
+    phone: new FormControl('', [
+      Validators.required,
+      Validators.pattern(/^\+?[0-9\s-]{10,}$/),
+    ]),
     message: new FormControl('', [
       Validators.required,
       Validators.minLength(20),
@@ -100,23 +102,17 @@ export class ContactComponent {
   emailData = signal<SendEmailType | null>(null);
 
   onSubmit() {
-    this.validateAllFormFields();
     if (this.newMessageForm.valid) {
       this.formSubmitted.set(true);
-      console.log(this.newMessageForm.value);
+      // console.log(this.newMessageForm.value);
       this.emailData.set(this.newMessageForm.value as SendEmailType);
     }
   }
 
-  validateAllFormFields() {
-    Object.keys(this.newMessageForm.controls).forEach((field) => {
-      const control = this.newMessageForm.get(field);
-      control?.markAsTouched({ onlySelf: true });
-    });
-  }
-
   isFieldInvalid(fieldName: string): boolean {
     const field = this.newMessageForm.get(fieldName);
-    return field ? field.invalid && field.touched : false;
+    return field
+      ? (field.invalid || field.errors != null) && field.touched
+      : false;
   }
 }

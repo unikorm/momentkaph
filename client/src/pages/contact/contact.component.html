@@ -59,11 +59,10 @@
         </div>
         <button
           type="submit"
-          [disabled]="submitting()"
           [class.success]="submitStatus === 'success'"
           [class.error]="submitStatus === 'error'"
         >
-          {{ submitting() ? "Sending..." : "Send Message" }}
+          {{ submitStatus ? "Sending..." : "Send Message" }}
         </button>
       </form>
     </div>

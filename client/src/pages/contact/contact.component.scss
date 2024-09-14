@@ -72,7 +72,7 @@ input:focus {
 }
 
 .invalid {
-    border-color: var(--danger-smooth);
+  border-color: var(--danger-smooth);
 }
 
 // for preventing autofill styles
@@ -126,22 +126,18 @@ button {
   cursor: pointer;
   font-size: 1.15rem;
   box-sizing: border-box;
+
+  &.success {
+    background-color: var(--success-smooth);
+  }
+  &.error {
+    background-color: var(--danger-smooth);
+  }
 }
 
 button:hover {
   background-color: var(--smooth-primary-color);
   color: var(--primary-color);
-
-  &.success {
-    background-color: #4caf50 !important;
-  }
-  &.error {
-    background-color: var(--danger-smooth);
-  }
-  &:disabled {
-    opacity: 0.8;
-    cursor: not-allowed;
-  }
 }
 
 // img logic
