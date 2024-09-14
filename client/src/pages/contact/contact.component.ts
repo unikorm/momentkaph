@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { SendEmailType } from '../../shared/dtos';
-import { catchError, tap } from 'rxjs';
+import { catchError, finalize, tap } from 'rxjs';
 import {
   animate,
   state,
@@ -43,6 +43,9 @@ import {
 export class ContactComponent {
   readonly emailService = inject(EmailService);
   imageState = 'normal';
+  formSubmitted = signal<boolean>(false);
+  submitting = signal<boolean>(false);
+  submitStatus: 'idle' | 'success' | 'error' = 'idle';
 
   onHover() {
     this.imageState = 'hovered';
@@ -56,16 +59,25 @@ export class ContactComponent {
       () => {
         const data = this.emailData();
         if (data) {
+          this.submitting.set(true);
           this.emailService
             .sendEmail(data)
             .pipe(
               tap((value) => {
                 console.log(value);
+                this.submitStatus = 'success';
                 this.newMessageForm.reset();
+                this.formSubmitted.set(false);
               }),
               catchError((error) => {
                 console.error(error);
+                this.submitStatus = 'error';
+                this.formSubmitted.set(false);
                 return error;
+              }),
+              finalize(() => {
+                this.submitting.set(false);
+                setTimeout(() => this.submitStatus = 'idle', 3000);
               })
             )
             .subscribe();
@@ -88,10 +100,23 @@ export class ContactComponent {
   emailData = signal<SendEmailType | null>(null);
 
   onSubmit() {
-    console.log('submit');
+    this.validateAllFormFields();
     if (this.newMessageForm.valid) {
+      this.formSubmitted.set(true);
       console.log(this.newMessageForm.value);
       this.emailData.set(this.newMessageForm.value as SendEmailType);
     }
+  }
+
+  validateAllFormFields() {
+    Object.keys(this.newMessageForm.controls).forEach((field) => {
+      const control = this.newMessageForm.get(field);
+      control?.markAsTouched({ onlySelf: true });
+    });
+  }
+
+  isFieldInvalid(fieldName: string): boolean {
+    const field = this.newMessageForm.get(fieldName);
+    return field ? field.invalid && field.touched : false;
   }
 }

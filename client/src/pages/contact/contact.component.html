@@ -24,6 +24,7 @@
             type="text"
             formControlName="name"
             placeholder="Your name"
+            [class.invalid]="isFieldInvalid('name')"
           />
         </div>
         <div>
@@ -32,6 +33,7 @@
             type="email"
             formControlName="email"
             placeholder="Your email"
+            [class.invalid]="isFieldInvalid('email')"
           />
         </div>
 
@@ -41,6 +43,7 @@
             type="tel"
             formControlName="phone"
             placeholder="Your phone"
+            [class.invalid]="isFieldInvalid('phone')"
           />
         </div>
 
@@ -51,9 +54,17 @@
             formControlName="message"
             placeholder="Message to me..."
             rows="3"
+            [class.invalid]="isFieldInvalid('message')"
           ></textarea>
         </div>
-        <button type="submit">Send Message</button>
+        <button
+          type="submit"
+          [disabled]="submitting()"
+          [class.success]="submitStatus === 'success'"
+          [class.error]="submitStatus === 'error'"
+        >
+          {{ submitting() ? "Sending..." : "Send Message" }}
+        </button>
       </form>
     </div>
   </div>

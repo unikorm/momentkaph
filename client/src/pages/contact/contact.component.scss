@@ -71,6 +71,10 @@ input:focus {
   border-color: var(--smooth-primary-color);
 }
 
+.invalid {
+    border-color: var(--danger-smooth);
+}
+
 // for preventing autofill styles
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -127,6 +131,17 @@ button {
 button:hover {
   background-color: var(--smooth-primary-color);
   color: var(--primary-color);
+
+  &.success {
+    background-color: #4caf50 !important;
+  }
+  &.error {
+    background-color: var(--danger-smooth);
+  }
+  &:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
 }
 
 // img logic
