@@ -44,7 +44,6 @@ export class ContactComponent {
   readonly emailService = inject(EmailService);
   imageState = 'normal';
   formSubmitted = signal<boolean>(false);
-  // submitting = signal<boolean>(false);
   submitStatus: 'idle' | 'sending' | 'success' | 'error' = 'idle';
 
   onHover() {
@@ -104,7 +103,6 @@ export class ContactComponent {
   onSubmit() {
     if (this.newMessageForm.valid) {
       this.formSubmitted.set(true);
-      // console.log(this.newMessageForm.value);
       this.emailData.set(this.newMessageForm.value as SendEmailType);
     }
   }

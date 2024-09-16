@@ -62,7 +62,15 @@
           [class.success]="submitStatus === 'success'"
           [class.error]="submitStatus === 'error'"
         >
-          {{ submitStatus ? "Sending..." : "Send Message" }}
+          @switch (submitStatus) { @case ('success') {
+          <span>Message sent!</span>
+          } @case ('error') {
+          <span>Something went wrong!</span>
+          } @case ('sending') {
+          <span>Sending...</span>
+          } @case ('idle') {
+          <span>Send message</span>
+          } }
         </button>
       </form>
     </div>
