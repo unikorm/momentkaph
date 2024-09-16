@@ -5,10 +5,13 @@
   right: 0;
   height: 4.125rem;
   background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
 }
 
 nav {
   width: 100%;
+  max-width: 1400px;
   display: flex;
   justify-content: flex-end;
   padding-right: 4.5rem;

@@ -28,7 +28,7 @@
       & > p {
         margin: 0.9rem 0 0;
         font: var(--font-label);
-        color: var(--vintage-dark);
+        font-size: 2.3rem;
       }
     }
 
@@ -37,7 +37,25 @@
       align-items: center;
       justify-content: center;
       flex: 1;
+      flex-direction: column;
     }
+  }
+}
+
+.or {
+  margin: 3.5rem 0;
+  font: var(--font-primary);
+  font-size: 1.5rem;
+}
+
+.social_network {
+  display: flex;
+  gap: 2rem;
+
+  & > img {
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
   }
 }
 
@@ -56,7 +74,7 @@ input {
   border: 0.23rem solid var(--primary-color);
   font: var(--font-primary);
   color: var(--vintage-dark);
-  margin-bottom: 0.9rem;
+  margin-bottom: 1.1rem;
   background-color: transparent;
   font-size: 1.15rem;
   box-sizing: border-box;
@@ -99,7 +117,7 @@ textarea {
   border: 0.23rem solid var(--primary-color);
   font: var(--font-primary);
   color: var(--vintage-dark);
-  margin-bottom: 0.8rem;
+  margin-bottom: 1.1rem;
   background-color: transparent;
   font-size: 1.15rem;
   box-sizing: border-box;
@@ -113,6 +131,23 @@ textarea::placeholder {
 textarea:focus {
   outline: none;
   border-color: var(--smooth-primary-color);
+}
+
+.box {
+  position: relative;
+}
+
+.error-message {
+  color: var(--danger-smooth);
+  font: var(--font-primary);
+  font-size: 0.95rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  &.textarea {
+    bottom: 0.25rem;
+  }
 }
 
 button {
@@ -144,7 +179,7 @@ button:hover {
 .image-container {
   max-width: 450px;
   width: 100%;
-  height: auto;
+  height: fit-content;
   overflow: hidden;
   position: relative;
   margin-top: 4rem;
