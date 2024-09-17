@@ -52,10 +52,16 @@
   display: flex;
   gap: 2rem;
 
-  & > img {
+  & > div > a > img {
     width: 2rem;
     height: 2rem;
     cursor: pointer;
+  }
+
+  & > div > a {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
   }
 }
 
