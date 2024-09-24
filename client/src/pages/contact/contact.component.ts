@@ -116,13 +116,6 @@ export class ContactComponent {
 
   isFieldInvalid(fieldName: string) {
     const field = this.newMessageForm.get(fieldName);
-    // if (field?.value === '' && field.touched) {
-    //   this.inValidnessOfField()[fieldName] = true;
-    //   setTimeout(() => (this.inValidnessOfField()[fieldName] = false), 3000);
-    // }
-    // if ((field?.invalid || field?.errors != null) && field.touched) {
-    //   this.inValidnessOfField()[fieldName] = true;
-    // }
     return field
       ? (field.invalid || field.errors != null) && field.touched
       : false;

@@ -24,9 +24,9 @@
             type="text"
             formControlName="name"
             placeholder="Your name"
-            [class.invalid]="inValidnessOfField()['name']"
+            [class.invalid]="isFieldInvalid('name')"
           />
-          @if (inValidnessOfField()['name']) {
+          @if (isFieldInvalid('name')) {
           <span class="error-message">Too short...</span>
           }
         </div>
@@ -36,9 +36,9 @@
             type="email"
             formControlName="email"
             placeholder="Your email"
-            [class.invalid]="inValidnessOfField()['email']"
+            [class.invalid]="isFieldInvalid('email')"
           />
-          @if (inValidnessOfField()['email']) {
+          @if (isFieldInvalid('email')) {
           <span class="error-message">Valid email please...</span>
           }
         </div>
@@ -49,9 +49,9 @@
             type="tel"
             formControlName="phone"
             placeholder="Your phone"
-            [class.invalid]="inValidnessOfField()['phone']"
+            [class.invalid]="isFieldInvalid('phone')"
           />
-          @if (inValidnessOfField()['phone']) {
+          @if (isFieldInvalid('phone')) {
           <span class="error-message">Valid phone please...</span>
           }
         </div>
@@ -63,9 +63,9 @@
             formControlName="message"
             placeholder="Message to me..."
             rows="3"
-            [class.invalid]="inValidnessOfField()['message']"
+            [class.invalid]="isFieldInvalid('message')"
           ></textarea>
-          @if (inValidnessOfField()['message']) {
+          @if (isFieldInvalid('message')) {
           <span class="error-message textarea">Too short...</span>
           }
         </div>
