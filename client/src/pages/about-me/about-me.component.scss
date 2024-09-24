@@ -1,6 +1,80 @@
 :host {
-    display: block;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--vintage-bodily);
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--vintage-bodily);
+}
+
+// container logic
+.about_container {
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  margin: 0 auto;
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 3rem;
+  }
+}
+
+// content logic
+.title {
+  margin: 0;
+  font: var(--font-label);
+  font-size: 2.3rem;
+
+  & > p {
+    margin: 0;
+  }
+}
+
+.bio {
+  font: var(--font-primary);
+  color: var(--vintage-dark);
+  font-size: 1.18rem;
+
+  & > p {
+    margin: 0 0 0.4rem;
+  }
+}
+
+// img logic
+.image-container {
+  display: flex;
+  max-width: 330px;
+  width: 100%;
+  height: fit-content;
+  overflow: hidden;
+  position: relative;
+  margin-top: 4rem;
+  background-color: var(--vintage-green);
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+}
+
+.image-container span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font: var(--font-primary);
+  color: var(--vintage-bodily);
+  font-size: 1.05rem;
+  z-index: 1;
+}
+
+// media queries
+@media screen and (max-width: 1024px) {
+  :host {
+    height: auto;
+  }
 }
