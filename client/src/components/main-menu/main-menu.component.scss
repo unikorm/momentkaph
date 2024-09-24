@@ -26,17 +26,14 @@ a {
   all: unset;
   cursor: pointer;
   color: var(--vintage-bodily);
+  font-size: 1.1rem;
 }
 
 a:not(:last-of-type) {
   margin-right: 1rem;
 }
 
-.link {
-  color: var(--vintage-bodily);
-}
-
 .activeLink {
   color: var(--vintage-bodily);
-  text-decoration: underline;
+  text-decoration: line-through;
 }
