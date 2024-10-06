@@ -1,7 +1,7 @@
-import { inject, Injectable, Signal } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { SendEmailResponseType, SendEmailType } from '../shared/dtos';
-import { catchError, Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
