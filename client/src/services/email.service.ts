@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class EmailService {
   readonly http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000'; // make it build in
 
   sendEmail(data: SendEmailType): Observable<SendEmailResponseType> {
     // console.log(data, 'data');
