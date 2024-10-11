@@ -1,1 +1,37 @@
-<div class="gallery_container">blaaaaaa</div>
+<div class="upper_container">
+  <div class="image_container">
+    <img
+            src="assets/gallery_first.jpg"
+            alt="photo of suka"
+            [@imageHover]="imageState"
+            (mouseenter)="onHover()"
+            (mouseleave)="onLeave()"
+            (touchstart)="
+              imageState = imageState === 'normal' ? 'hovered' : 'normal'
+            "
+          />
+  </div>
+  <div class="nav_container">
+    <nav>
+      <a
+        routerLink="/about-me"
+        routerLinkActive="activeLink"
+        ariaCurrentWhenActive="page"
+        >About</a
+      >
+      <a
+        routerLink="/gallery"
+        routerLinkActive="activeLink"
+        ariaCurrentWhenActive="page"
+        >Gallery</a
+      >
+      <a
+        routerLink="/contact-me"
+        routerLinkActive="activeLink"
+        ariaCurrentWhenActive="page"
+        >Contact</a
+      >
+    </nav>
+  </div>
+</div>
+<div class="gallery_container"></div>

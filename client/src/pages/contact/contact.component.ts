@@ -15,11 +15,12 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'contact',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RouterModule],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss',
   animations: [

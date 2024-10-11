@@ -6,11 +6,12 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'about-me',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './about-me.component.html',
   styleUrl: './about-me.component.scss',
   animations: [

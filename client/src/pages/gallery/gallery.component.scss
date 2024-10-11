@@ -2,14 +2,13 @@
   display: block;
   width: 100%;
   height: 100%;
-  background-color: var(--vintage-bodily);
+  background-color: var(--primary-color);
 }
 
 // container logic
 .gallery_container {
   max-width: 1400px;
   width: 100%;
-  height: 100%;
   margin: 0 auto;
 
   &_content {
@@ -18,4 +17,74 @@
     height: 100%;
     gap: 3rem;
   }
+}
+
+.upper_container {
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding: 0;
+  margin: 0 auto;
+}
+nav {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  justify-content: flex-end;
+  display: flex;
+  padding: 2rem 2rem 1rem;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
+  color: var(--vintage-bodily);
+  font-size: 1.1rem;
+}
+
+a:not(:last-of-type) {
+  margin-right: 1rem;
+}
+
+.activeLink {
+  color: var(--vintage-bodily);
+  text-decoration: line-through;
+}
+
+// img logic
+.image_container {
+  display: flex;
+  max-width: 700px;
+  width: 50%;
+  max-height: 700px;
+  overflow: hidden;
+  position: relative;
+  background-color: var(--vintage-green);
+}
+
+.image_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+}
+
+.image-container span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font: var(--font-primary);
+  color: var(--vintage-bodily);
+  font-size: 1.05rem;
+  z-index: 1;
+}
+
+// nav logic
+.nav_container {
+  display: flex;
+  max-width: 700px;
+  width: 50%;
 }
