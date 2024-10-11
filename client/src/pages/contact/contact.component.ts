@@ -107,17 +107,15 @@ export class ContactComponent {
     }
   }
 
-  inValidnessOfField = signal<{ [field: string]: boolean }>({
-    name: false,
-    email: false,
-    phone: false,
-    message: false,
-  });
-
   isFieldInvalid(fieldName: string) {
     const field = this.newMessageForm.get(fieldName);
     return field
-      ? (field.invalid || field.errors != null) && field.touched
+      ? (field.invalid || field.errors != null) &&
+          field.touched &&
+          field.value !== null &&
+          field.value !== undefined &&
+          field.value !== '' &&
+          field.dirty
       : false;
   }
 }
