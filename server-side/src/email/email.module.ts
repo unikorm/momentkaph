@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { EmailController } from './email.controller';
 import { EmailService } from './email.service';
-import * as secrets from './dtos/secrets';
+import * as secrets from './dtos/secrets'; // use environment variables
 
 @Module({
   imports: [
