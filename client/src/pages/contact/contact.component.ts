@@ -46,6 +46,9 @@ export class ContactComponent {
   formSubmitted = signal<boolean>(false);
   submitStatus: 'idle' | 'sending' | 'success' | 'error' = 'idle';
 
+  form = document.getElementById('contactForm');
+  submitButton = document.getElementById('submitButton');
+
   onHover() {
     this.imageState = 'hovered';
   }
@@ -105,17 +108,5 @@ export class ContactComponent {
       this.formSubmitted.set(true);
       this.emailData.set(this.newMessageForm.value as SendEmailType);
     }
-  }
-
-  isFieldInvalid(fieldName: string) {
-    const field = this.newMessageForm.get(fieldName);
-    return field
-      ? (field.invalid || field.errors != null) &&
-          field.touched &&
-          field.value !== null &&
-          field.value !== undefined &&
-          field.value !== '' &&
-          field.dirty
-      : false;
   }
 }

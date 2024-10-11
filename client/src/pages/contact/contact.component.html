@@ -21,60 +21,62 @@
       </div>
     </div>
     <div class="contact_container__content_form">
-      <form [formGroup]="newMessageForm" (ngSubmit)="onSubmit()">
+      <form id="contactForm">
         <div class="box">
           <input
             id="name"
             type="text"
-            formControlName="name"
+            name="name"
             placeholder="Your name"
-            [class.invalid]="isFieldInvalid('name')"
+            required
+            minlength="3"
           />
-          @if (isFieldInvalid('name')) {
-          <span class="error-message">Too short...</span>
-          }
+          <span class="error-message" id="nameError">Too short...</span>
         </div>
         <div class="box">
           <input
             id="email"
             type="email"
-            formControlName="email"
+            name="email"
             placeholder="Your email"
-            [class.invalid]="isFieldInvalid('email')"
+            required
           />
-          @if (isFieldInvalid('email')) {
-          <span class="error-message">Valid email please...</span>
-          }
+          <span class="error-message" id="emailError"
+            >Valid email please...</span
+          >
         </div>
 
         <div class="box">
           <input
             id="phone"
             type="tel"
-            formControlName="phone"
+            name="phone"
             placeholder="Your phone"
-            [class.invalid]="isFieldInvalid('phone')"
+            required
+            pattern="\+?[0-9\s-]{10,}"
           />
-          @if (isFieldInvalid('phone')) {
-          <span class="error-message">Valid phone please...</span>
-          }
+          <span class="error-message" id="phoneError"
+            >Valid phone please...</span
+          >
         </div>
 
         <div class="box">
           <textarea
             id="message"
             type="text"
-            formControlName="message"
+            name="message"
             placeholder="Message to me..."
             rows="3"
-            [class.invalid]="isFieldInvalid('message')"
+            required
+            minlength="20"
           ></textarea>
-          @if (isFieldInvalid('message')) {
-          <span class="error-message textarea">Too short...</span>
-          }
+          <span class="error-message textarea" id="messageError"
+            >Too short...</span
+          >
         </div>
         <button
           type="submit"
+          id="submitButton"
           [class.success]="submitStatus === 'success'"
           [class.error]="submitStatus === 'error'"
         >
