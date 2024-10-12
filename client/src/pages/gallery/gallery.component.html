@@ -34,4 +34,17 @@
     </nav>
   </div>
 </div>
-<div class="gallery_container"></div>
+<div class="gallery_container">
+    <div class="image_container_horizontal">
+        <img
+                src="assets/gallery_two.jpg"
+                alt="photo of suka"
+                [@imageHover]="imageState"
+                (mouseenter)="onHover()"
+                (mouseleave)="onLeave()"
+                (touchstart)="
+                  imageState = imageState === 'normal' ? 'hovered' : 'normal'
+                "
+              />
+      </div>
+</div>
