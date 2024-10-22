@@ -1,50 +1,10 @@
-<div class="upper_container">
-  <div class="image_container">
-    <img
-            src="assets/gallery_first.jpg"
-            alt="photo of suka"
-            [@imageHover]="imageState"
-            (mouseenter)="onHover()"
-            (mouseleave)="onLeave()"
-            (touchstart)="
-              imageState = imageState === 'normal' ? 'hovered' : 'normal'
-            "
-          />
-  </div>
-  <div class="nav_container">
-    <nav>
-      <a
-        routerLink="/about-me"
-        routerLinkActive="activeLink"
-        ariaCurrentWhenActive="page"
-        >About</a
-      >
-      <a
-        routerLink="/gallery"
-        routerLinkActive="activeLink"
-        ariaCurrentWhenActive="page"
-        >Gallery</a
-      >
-      <a
-        routerLink="/contact-me"
-        routerLinkActive="activeLink"
-        ariaCurrentWhenActive="page"
-        >Contact</a
-      >
-    </nav>
-  </div>
-</div>
-<div class="gallery_container">
-    <div class="image_container_horizontal">
-        <img
-                src="assets/gallery_two.jpg"
-                alt="photo of suka"
-                [@imageHover]="imageState"
-                (mouseenter)="onHover()"
-                (mouseleave)="onLeave()"
-                (touchstart)="
-                  imageState = imageState === 'normal' ? 'hovered' : 'normal'
-                "
-              />
-      </div>
+<div class="photo-grid">
+  <div class="grid-item wedding">Wedding</div>
+  <div class="grid-item empty"></div>
+  <div class="grid-item love-story">Love Story</div>
+  <div class="grid-item pregnant">Pregnant</div>
+  <div class="grid-item family">Family</div>
+  <div class="grid-item atelier">Atelier</div>
+  <div class="grid-item krst">Krst</div>
+  <div class="grid-item portair">Portair</div>
 </div>
