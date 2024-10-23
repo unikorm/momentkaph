@@ -1,10 +1,94 @@
-<div class="photo-grid">
-  <div class="grid-item wedding">Wedding</div>
-  <div class="grid-item empty"></div>
-  <div class="grid-item love-story">Love Story</div>
-  <div class="grid-item pregnant">Pregnant</div>
-  <div class="grid-item family">Family</div>
-  <div class="grid-item atelier">Atelier</div>
-  <div class="grid-item krst">Krst</div>
-  <div class="grid-item portair">Portair</div>
+<div class="photo_grid">
+  <div class="grid_item wedding">
+    <div class="image_container">
+      <img
+        src="assets/gallery_wedding.JPG"
+        alt="photo of wedding"
+        [@imageHover]="imageStates['wedding']"
+        (mouseenter)="onHover('wedding')"
+        (mouseleave)="onLeave('wedding')"
+        (touchstart)="toggleState('wedding')"
+      />
+      <span>wedding section</span>
+    </div>
+  </div>
+  <div class="grid_item empty"></div>
+  <div class="grid_item love-story" style="padding-bottom: 3px">
+    <div class="image_container">
+      <img
+        src="assets/gallery_love.JPG"
+        alt="photo of wedding"
+        [@imageHover]="imageStates['love']"
+        (mouseenter)="onHover('love')"
+        (mouseleave)="onLeave('love')"
+        (touchstart)="toggleState('love')"
+      />
+      <span>love-story section</span>
+    </div>
+  </div>
+  <div class="grid_item pregnant" style="padding: 3px 3px 3px 0">
+    <div class="image_container">
+      <img
+        src="assets/gallery_pregnant.jpg"
+        alt="photo of wedding"
+        [@imageHover]="imageStates['pregnant']"
+        (mouseenter)="onHover('pregnant')"
+        (mouseleave)="onLeave('pregnant')"
+        (touchstart)="toggleState('pregnant')"
+      />
+      <span>pregnant section</span>
+    </div>
+  </div>
+  <div class="grid_item family" style="padding: 3px 0 3px 3px">
+    <div class="image_container">
+      <img
+        src="assets/gallery_family.jpg"
+        alt="photo of wedding"
+        [@imageHover]="imageStates['family']"
+        (mouseenter)="onHover('family')"
+        (mouseleave)="onLeave('family')"
+        (touchstart)="toggleState('family')"
+      />
+      <span>family section</span>
+    </div>
+  </div>
+  <div class="grid_item atelier" style="padding: 3px 3px 3px 0">
+    <div class="image_container">
+      <img
+        src="assets/gallery_atelier.jpg"
+        alt="photo of wedding"
+        [@imageHover]="imageStates['atelier']"
+        (mouseenter)="onHover('atelier')"
+        (mouseleave)="onLeave('atelier')"
+        (touchstart)="toggleState('atelier')"
+      />
+      <span>atelier section</span>
+    </div>
+  </div>
+  <div class="grid_item krst" style="padding: 3px 0 3px 3px">
+    <div class="image_container">
+      <img
+        src="assets/gallery_krst.JPG"
+        alt="photo of wedding"
+        [@imageHover]="imageStates['krst']"
+        (mouseenter)="onHover('krst')"
+        (mouseleave)="onLeave('krst')"
+        (touchstart)="toggleState('krst')"
+      />
+      <span>krst section</span>
+    </div>
+  </div>
+  <div class="grid_item portair" style="padding-top: 3px">
+    <div class="image_container">
+      <img
+        src="assets/gallery_portret.jpg"
+        alt="photo of wedding"
+        [@imageHover]="imageStates['portair']"
+        (mouseenter)="onHover('portair')"
+        (mouseleave)="onLeave('portair')"
+        (touchstart)="toggleState('portair')"
+      />
+      <span>portair section</span>
+    </div>
+  </div>
 </div>

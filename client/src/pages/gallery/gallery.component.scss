@@ -4,7 +4,7 @@
   background-color: var(--primary-color);
 }
 
-.photo-grid {
+.photo_grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
@@ -13,7 +13,7 @@
   grid-auto-rows: 100px;
 }
 
-.grid-item {
+.grid_item {
   background: var(--vintage-green);
 
   &.wedding {
@@ -50,4 +50,30 @@
     grid-column: 1 / span 2;
     grid-row: span 6;
   }
+}
+
+.image_container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.image_container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  position: relative;
+}
+
+.image_container span {
+  position: absolute;
+  bottom: 1px;
+  left: 5px;
+  font: var(--font-primary);
+  color: var(--vintage-bodily);
+  font-size: 1.25rem;
+  z-index: 1;
 }

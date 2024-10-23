@@ -25,7 +25,7 @@ import { RouterModule } from '@angular/router';
       state(
         'hovered',
         style({
-          transform: 'scale(0.875)',
+          transform: 'scale(0.84)',
         })
       ),
       transition('normal <=> hovered', animate('300ms ease-in-out')),
@@ -33,12 +33,25 @@ import { RouterModule } from '@angular/router';
   ],
 })
 export class GalleryComponent {
-  imageState = 'normal';
+  imageStates: { [key: string]: string } = {
+    wedding: 'normal',
+    love: 'normal',
+    pregnant: 'normal',
+    family: 'normal',
+    atelier: 'normal',
+    krst: 'normal',
+    portair: 'normal',
+  };
 
-  onHover() {
-    this.imageState = 'hovered';
+  onHover(section: string) {
+    this.imageStates[section] = 'hovered';
   }
-  onLeave() {
-    this.imageState = 'normal';
+  onLeave(section: string) {
+    this.imageStates[section] = 'normal';
+  }
+
+  toggleState(section: string) {
+    this.imageStates[section] =
+      this.imageStates[section] === 'normal' ? 'hovered' : 'normal';
   }
 }
