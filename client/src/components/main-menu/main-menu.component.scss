@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   height: 4.125rem;
-  background-color: var(--primary-color);
+  background-color: var(--TOFFEE);
   display: flex;
   justify-content: center;
 }
@@ -25,7 +25,7 @@ nav {
 a {
   all: unset;
   cursor: pointer;
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   font-size: 1.1rem;
 }
 
@@ -34,6 +34,6 @@ a:not(:last-of-type) {
 }
 
 .activeLink {
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   text-decoration: line-through;
 }

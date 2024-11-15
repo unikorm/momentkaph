@@ -1,9 +1,8 @@
 :root {
   /* color */
-  --primary-color: #777e5c;
-  --smooth-primary-color: #d1d8bd;
-  --vintage-bodily: #c7c2ab;
-  --vintage-green: #283106;
+  --TOFFEE: #9f825b;
+  --LATTE: #d0bca0;
+  --BROWNIE: #5e3023;
 
   --danger-smooth: #f06449;
   --success-smooth: #386c0b;
@@ -25,8 +24,8 @@ body {
   width: 100%;
   display: block;
   font: var(--font-primary);
-  color: var(--vintage-green);
-  background-color: var(--vintage-bodily);
+  color: var(--BROWNIE);
+  background-color: var(--LATTE);
 }
 
 * {

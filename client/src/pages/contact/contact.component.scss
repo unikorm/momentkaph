@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
   height: 100vh;
-  background-color: var(--vintage-bodily);
+  background-color: var(--LATTE);
 }
 
 // menu logic
@@ -10,7 +10,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: var(--primary-color);
+  background-color: var(--TOFFEE);
   padding: 0;
   margin: 0;
   position: absolute;
@@ -30,7 +30,7 @@ nav {
 a {
   all: unset;
   cursor: pointer;
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   font-size: 1.1rem;
 }
 
@@ -39,7 +39,7 @@ a:not(:last-of-type) {
 }
 
 .activeLink {
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   text-decoration: line-through;
 }
 
@@ -66,7 +66,7 @@ a:not(:last-of-type) {
       & > div > div > p {
         margin: 0.9rem 0 0;
         font: var(--font-label);
-        color: var(--vintage-dark);
+        color: var(--BROWNIE);
         font-size: 2.3rem;
       }
     }
@@ -116,9 +116,9 @@ input {
   width: 100%;
   margin: 0;
   padding: 0.5rem;
-  border: 0.23rem solid var(--primary-color);
+  border: 0.23rem solid var(--TOFFEE);
   font: var(--font-primary);
-  color: var(--vintage-dark);
+  color: var(--BROWNIE);
   margin-bottom: 1.1rem;
   background-color: transparent;
   font-size: 1.15rem;
@@ -126,12 +126,12 @@ input {
 }
 
 input::placeholder {
-  color: var(--vintage-dark);
+  color: var(--TOFFEE);
 }
 
 input:focus {
   outline: none;
-  border-color: var(--smooth-primary-color);
+  border-color: var(--BROWNIE);
 }
 
 .invalid {
@@ -144,7 +144,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: transparent !important;
-  -webkit-text-fill-color: var(--vintage-dark) !important;
+  -webkit-text-fill-color: var(--BROWNIE) !important;
   transition: background-color 5000s ease-in-out 0s;
 }
 input:autofill,
@@ -152,16 +152,16 @@ input:autofill:hover,
 input:autofill:focus,
 input:autofill:active {
   box-shadow: transparent !important;
-  -webkit-text-fill-color: var(--vintage-dark) !important;
+  -webkit-text-fill-color: var(--BROWNIE) !important;
 }
 
 textarea {
   width: 100%;
   margin: 0;
   padding: 0.5rem;
-  border: 0.23rem solid var(--primary-color);
+  border: 0.23rem solid var(--TOFFEE);
   font: var(--font-primary);
-  color: var(--vintage-dark);
+  color: var(--BROWNIE);
   margin-bottom: 1.1rem;
   background-color: transparent;
   font-size: 1.15rem;
@@ -170,12 +170,12 @@ textarea {
 }
 
 textarea::placeholder {
-  color: var(--vintage-dark);
+  color: var(--TOFFEE);
 }
 
 textarea:focus {
   outline: none;
-  border-color: var(--smooth-primary-color);
+  border-color: var(--BROWNIE);
 }
 
 .box {
@@ -201,8 +201,8 @@ button {
   padding: 0.5rem;
   font: var(--font-primary);
   border: none;
-  color: var(--vintage-bodily);
-  background-color: var(--primary-color);
+  color: var(--LATTE);
+  background-color: var(--TOFFEE);
   cursor: pointer;
   font-size: 1.15rem;
   box-sizing: border-box;
@@ -216,8 +216,8 @@ button {
 }
 
 button:hover {
-  background-color: var(--smooth-primary-color);
-  color: var(--primary-color);
+  background-color: var(--BROWNIE);
+  color: var(--TOFFEE);
 }
 
 // img logic
@@ -228,7 +228,7 @@ button:hover {
   height: fit-content;
   overflow: hidden;
   position: relative;
-  background-color: var(--vintage-green);
+  background-color: var(--BROWNIE);
 }
 
 .image-container img {
@@ -244,7 +244,7 @@ button:hover {
   bottom: 0;
   left: 0;
   font: var(--font-primary);
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   font-size: 1.05rem;
   z-index: 1;
 }

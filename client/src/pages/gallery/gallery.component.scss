@@ -1,7 +1,7 @@
 :host {
   display: block;
   width: 100%;
-  background-color: var(--primary-color);
+  background-color: var(--TOFFEE);
 }
 
 .photo_grid {
@@ -14,7 +14,7 @@
 }
 
 .grid_item {
-  background: var(--vintage-green);
+  background: var(--BROWNIE);
 
   &.wedding {
     grid-row: span 6;
@@ -22,7 +22,7 @@
 
   &.empty {
     grid-row: span 6;
-    background: var(--primary-color);
+    background: var(--TOFFEE);
   }
 
   &.love-story {
@@ -73,7 +73,7 @@
   bottom: 1px;
   left: 5px;
   font: var(--font-primary);
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   font-size: 1.25rem;
   z-index: 1;
 }
@@ -104,7 +104,7 @@ nav {
 a {
   all: unset;
   cursor: pointer;
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   font-size: 1.1rem;
 }
 
@@ -113,6 +113,6 @@ a:not(:last-of-type) {
 }
 
 .activeLink {
-  color: var(--vintage-bodily);
+  color: var(--LATTE);
   text-decoration: line-through;
 }
