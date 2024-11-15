@@ -17,6 +17,8 @@ import {
 } from '@angular/animations';
 import { RouterModule } from '@angular/router';
 
+// form will be in Zod (no angular/forms needed)
+
 @Component({
   standalone: true,
   selector: 'contact',
