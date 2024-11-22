@@ -17,8 +17,6 @@ import {
 } from '@angular/animations';
 import { RouterModule } from '@angular/router';
 
-// form will be in Zod (no angular/forms needed)
-
 @Component({
   standalone: true,
   selector: 'contact',
@@ -104,21 +102,22 @@ export class ContactComponent {
   emailData = signal<SendEmailType | null>(null);
 
   onSubmit() {
+    this.formSubmitted.set(true);
     if (this.newMessageForm.valid) {
-      this.formSubmitted.set(true);
       this.emailData.set(this.newMessageForm.value as SendEmailType);
+    } else {
+      // Mark all fields as touched to trigger error messages
+      Object.keys(this.newMessageForm.controls).forEach((key) => {
+        const control = this.newMessageForm.get(key);
+        control?.markAsTouched();
+      });
     }
   }
 
   isFieldInvalid(fieldName: string) {
     const field = this.newMessageForm.get(fieldName);
     return field
-      ? (field.invalid || field.errors != null) &&
-          field.touched &&
-          field.value !== null &&
-          field.value !== undefined &&
-          field.value !== '' &&
-          field.dirty
+      ? field.invalid && this.formSubmitted() && field.errors != null
       : false;
   }
 }
