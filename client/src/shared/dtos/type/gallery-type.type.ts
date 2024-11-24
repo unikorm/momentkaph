@@ -1,6 +1,6 @@
 export type GalleryTypeImage = {
   url: string;
-  title: string;
+  thumbnailUrl: string;
   description?: string;
 };
 

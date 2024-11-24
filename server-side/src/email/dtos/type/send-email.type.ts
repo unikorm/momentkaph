@@ -1,11 +1,11 @@
-export type SendEmailType = {
+export type SendEmailServerType = {
   name: string;
   email: string;
   phone: string;
   message: string;
 };
 
-export type SendEmailResponseType = {
+export type SendEmailResponseServerType = {
   status: boolean;
   error?: string;
 };

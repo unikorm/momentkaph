@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
-import { SendEmailResponseType, SendEmailType } from './dtos';
+import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
 
 @Injectable()
 export class EmailService {
   constructor(private readonly mailService: MailerService) {}
 
   sendEmail = async (
-    sendEmailDto: SendEmailType,
-  ): Promise<SendEmailResponseType> => {
+    sendEmailDto: SendEmailServerType,
+  ): Promise<SendEmailResponseServerType> => {
     const { name, email, phone, message } = sendEmailDto;
     try {
       await this.mailService.sendMail({
