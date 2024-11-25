@@ -1,0 +1,15 @@
+<div class="gallery-container">
+  @if (loading()) {
+  <div class="loading">Loading images...</div>
+  } @if (error()) {
+  <div class="error">Failed to load images: {{ error() }}</div>
+  } @if (images().length) {
+  <div class="image-grid">
+    @for(image of images(); track image.) {
+    <div class="image-card">
+      <img [src]="image.thumbnailUrl" loading="lazy" />
+    </div>
+    }
+  </div>
+  }
+</div>

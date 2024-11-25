@@ -1,13 +1,8 @@
-export type GalleryTypeImageServerType = {
-  url: string;
-  thumbnailUrl: string;
-  description?: string;
-};
-
-export type GalleryTypePageServerType = {
-  title: string;
-  description: string;
-  images: GalleryTypeImageServerType[];
+export type GalleryTypeImagesType = {
+  urls: {
+    fullUrl: string;
+    thumbnailUrl: string;
+  }[];
 };
 
 export enum GalleryTypeEnum {
@@ -19,3 +14,10 @@ export enum GalleryTypeEnum {
   PREGNANCY = 'pregnancy',
   BAPTISM = 'baptism',
 }
+
+export type GetGallryImagesLinksResponseServerType = {
+  urls: {
+    fullUrl: string;
+    thumbnailUrl: string;
+  }[];
+};

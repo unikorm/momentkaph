@@ -1,36 +1,60 @@
 import { Injectable } from '@nestjs/common';
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
-import { GalleryTypeEnum } from './dtos';
+import {
+  GalleryTypeEnum,
+  GetGallryImagesLinksResponseServerType,
+} from './dtos';
+import { BUCKET } from './dtos/secrets';
 
 @Injectable()
 export class CloudStorageService {
   private client: S3Client;
-  private readonly BUCKET = 'from secrets';
+  private readonly baseUrl: string;
 
   constructor() {
     this.client = new S3Client({
-      endpoint: 'from secrets',
-      region: 'from secrets',
+      endpoint: BUCKET.endpoint,
+      region: BUCKET.region,
       credentials: {
-        accessKeyId: 'from secrets',
-        secretAccessKey: 'from secrets',
+        accessKeyId: BUCKET.credentials.accessKeyId,
+        secretAccessKey: BUCKET.credentials.secretAccessKey,
       },
     });
+
+    this.baseUrl = `https://${BUCKET.name}.${BUCKET.region}.digitaloceanspaces.com`;
   }
 
-  async fetchGalleryImagesLinks(galleryType: GalleryTypeEnum) {
+  async fetchGalleryImagesLinks(
+    galleryType: GalleryTypeEnum,
+  ): Promise<GetGallryImagesLinksResponseServerType> {
     try {
-      const command = new ListObjectsV2Command({
-        Bucket: 'from secrets',
-        Prefix: `${galleryType}/`,
+      const fullCommand = new ListObjectsV2Command({
+        Bucket: BUCKET.name,
+        Prefix: `${galleryType}/full/`,
+      });
+      const thumbnailCommand = new ListObjectsV2Command({
+        Bucket: BUCKET.name,
+        Prefix: `${galleryType}/thumbnails/`,
       });
 
-      const response = await this.client.send(command);
+      const [fullResponse, thumbnailResponse] = await Promise.all([
+        this.client.send(fullCommand),
+        this.client.send(thumbnailCommand),
+      ]);
 
-      return (response.Contents || []).map((content) => ({
-        url: 'from secrets', // `${this.client.config.endpoint}/${this.BUCKET}/${content.Key}`
-        name: content.Key,
+      const fullImages = (fullResponse.Contents || []).map((item) => ({
+        fullUrl: `${this.baseUrl}/${item.Key}`,
       }));
+      const thumbnails = (thumbnailResponse.Contents || []).map((item) => ({
+        thumbnailUrl: `${this.baseUrl}/${item.Key}`,
+      }));
+
+      return {
+        urls: fullImages.map((item, index) => ({
+          ...item,
+          ...thumbnails[index],
+        })),
+      };
     } catch (error) {
       console.error('Error fetching images:', error);
       throw error;

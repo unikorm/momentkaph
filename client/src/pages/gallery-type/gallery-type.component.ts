@@ -1,6 +1,8 @@
 import { Component, computed, signal, inject, effect } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GalleryTypeImage, GalleryTypePage } from '../../shared/dtos';
+import { GalleryTypeEnum, GalleryTypeImagesType } from '../../shared/dtos';
+import { CloudStorageService } from '../../services/cloudStorage.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'gallery-type',
@@ -9,29 +11,29 @@ import { GalleryTypeImage, GalleryTypePage } from '../../shared/dtos';
 })
 export class GalleryTypeComponent {
   readonly route = inject(ActivatedRoute);
-  private storageService = inject(StorageService);
+  private storageService = inject(CloudStorageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
-  readonly galleryData = signal<GalleryTypePage | null>(null);
-  readonly images = signal<GalleryTypeImage[]>([]);
+  readonly images = signal<GalleryTypeImagesType[]>([]);
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);
 
   constructor() {
     effect(() => {
       if (this.type()) {
-        this.loadGalleryImages(this.type()!);
+        this.loadGalleryImages(this.type()! as GalleryTypeEnum);
       }
     });
   }
 
-  private async loadGalleryImages(type: string) {
+  private async loadGalleryImages(type: GalleryTypeEnum) {
     try {
       this.loading.set(true);
       this.error.set(null);
 
-      const images = await this.storageService.getGalleryImages(type);
-      this.images.set(images);
+      const images = await this.storageService.fetchGalleryImagesLinks(type);
+      const imagesSignal = toSignal(images);
+      this.images.set(imagesSignal as unknown as GalleryTypeImagesType[]);
     } catch (error) {
       this.error.set(error instanceof Error ? error.message : 'Unknown error');
     } finally {
