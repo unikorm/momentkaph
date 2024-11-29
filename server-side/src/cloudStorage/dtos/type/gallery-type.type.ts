@@ -1,8 +1,6 @@
 export type GalleryTypeImagesType = {
-  urls: {
-    fullUrl: string;
-    thumbnailUrl: string;
-  }[];
+  fullUrl: string;
+  thumbnailUrl: string;
 };
 
 export enum GalleryTypeEnum {
@@ -16,8 +14,6 @@ export enum GalleryTypeEnum {
 }
 
 export type GetGallryImagesLinksResponseServerType = {
-  urls: {
-    fullUrl: string;
-    thumbnailUrl: string;
-  }[];
+  fullUrl: string;
+  thumbnailUrl: string;
 };

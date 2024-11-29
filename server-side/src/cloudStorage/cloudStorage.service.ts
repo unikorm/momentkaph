@@ -26,7 +26,7 @@ export class CloudStorageService {
 
   async fetchGalleryImagesLinks(
     galleryType: GalleryTypeEnum,
-  ): Promise<GetGallryImagesLinksResponseServerType> {
+  ): Promise<GetGallryImagesLinksResponseServerType[]> {
     try {
       const fullCommand = new ListObjectsV2Command({
         Bucket: BUCKET.name,
@@ -49,12 +49,10 @@ export class CloudStorageService {
         thumbnailUrl: `${this.baseUrl}/${item.Key}`,
       }));
 
-      return {
-        urls: fullImages.map((item, index) => ({
-          ...item,
-          ...thumbnails[index],
-        })),
-      };
+      return fullImages.map((item, index) => ({
+        ...item,
+        ...thumbnails[index],
+      }));
     } catch (error) {
       console.error('Error fetching images:', error);
       throw error;

@@ -12,7 +12,7 @@ export class CloudStorageController {
   @Post()
   async fetchGalleryImagesLinks(
     @Body() galleryType: GalleryTypeEnum,
-  ): Promise<GetGallryImagesLinksResponseServerType> {
+  ): Promise<GetGallryImagesLinksResponseServerType[]> {
     return await this.cloudStorageService.fetchGalleryImagesLinks(galleryType);
   }
 }
