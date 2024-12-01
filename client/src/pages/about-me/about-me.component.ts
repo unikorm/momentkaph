@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import {
   animate,
   state,
@@ -7,6 +7,8 @@ import {
   trigger,
 } from '@angular/animations';
 import { RouterModule } from '@angular/router';
+import { CloudStorageService } from '../../services/cloudStorage.service';
+import { GalleryTypeEnum } from '../../shared/dtos';
 
 @Component({
   standalone: true,
@@ -33,6 +35,24 @@ import { RouterModule } from '@angular/router';
   ],
 })
 export class AboutMeComponent {
+  // readonly cloudService = inject(CloudStorageService);
+
+  // ngOnInit() {
+  //   this.loadImages();
+  // }
+
+  // async loadImages() {
+  //   try {
+  //     const images = await this.cloudService.fetchGalleryImagesLinks(
+  //       GalleryTypeEnum.STUDIO
+  //     );
+  //     console.log('Images:', images);
+  //   } catch (err) {
+  //     console.error('Error loading images:', err);
+  //   } finally {
+  //     console.log('Images loaded');
+  //   }
+  // }
   imageState = 'normal';
 
   onHover() {

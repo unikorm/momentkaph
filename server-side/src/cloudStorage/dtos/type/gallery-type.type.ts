@@ -15,5 +15,5 @@ export enum GalleryTypeEnum {
 
 export type GetGallryImagesLinksResponseServerType = {
   fullUrl: string;
-  thumbnailUrl: string;
+  // thumbnailUrl: string;
 };

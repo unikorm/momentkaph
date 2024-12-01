@@ -21,7 +21,7 @@ export class CloudStorageService {
       },
     });
 
-    this.baseUrl = `https://${BUCKET.name}.${BUCKET.region}.digitaloceanspaces.com`;
+    this.baseUrl = `https://${BUCKET.name}.${BUCKET.region}.cdn.digitaloceanspaces.com`;
   }
 
   async fetchGalleryImagesLinks(
@@ -32,27 +32,14 @@ export class CloudStorageService {
         Bucket: BUCKET.name,
         Prefix: `${galleryType}/full/`,
       });
-      const thumbnailCommand = new ListObjectsV2Command({
-        Bucket: BUCKET.name,
-        Prefix: `${galleryType}/thumbnails/`,
-      });
 
-      const [fullResponse, thumbnailResponse] = await Promise.all([
-        this.client.send(fullCommand),
-        this.client.send(thumbnailCommand),
-      ]);
+      const [fullResponse] = await Promise.all([this.client.send(fullCommand)]);
 
       const fullImages = (fullResponse.Contents || []).map((item) => ({
         fullUrl: `${this.baseUrl}/${item.Key}`,
       }));
-      const thumbnails = (thumbnailResponse.Contents || []).map((item) => ({
-        thumbnailUrl: `${this.baseUrl}/${item.Key}`,
-      }));
 
-      return fullImages.map((item, index) => ({
-        ...item,
-        ...thumbnails[index],
-      }));
+      return fullImages;
     } catch (error) {
       console.error('Error fetching images:', error);
       throw error;
