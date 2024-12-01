@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import {
   GalleryTypeEnum,
@@ -10,6 +10,7 @@ import { BUCKET } from './dtos/secrets';
 export class CloudStorageService {
   private client: S3Client;
   private readonly baseUrl: string;
+  private readonly logger = new Logger(CloudStorageService.name);
 
   constructor() {
     this.client = new S3Client({
@@ -35,11 +36,18 @@ export class CloudStorageService {
 
       const [fullResponse] = await Promise.all([this.client.send(fullCommand)]);
 
-      const fullImages = (fullResponse.Contents || []).map((item) => ({
-        fullUrl: `${this.baseUrl}/${item.Key}`,
-      }));
+      if (!fullResponse.Contents || fullResponse.Contents.length === 0) {
+        this.logger.warn(`No images found for gallery type: ${galleryType}`);
+        return [];
+      }
 
-      return fullImages;
+      const fullImages = (fullResponse.Contents || [])
+        .filter((item) => !item.Key.endsWith('/'))
+        .map((item) => ({
+          fullUrl: `${this.baseUrl}/${item.Key}`,
+        }));
+
+      return fullImages.filter(Boolean);
     } catch (error) {
       console.error('Error fetching images:', error);
       throw error;
