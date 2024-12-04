@@ -22,15 +22,13 @@ export const routes: Routes = [
           import('./pages/gallery/gallery.component').then(
             (m) => m.GalleryComponent
           ),
-        children: [
-          {
-            path: 'gallery/:type',
-            loadComponent: () =>
-              import('./pages/gallery-type/gallery-type.component').then(
-                (m) => m.GalleryTypeComponent
-              ),
-          },
-        ],
+      },
+      {
+        path: 'gallery/:type',
+        loadComponent: () =>
+          import('./pages/gallery-type/gallery-type.component').then(
+            (m) => m.GalleryTypeComponent
+          ),
       },
       {
         path: 'about-me',

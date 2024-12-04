@@ -3,8 +3,10 @@ import { ActivatedRoute } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImagesType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
+  standalone: true,
   selector: 'gallery-type',
   templateUrl: './gallery-type.component.html',
   styleUrls: ['./gallery-type.component.scss'],
@@ -18,12 +20,19 @@ export class GalleryTypeComponent {
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);
 
+  // readonly type = signal<GalleryTypeEnum>(
+  //   this.route.snapshot.paramMap.get('type') as GalleryTypeEnum
+  // );
+
   constructor() {
-    effect(() => {
-      if (this.type()) {
-        this.loadGalleryImages(this.type()! as GalleryTypeEnum);
-      }
-    });
+    effect(
+      () => {
+        if (this.type()) {
+          this.loadGalleryImages(this.type() as GalleryTypeEnum);
+        }
+      },
+      { allowSignalWrites: true }
+    );
   }
 
   private async loadGalleryImages(type: GalleryTypeEnum) {
@@ -31,9 +40,10 @@ export class GalleryTypeComponent {
       this.loading.set(true);
       this.error.set(null);
 
-      const images = await this.storageService.fetchGalleryImagesLinks(type);
-      const imagesSignal = toSignal(images);
-      this.images.set(imagesSignal as unknown as GalleryTypeImagesType[]);
+      const images = await firstValueFrom(
+        this.storageService.fetchGalleryImagesLinks(type)
+      );
+      this.images.set(images);
     } catch (error) {
       this.error.set(error instanceof Error ? error.message : 'Unknown error');
     } finally {

@@ -16,9 +16,10 @@ export class CloudStorageService {
   fetchGalleryImagesLinks(
     galleryType: GalleryTypeEnum
   ): Observable<GetGallryImagesLinksResponseType[]> {
+    console.log(galleryType);
     return this.http.post<GetGallryImagesLinksResponseType[]>(
       `${this.apiUrl}/cloud_storage`,
-      galleryType
+      { galleryType: galleryType }
     );
   }
 }
