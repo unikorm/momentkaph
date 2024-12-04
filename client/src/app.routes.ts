@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,8 @@ export const routes: Routes = [
       },
       {
         path: 'gallery/:type',
+        title: (route: ActivatedRouteSnapshot) =>
+          `Gallery - ${route.params['type']}`,
         loadComponent: () =>
           import('./pages/gallery-type/gallery-type.component').then(
             (m) => m.GalleryTypeComponent

@@ -34,13 +34,13 @@ import { RouterModule } from '@angular/router';
 })
 export class GalleryComponent {
   imageStates: { [key: string]: string } = {
-    wedding: 'normal',
-    love: 'normal',
-    pregnant: 'normal',
+    weddings: 'normal',
+    'love-story': 'normal',
+    pregnancy: 'normal',
     family: 'normal',
-    atelier: 'normal',
-    krst: 'normal',
-    portair: 'normal',
+    studio: 'normal',
+    baptism: 'normal',
+    portrait: 'normal',
   };
 
   onHover(section: string) {

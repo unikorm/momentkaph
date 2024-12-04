@@ -11,12 +11,13 @@
   max-width: 1300px;
   margin: 0 auto;
   grid-auto-rows: 100px;
+  padding-bottom: 10rem;
 }
 
 .grid_item {
   background: var(--BROWNIE);
 
-  &.wedding {
+  &.weddings {
     grid-row: span 6;
   }
 
@@ -30,7 +31,7 @@
     grid-row: span 6;
   }
 
-  &.pregnant {
+  &.pregnancy {
     grid-row: span 7;
   }
 
@@ -38,15 +39,15 @@
     grid-row: span 8;
   }
 
-  &.atelier {
+  &.studio {
     grid-row: span 8;
   }
 
-  &.krst {
+  &.baptism {
     grid-row: span 7;
   }
 
-  &.portair {
+  &.portrait {
     grid-column: 1 / span 2;
     grid-row: span 6;
   }
@@ -88,7 +89,7 @@
 }
 
 .empty_section nav {
- position: absolute;
+  position: absolute;
   top: 0;
   right: 0;
 }

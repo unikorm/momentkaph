@@ -1,13 +1,13 @@
 import { Component, computed, signal, inject, effect } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImagesType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
   standalone: true,
   selector: 'gallery-type',
+  imports: [RouterModule],
   templateUrl: './gallery-type.component.html',
   styleUrls: ['./gallery-type.component.scss'],
 })
@@ -19,10 +19,6 @@ export class GalleryTypeComponent {
   readonly images = signal<GalleryTypeImagesType[]>([]);
   readonly loading = signal(true);
   readonly error = signal<string | null>(null);
-
-  // readonly type = signal<GalleryTypeEnum>(
-  //   this.route.snapshot.paramMap.get('type') as GalleryTypeEnum
-  // );
 
   constructor() {
     effect(

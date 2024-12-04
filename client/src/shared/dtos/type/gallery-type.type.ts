@@ -1,6 +1,5 @@
 export type GalleryTypeImagesType = {
   fullUrl: string;
-  // thumbnailUrl: string;
 };
 
 export enum GalleryTypeEnum {
@@ -15,5 +14,4 @@ export enum GalleryTypeEnum {
 
 export type GetGallryImagesLinksResponseType = {
   fullUrl: string;
-  // thumbnailUrl: string;
 };
