@@ -5,13 +5,14 @@ import {
   GalleryTypeEnum,
   GetGallryImagesLinksResponseType,
 } from '../shared/dtos';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CloudStorageService {
   readonly http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000'; // use environment variables
+  private apiUrl = environment.apiUrl
 
   fetchGalleryImagesLinks(
     galleryType: GalleryTypeEnum
