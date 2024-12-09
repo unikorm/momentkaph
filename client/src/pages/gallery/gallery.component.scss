@@ -53,6 +53,43 @@
   }
 }
 
+@media screen and (max-width: 868px) {
+  .photo_grid {
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
+    // grid-auto-rows: 900px;
+    /* Fixed height for mobile images */
+  }
+
+  .grid_item {
+    /* Reset all grid spans for mobile */
+    grid-column: 1 !important;
+    /* Force single column */
+    grid-row: span 1 !important;
+    /* Each item takes one row */
+    height: auto;
+
+    /* Remove any existing padding */
+    padding: 0.5rem !important;
+  }
+
+  /* Adjust empty section for mobile */
+  .empty_section {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Adjust navigation for mobile */
+  nav {
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  a:not(:last-of-type) {
+    margin-right: 0.5rem;
+  }
+}
+
 .image_container {
   display: flex;
   width: 100%;
