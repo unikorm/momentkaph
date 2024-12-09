@@ -29,4 +29,5 @@ export const config = {
     user: process.env.EMAIL_USER,
     password: process.env.EMAIL_PASSWORD,
   },
+  port: process.env.BE_PORT,
 };
