@@ -1,10 +1,10 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
+import { ConfigService } from '@nestjs/config';
 import {
   GalleryTypeEnum,
   GetGallryImagesLinksResponseServerType,
 } from './dtos';
-import { BUCKET } from './dtos/secrets';
 
 @Injectable()
 export class CloudStorageService {
@@ -12,17 +12,19 @@ export class CloudStorageService {
   private readonly baseUrl: string;
   private readonly logger = new Logger(CloudStorageService.name);
 
-  constructor() {
+  constructor(private configService: ConfigService) {
     this.client = new S3Client({
-      endpoint: BUCKET.endpoint,
-      region: BUCKET.region,
+      endpoint: this.configService.get('BUCKET_ENDPOINT'),
+      region: this.configService.get('BUCKET_REGION'),
       credentials: {
-        accessKeyId: BUCKET.credentials.accessKeyId,
-        secretAccessKey: BUCKET.credentials.secretAccessKey,
+        accessKeyId: this.configService.get('BUCKET_ACCESS_KEY'),
+        secretAccessKey: this.configService.get('BUCKET_SECRET_KEY'),
       },
     });
 
-    this.baseUrl = `https://${BUCKET.name}.${BUCKET.region}.cdn.digitaloceanspaces.com`;
+    const bucketName = this.configService.get('BUCKET_NAME');
+    const bucketRegion = this.configService.get('BUCKET_REGION');
+    this.baseUrl = `https://${bucketName}.${bucketRegion}.cdn.digitaloceanspaces.com`;
   }
 
   async fetchGalleryImagesLinks(
@@ -30,7 +32,7 @@ export class CloudStorageService {
   ): Promise<GetGallryImagesLinksResponseServerType[]> {
     try {
       const fullCommand = new ListObjectsV2Command({
-        Bucket: BUCKET.name,
+        Bucket: this.configService.get('BUCKET_NAME'),
         Prefix: `${galleryType}/full/`,
       });
 
