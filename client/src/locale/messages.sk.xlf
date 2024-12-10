@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="sk" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="1726363342938046830" datatype="html">
+        <source>About</source>
+        <target>O mne</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2181154762165715522" datatype="html">
+        <source>Gallery</source>
+        <target>Galéria</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">4,5</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7922989125096435449" datatype="html">
+        <source>Contact</source>
+        <target>Kontakt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">5,6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2435695625561209773" datatype="html">
+        <source>that&apos;s me</source>
+        <target>to som ja</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5886215625170257198" datatype="html">
+        <source> Hi! My name is Anna Lednicka, and I&apos;m a person who once dared to choose her dream. I was born in Ukraine, graduated from medical university, and became a general practitioner. But in my fourth year, I fell in love with photography, and this passion consumed me completely. I combined working as a nurse and taking photos until I finished university and realized: photography is my true calling. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">19,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6264989403060361474" datatype="html">
+        <source> Now I live in Slovakia, where I&apos;m starting everything from scratch. It&apos;s not easy, but I&apos;m inspired by the dream of making photography my profession. I&apos;m a wife, a mother, and a person who believes it&apos;s important to do what makes you feel alive inside. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">25,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8561448853048336954" datatype="html">
+        <source> What do I love most about my work? It&apos;s the moments. Live, genuine emotions, not just posed shots. During my photo sessions, you don&apos;t have to worry about how to pose or where to look. I&apos;ll create an easy and comfortable atmosphere for you: I&apos;ll give you an interesting task, you&apos;ll complete it, and meanwhile, I&apos;ll capture sincere emotions. You&apos;ll start having fun, and the photo session will turn into unforgettably spent time - with me, with yourself, with your family, or with your significant other. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">30,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="840040456026231598" datatype="html">
+        <source> I&apos;m confident that photos taken with soul will preserve these moments for a lifetime. Let&apos;s create them together! </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6100151620409479673" datatype="html">
+        <source>get in touch</source>
+        <target>kontaktujte ma</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">20,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8361247543012785043" datatype="html">
+        <source>Too short...</source>
+        <target>Príliš krátke...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">30,31</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">53,54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1312545424406534347" datatype="html">
+        <source>Valid email please...</source>
+        <target>Prosím zadajte platný email...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="872965323072723995" datatype="html">
+        <source>Valid phone please...</source>
+        <target>Prosím zadajte platné telefónne číslo...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4089425069969156889" datatype="html">
+        <source>Message sent!</source>
+        <target>Správa odoslaná!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">58,59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6168740253036093111" datatype="html">
+        <source>Something went wrong!</source>
+        <target>Niečo sa pokazilo!</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">60,61</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1118027788072351320" datatype="html">
+        <source>Sending...</source>
+        <target>Odosielam...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">62,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8740036082299980043" datatype="html">
+        <source>Send message</source>
+        <target>Odoslať správu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="290735093992020324" datatype="html">
+        <source>OR</source>
+        <target>ALEBO</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4663701267540308085" datatype="html">
+        <source>Baptism</source>
+        <target>Krsty</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4959944700847842208" datatype="html">
+        <source>Weddings</source>
+        <target>Svadby</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1998300019949051555" datatype="html">
+        <source>Portrait</source>
+        <target>Portréty</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5897279928219725664" datatype="html">
+        <source>Love-story</source>
+        <target>Príbehy lásky</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4503058900811189744" datatype="html">
+        <source>Family</source>
+        <target>Rodina</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1488100477097473765" datatype="html">
+        <source>Studio</source>
+        <target>Ateliér</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="922298743861257077" datatype="html">
+        <source>Pregnancy</source>
+        <target>Tehuľky</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="114339174735425320" datatype="html">
+        <source>weddings section</source>
+        <target>sekcia svadieb</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2578816097727474632" datatype="html">
+        <source>love-story section</source>
+        <target>sekcia príbehov lásky</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">24,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3878895803297017940" datatype="html">
+        <source>pregnancy section</source>
+        <target>sekcia tehuľiek</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">33,34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5629068285951675978" datatype="html">
+        <source>studio section</source>
+        <target>sekcia ateliéru</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">40,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6895518927509276045" datatype="html">
+        <source>family section</source>
+        <target>sekcia rodiny</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">49,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="131708414796517368" datatype="html">
+        <source>baptism section</source>
+        <target>sekcia krstov</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">56,57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1348095547102699868" datatype="html">
+        <source>portrait section</source>
+        <target>sekcia portrétov</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">64,65</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

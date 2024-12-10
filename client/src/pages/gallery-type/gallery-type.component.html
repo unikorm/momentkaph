@@ -1,41 +1,26 @@
 <div class="menu_container">
   <nav>
-    <a
-      routerLink="/about-me"
-      routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page"
-      >About</a
-    >
-    <a
-      routerLink="/gallery"
-      routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page"
-      >Gallery</a
-    >
-    <a
-      routerLink="/contact-me"
-      routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page"
-      >Contact</a
-    >
+    <a routerLink="/about-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>About</a>
+    <a routerLink="/gallery" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Gallery</a>
+    <a routerLink="/contact-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Contact</a>
   </nav>
 </div>
 <div class="gallery-container">
   <div class="title-for-gallery">
     @if (type() === 'baptism') {
-    <h1>Krsty</h1>
+    <h1 i18n>Baptism</h1>
     } @if (type() === 'weddings') {
-    <h1>Svadby</h1>
+    <h1 i18n>Weddings</h1>
     } @if (type() === 'portrait') {
-    <h1>Portréty</h1>
+    <h1 i18n>Portrait</h1>
     } @if (type() === 'love-story') {
-    <h1>Príbehy lásky</h1>
+    <h1 i18n>Love-story</h1>
     } @if (type() === 'family') {
-    <h1>Rodina</h1>
+    <h1 i18n>Family</h1>
     } @if (type() === 'studio') {
-    <h1>Ateliér</h1>
+    <h1 i18n>Studio</h1>
     } @if (type() === 'pregnancy') {
-    <h1>Tehuľky</h1>
+    <h1 i18n>Pregnancy</h1>
     }
   </div>
   @if (images().length) {
