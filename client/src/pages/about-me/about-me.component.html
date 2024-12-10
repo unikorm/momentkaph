@@ -1,69 +1,41 @@
 <div class="menu_container">
   <nav>
-    <a
-      routerLink="/about-me"
-      routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page"
-      >About</a
-    >
-    <a
-      routerLink="/gallery"
-      routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page"
-      >Gallery</a
-    >
-    <a
-      routerLink="/contact-me"
-      routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page"
-      >Contact</a
-    >
+    <a routerLink="/about-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page">About</a>
+    <a routerLink="/gallery" routerLinkActive="activeLink" ariaCurrentWhenActive="page">Gallery</a>
+    <a routerLink="/contact-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page">Contact</a>
   </nav>
 </div>
 <div class="about_container">
   <div class="about_container_content">
     <div class="image-container">
-      <img
-        src="assets/about_photo.webp"
-        alt="photo of me on about page"
-        [@imageHover]="imageState"
-        (mouseenter)="onHover()"
-        (mouseleave)="onLeave()"
-        (touchstart)="
+      <img src="assets/about_photo.webp" alt="photo of me on about page" [@imageHover]="imageState"
+        (mouseenter)="onHover()" (mouseleave)="onLeave()" (touchstart)="
           imageState = imageState === 'normal' ? 'hovered' : 'normal'
-        "
-      />
+        " />
       <span>that's me</span>
-    </div>
-    <div class="title">
-      <p>hey, i am anna</p>
     </div>
     <div class="bio">
       <p>
-        Hi, I'm a passionate photographer with a love for capturing life's most
-        meaningful moments. Whether it's the soft glow of a sunset over a couple
-        in love, the joy of a family gathering, or the quiet beauty in everyday
-        life, I believe every picture tells a story. My goal is to not only
-        capture images but also emotions and memories that will be cherished for
-        years to come.
+        Hi! My name is Anna Lednicka, and I'm a person who once dared to choose her dream. I was born in Ukraine,
+        graduated from medical university, and became a general practitioner. But in my fourth year, I fell in love with
+        photography, and this passion consumed me completely. I combined working as a nurse and taking photos until I
+        finished university and realized: photography is my true calling.
       </p>
       <p>
-        With 4 years of experience behind the camera, I specialize in portrait,
-        wedding, moments.... My style is a blend of candid and natural, aiming
-        to create timeless images that reflect the authentic essence of each
-        moment.
+        Now I live in Slovakia, where I'm starting everything from scratch. It's not easy, but I'm inspired by the dream
+        of making photography my profession. I'm a wife, a mother, and a person who believes it's important to do what
+        makes you feel alive inside.
       </p>
       <p>
-        Beyond the lens, I am a nature lover and traveler. I find inspiration in
-        the little things, the way light dances through trees, a heartfelt
-        laugh, or a fleeting glance that speaks a thousand words. Photography
-        allows me to freeze these moments in time, and it's an honor to share
-        them with you.
+        What do I love most about my work? It's the moments. Live, genuine emotions, not just posed shots. During my
+        photo sessions, you don't have to worry about how to pose or where to look. I'll create an easy and comfortable
+        atmosphere for you: I'll give you an interesting task, you'll complete it, and meanwhile, I'll capture sincere
+        emotions. You'll start having fun, and the photo session will turn into unforgettably spent time - with me, with
+        yourself, with your family, or with your significant other.
       </p>
       <p>
-        Whether you are looking to capture a milestone event or simply create
-        beautiful memories, I am here to help tell your story, one frame at a
-        time.
+        I'm confident that photos taken with soul will preserve these moments for a lifetime. Let's create them
+        together!
       </p>
     </div>
   </div>
