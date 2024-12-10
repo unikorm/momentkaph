@@ -11,12 +11,13 @@
   max-width: 1300px;
   margin: 0 auto;
   grid-auto-rows: 100px;
+  padding-bottom: 10rem;
 }
 
 .grid_item {
   background: var(--BROWNIE);
 
-  &.wedding {
+  &.weddings {
     grid-row: span 6;
   }
 
@@ -30,7 +31,7 @@
     grid-row: span 6;
   }
 
-  &.pregnant {
+  &.pregnancy {
     grid-row: span 7;
   }
 
@@ -38,17 +39,54 @@
     grid-row: span 8;
   }
 
-  &.atelier {
+  &.studio {
     grid-row: span 8;
   }
 
-  &.krst {
+  &.baptism {
     grid-row: span 7;
   }
 
-  &.portair {
+  &.portrait {
     grid-column: 1 / span 2;
     grid-row: span 6;
+  }
+}
+
+@media screen and (max-width: 868px) {
+  .photo_grid {
+    grid-template-columns: 1fr;
+    /* Single column on mobile */
+    // grid-auto-rows: 900px;
+    /* Fixed height for mobile images */
+  }
+
+  .grid_item {
+    /* Reset all grid spans for mobile */
+    grid-column: 1 !important;
+    /* Force single column */
+    grid-row: span 1 !important;
+    /* Each item takes one row */
+    height: auto;
+
+    /* Remove any existing padding */
+    padding: 0.5rem !important;
+  }
+
+  /* Adjust empty section for mobile */
+  .empty_section {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+
+  /* Adjust navigation for mobile */
+  nav {
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  a:not(:last-of-type) {
+    margin-right: 0.5rem;
   }
 }
 
@@ -88,7 +126,7 @@
 }
 
 .empty_section nav {
- position: absolute;
+  position: absolute;
   top: 0;
   right: 0;
 }

@@ -1,11 +1,17 @@
-export type GalleryTypeImage = {
-  url: string;
-  thumbnailUrl: string;
-  description?: string;
+export type GalleryTypeImagesType = {
+  fullUrl: string;
 };
 
-export type GalleryTypePage = {
-  title: string;
-  description: string;
-  images: GalleryTypeImage[];
+export enum GalleryTypeEnum {
+  WEDDINGS = 'weddings',
+  PORTRAIT = 'portrait',
+  'LOVE-STORY' = 'love-story',
+  FAMILY = 'family',
+  STUDIO = 'studio',
+  PREGNANCY = 'pregnancy',
+  BAPTISM = 'baptism',
+}
+
+export type GetGallryImagesLinksResponseType = {
+  fullUrl: string;
 };

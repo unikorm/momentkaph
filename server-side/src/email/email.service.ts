@@ -4,7 +4,7 @@ import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
 
 @Injectable()
 export class EmailService {
-  constructor(private readonly mailService: MailerService) {}
+  constructor(private readonly mailService: MailerService) { }
 
   sendEmail = async (
     sendEmailDto: SendEmailServerType,

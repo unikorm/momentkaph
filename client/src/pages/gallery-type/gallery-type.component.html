@@ -1,0 +1,50 @@
+<div class="menu_container">
+  <nav>
+    <a
+      routerLink="/about-me"
+      routerLinkActive="activeLink"
+      ariaCurrentWhenActive="page"
+      >About</a
+    >
+    <a
+      routerLink="/gallery"
+      routerLinkActive="activeLink"
+      ariaCurrentWhenActive="page"
+      >Gallery</a
+    >
+    <a
+      routerLink="/contact-me"
+      routerLinkActive="activeLink"
+      ariaCurrentWhenActive="page"
+      >Contact</a
+    >
+  </nav>
+</div>
+<div class="gallery-container">
+  <div class="title-for-gallery">
+    @if (type() === 'baptism') {
+    <h1>Krsty</h1>
+    } @if (type() === 'weddings') {
+    <h1>Svadby</h1>
+    } @if (type() === 'portrait') {
+    <h1>Portréty</h1>
+    } @if (type() === 'love-story') {
+    <h1>Príbehy lásky</h1>
+    } @if (type() === 'family') {
+    <h1>Rodina</h1>
+    } @if (type() === 'studio') {
+    <h1>Ateliér</h1>
+    } @if (type() === 'pregnancy') {
+    <h1>Tehuľky</h1>
+    }
+  </div>
+  @if (images().length) {
+  <div class="image-grid">
+    @for(image of images(); track image) {
+    <div class="image-card">
+      <img [src]="image.fullUrl" loading="lazy" />
+    </div>
+    }
+  </div>
+  }
+</div>
