@@ -10,7 +10,6 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  grid-auto-rows: 100px;
   padding-bottom: 10rem;
 }
 
@@ -18,75 +17,38 @@
   background: var(--BROWNIE);
 
   &.weddings {
-    grid-row: span 6;
+    height: 37.75rem;
   }
 
   &.empty {
-    grid-row: span 6;
+    height: 37.75rem;
     background: var(--TOFFEE);
   }
 
   &.love-story {
     grid-column: 1 / span 2;
-    grid-row: span 6;
+    height: 41rem;
   }
 
   &.pregnancy {
-    grid-row: span 7;
+    height: 46rem;
   }
 
   &.family {
-    grid-row: span 8;
+    height: 50rem;
   }
 
   &.studio {
-    grid-row: span 8;
+    height: 50rem;
   }
 
   &.baptism {
-    grid-row: span 7;
+    height: 46rem;
   }
 
   &.portrait {
     grid-column: 1 / span 2;
-    grid-row: span 6;
-  }
-}
-
-@media screen and (max-width: 868px) {
-  .photo_grid {
-    grid-template-columns: 1fr;
-    /* Single column on mobile */
-    // grid-auto-rows: 900px;
-    /* Fixed height for mobile images */
-  }
-
-  .grid_item {
-    /* Reset all grid spans for mobile */
-    grid-column: 1 !important;
-    /* Force single column */
-    grid-row: span 1 !important;
-    /* Each item takes one row */
-    height: auto;
-
-    /* Remove any existing padding */
-    padding: 0.5rem !important;
-  }
-
-  /* Adjust empty section for mobile */
-  .empty_section {
-    height: auto;
-    padding: 2rem 1rem;
-  }
-
-  /* Adjust navigation for mobile */
-  nav {
-    padding: 1rem;
-    justify-content: center;
-  }
-
-  a:not(:last-of-type) {
-    margin-right: 0.5rem;
+    height: 41rem;
   }
 }
 
@@ -153,4 +115,79 @@ a:not(:last-of-type) {
 .activeLink {
   color: var(--LATTE);
   text-decoration: line-through;
+}
+
+@media (max-width: 1000px) {
+  .photo_grid {
+    display: flex;
+    flex-direction: column;
+
+
+    .weddings,
+    .empty {
+      height: 48rem;
+    }
+
+    .love-story,
+    .portrait {
+      height: 30rem;
+    }
+
+    .pregnancy,
+    .baptism,
+    .family,
+    .studio {
+      height: 64rem;
+    }
+  }
+}
+
+@media (max-width: 750px) {
+  .photo_grid {
+    display: flex;
+    flex-direction: column;
+
+
+    .weddings,
+    .empty {
+      height: 40rem;
+    }
+
+    .love-story,
+    .portrait {
+      height: 24rem;
+    }
+
+    .pregnancy,
+    .baptism,
+    .family,
+    .studio {
+      height: 44rem;
+    }
+  }
+}
+
+@media (max-width: 570px) {
+  .photo_grid {
+    display: flex;
+    flex-direction: column;
+
+
+    .weddings,
+    .empty {
+      height: 33rem;
+    }
+
+    .love-story,
+    .portrait {
+      height: 18rem;
+    }
+
+    .pregnancy,
+    .baptism,
+    .family,
+    .studio {
+      height: 34rem;
+    }
+  }
 }
