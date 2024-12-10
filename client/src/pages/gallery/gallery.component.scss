@@ -122,6 +122,9 @@ a:not(:last-of-type) {
     display: flex;
     flex-direction: column;
 
+    .empty {
+      order: -1;
+    }
 
     .weddings,
     .empty {
@@ -147,6 +150,9 @@ a:not(:last-of-type) {
     display: flex;
     flex-direction: column;
 
+    .empty {
+      order: -1;
+    }
 
     .weddings,
     .empty {
@@ -172,6 +178,9 @@ a:not(:last-of-type) {
     display: flex;
     flex-direction: column;
 
+    .empty {
+      order: -1;
+    }
 
     .weddings,
     .empty {
@@ -189,5 +198,9 @@ a:not(:last-of-type) {
     .studio {
       height: 34rem;
     }
+  }
+
+  .empty_section img {
+    width: 300px;
   }
 }
