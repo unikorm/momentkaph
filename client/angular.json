@@ -29,7 +29,9 @@
             "polyfills": [
               "zone.js"
             ],
-            "localize": ["sk"],
+            "localize": [
+              "sk"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -42,6 +44,10 @@
           },
           "configurations": {
             "production": {
+              "localize": [
+                "sk",
+                "en"
+              ],
               "budgets": [
                 {
                   "type": "initial",
