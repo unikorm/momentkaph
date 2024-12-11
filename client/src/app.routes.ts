@@ -18,7 +18,7 @@ export const routes: Routes = [
       },
       {
         path: 'gallery',
-        title: 'Gallery',
+        title: 'momentkaph',
         loadComponent: () =>
           import('./pages/gallery/gallery.component').then(
             (m) => m.GalleryComponent
