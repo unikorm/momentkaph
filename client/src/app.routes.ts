@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { ActivatedRouteSnapshot } from '@angular/router';
+import { LanguageGuard } from './guards/language.guard';
 
 export const routes: Routes = [
   {
@@ -52,7 +53,7 @@ export const routes: Routes = [
     path: '',
     redirectTo: () => {
       const browserLang = navigator.language.split('-')[0];
-      return `/${browserLang === 'sk' || browserLang === 'en' ? browserLang : 'sk'}/gallery`;
+      return `/${['sk', 'en'].includes(browserLang) ? browserLang : 'sk'}/gallery`
     },
     pathMatch: 'full'
   },

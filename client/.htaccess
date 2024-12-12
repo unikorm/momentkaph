@@ -1,0 +1,28 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # Set default language (redirect root to Slovak)
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^$ /sk/index.html [L]
+    
+    # Handle shared assets that exist in root assets folder
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_URI} ^/(sk|en)/assets/(.+)$
+    RewriteCond %{DOCUMENT_ROOT}/assets/$2 -f
+    RewriteRule ^(sk|en)/assets/(.+)$ /assets/$2 [L]
+    
+    # Handle Angular routing for each language
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(sk|en)(/.*)?$ /$1/index.html [L]
+    
+ 
+</IfModule>
+
+# Set correct MIME types
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType application/json .json
+    AddType text/css .css
+</IfModule>
