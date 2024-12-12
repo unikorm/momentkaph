@@ -117,6 +117,12 @@ a:not(:last-of-type) {
   text-decoration: line-through;
 }
 
+.language_switcher {
+  display: flex;
+  justify-content: end;
+  padding: 0 .5rem .5rem;
+}
+
 @media (max-width: 1000px) {
   .photo_grid {
     display: flex;

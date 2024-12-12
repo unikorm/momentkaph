@@ -50,7 +50,10 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/sk/gallery',
+    redirectTo: () => {
+      const browserLang = navigator.language.split('-')[0];
+      return `/${browserLang === 'sk' || browserLang === 'en' ? browserLang : 'sk'}/gallery`;
+    },
     pathMatch: 'full'
   },
   {
