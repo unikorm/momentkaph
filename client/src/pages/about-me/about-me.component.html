@@ -1,8 +1,11 @@
 <div class="menu_container">
   <nav>
-    <a routerLink="/about-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>About</a>
-    <a routerLink="/gallery" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Gallery</a>
-    <a routerLink="/contact-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Contact</a>
+    <a [routerLink]="['/', languageService.currentLang(), 'about-me']" routerLinkActive="activeLink"
+      ariaCurrentWhenActive="page" i18n>About</a>
+    <a [routerLink]="['/', languageService.currentLang(), 'gallery']" routerLinkActive="activeLink"
+      ariaCurrentWhenActive="page" i18n>Gallery</a>
+    <a [routerLink]="['/', languageService.currentLang(), 'contact-me']" routerLinkActive="activeLink"
+      ariaCurrentWhenActive="page" i18n>Contact</a>
   </nav>
 </div>
 <div class="about_container">

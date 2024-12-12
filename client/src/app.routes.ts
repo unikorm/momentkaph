@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: '',
+    path: ':lang',
     component: MainComponent,
     title: '',
     children: [
@@ -43,10 +43,15 @@ export const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/gallery',
+        redirectTo: 'gallery',
         pathMatch: 'full',
       },
     ],
+  },
+  {
+    path: '',
+    redirectTo: '/sk/gallery',
+    pathMatch: 'full'
   },
   {
     path: '**',
