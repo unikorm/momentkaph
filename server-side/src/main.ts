@@ -10,7 +10,8 @@ async function bootstrap() {
   app.enableCors({
     origin: 'https://momentkaph.sk',
     methods: ['POST'],
-    credentials: true
+    allowedHeaders: ['Content-Type'],
+    maxAge: 86400
   });
   await app.listen(port);
   Logger.log(`🚀 server running on: http://localhost:3000`);
