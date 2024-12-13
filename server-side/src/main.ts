@@ -9,7 +9,8 @@ async function bootstrap() {
   const port = configService.get('PORT', 3000);
   app.enableCors({
     origin: 'https://momentkaph.sk',
-    methods: ['POST']
+    methods: ['POST'],
+    credentials: true
   });
   await app.listen(port);
   Logger.log(`🚀 server running on: http://localhost:3000`);
