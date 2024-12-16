@@ -3,8 +3,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImagesType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { firstValueFrom } from 'rxjs';
-import { LanguageService } from '../../services/language.service';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   standalone: true,
@@ -16,7 +14,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 export class GalleryTypeComponent {
   readonly route = inject(ActivatedRoute);
   private storageService = inject(CloudStorageService);
-  languageService = inject(LanguageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
   readonly images = signal<GalleryTypeImagesType[]>([]);
@@ -24,11 +21,6 @@ export class GalleryTypeComponent {
   readonly error = signal<string | null>(null);
 
   constructor() {
-    const routeParams = toSignal(this.route.params);
-    const lang = routeParams()?.['lang'];
-    if (lang) {
-      this.languageService.setLanguage(lang);
-    }
 
     effect(
       () => {

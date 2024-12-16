@@ -4,7 +4,7 @@ import { ActivatedRouteSnapshot } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: ':lang',
+    path: '',
     component: MainComponent,
     title: '',
     children: [
@@ -47,14 +47,6 @@ export const routes: Routes = [
         pathMatch: 'full',
       },
     ],
-  },
-  {
-    path: '',
-    redirectTo: () => {
-      const browserLang = navigator.language.split('-')[0];
-      return `/${['sk', 'en'].includes(browserLang) ? browserLang : 'sk'}/gallery`
-    },
-    pathMatch: 'full'
   },
   {
     path: '**',

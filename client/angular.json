@@ -13,12 +13,6 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "i18n": {
-        "sourceLocale": "en",
-        "locales": {
-          "sk": "src/locale/messages.sk.xlf"
-        }
-      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -42,10 +36,6 @@
           },
           "configurations": {
             "production": {
-              "localize": [
-                "sk",
-                "en"
-              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -66,11 +56,6 @@
                 }
               ]
             },
-            "en": {
-              "localize": [
-                "en"
-              ]
-            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
@@ -85,23 +70,11 @@
             "production": {
               "buildTarget": "client:build:production"
             },
-            "en": {
-              "buildTarget": "client:build:en"
-            },
-            "sk": {
-              "buildTarget": "client:build:sk"
-            },
             "development": {
               "buildTarget": "client:build:development"
             }
           },
           "defaultConfiguration": "development"
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "buildTarget": "client:build"
-          }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",

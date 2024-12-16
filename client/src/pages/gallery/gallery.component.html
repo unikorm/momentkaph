@@ -1,74 +1,71 @@
 <div class="photo_grid">
   <div class="grid_item weddings">
-    <div class="image_container" [routerLink]="['/', languageService.currentLang(), 'gallery', 'weddings']">
+    <div class="image_container" routerLink="/gallery/weddings">
       <img src="assets/gallery_weddings.JPG" alt="photo of weddings" [@imageHover]="imageStates['weddings']"
         (mouseenter)="onHover('weddings')" (mouseleave)="onLeave('weddings')" (touchstart)="toggleState('weddings')" />
-      <span i18n>weddings section</span>
+      <span i18n>Svadby</span>
     </div>
   </div>
   <div class="grid_item empty">
     <div class="empty_section">
       <nav>
-        <a [routerLink]="['/', languageService.currentLang(), 'about-me']" routerLinkActive="activeLink"
-          ariaCurrentWhenActive="page" i18n>About</a>
-        <a [routerLink]="['/', languageService.currentLang(), 'gallery']" routerLinkActive="activeLink"
-          ariaCurrentWhenActive="page" i18n>Gallery</a>
-        <a [routerLink]="['/', languageService.currentLang(), 'contact-me']" routerLinkActive="activeLink"
-          ariaCurrentWhenActive="page" i18n>Contact</a>
+        <a routerLink="/about-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>O mne</a>
+        <a routerLink="/gallery" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Galéria</a>
+        <a routerLink="/contact-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Kontakt</a>
       </nav>
       <img src="assets/about_photo.webp" />
     </div>
   </div>
   <div class="grid_item love-story" style="padding-bottom: 3px">
-    <div class="image_container" [routerLink]="['/', languageService.currentLang(), 'gallery', 'love-story']">
+    <div class="image_container" routerLink="/gallery/love-story">
       <img src="assets/gallery_love_story.JPG" alt="photo of love story" [@imageHover]="imageStates['love-story']"
         (mouseenter)="onHover('love-story')" (mouseleave)="onLeave('love-story')"
         (touchstart)="toggleState('love-story')" />
-      <span i18n>love-story section</span>
+      <span i18n>Príbehy lásky</span>
     </div>
   </div>
   <div>
     <div class="grid_item pregnancy" style="padding: 3px 3px 3px 0">
-      <div class="image_container" [routerLink]="['/', languageService.currentLang(), 'gallery', 'pregnancy']">
+      <div class="image_container" routerLink="/gallery/pregnancy">
         <img src="assets/gallery_pregnancy.jpg" alt="photo of pregnancy" [@imageHover]="imageStates['pregnancy']"
           (mouseenter)="onHover('pregnancy')" (mouseleave)="onLeave('pregnancy')"
           (touchstart)="toggleState('pregnancy')" />
-        <span i18n>pregnancy section</span>
+        <span i18n>Tehuľky</span>
       </div>
     </div>
     <div class="grid_item studio" style="padding: 3px 3px 3px 0">
-      <div class="image_container" [routerLink]="['/', languageService.currentLang(), 'gallery', 'studio']">
+      <div class="image_container" routerLink="/gallery/studio">
         <img src="assets/gallery_studio.jpg" alt="photo of studio" [@imageHover]="imageStates['studio']"
           (mouseenter)="onHover('studio')" (mouseleave)="onLeave('studio')" (touchstart)="toggleState('studio')" />
-        <span i18n>studio section</span>
+        <span i18n>Ateliér</span>
       </div>
     </div>
   </div>
   <div>
     <div class="grid_item family" style="padding: 3px 0 3px 3px">
-      <div class="image_container" [routerLink]="['/', languageService.currentLang(), 'gallery', 'family']">
+      <div class="image_container" routerLink="/gallery/family">
         <img src="assets/gallery_family.jpg" alt="photo of family" [@imageHover]="imageStates['family']"
           (mouseenter)="onHover('family')" (mouseleave)="onLeave('family')" (touchstart)="toggleState('family')" />
-        <span i18n>family section</span>
+        <span i18n>Rodina</span>
       </div>
     </div>
     <div class="grid_item baptism" style="padding: 3px 0 3px 3px">
-      <div class="image_container" [routerLink]="['/', languageService.currentLang(), 'gallery', 'baptism']">
+      <div class="image_container" routerLink="/gallery/baptism">
         <img src="assets/gallery_baptism.JPG" alt="photo of baptism" [@imageHover]="imageStates['baptism']"
           (mouseenter)="onHover('baptism')" (mouseleave)="onLeave('baptism')" (touchstart)="toggleState('baptism')" />
-        <span i18n>baptism section</span>
+        <span i18n>Krsty</span>
       </div>
     </div>
   </div>
   <div class="grid_item portrait" style="padding-top: 3px">
-    <div class="image_container" [routerLink]="['/', languageService.currentLang(), 'gallery', 'portrait']">
+    <div class="image_container" routerLink="/gallery/portrait">
       <img src="assets/gallery_portrait.jpg" alt="photo of portrait" [@imageHover]="imageStates['portrait']"
         (mouseenter)="onHover('portrait')" (mouseleave)="onLeave('portrait')" (touchstart)="toggleState('portrait')" />
-      <span i18n>portrait section</span>
+      <span i18n>Portréty</span>
     </div>
   </div>
 </div>
-<div class="language_switcher">
+<!-- <div class="language_switcher">
   <button [class.activeLanguage]="languageService.currentLang() === 'sk'"
     (click)="languageService.switchLanguage('sk')">
     SK
@@ -77,4 +74,4 @@
     (click)="languageService.switchLanguage('en')">
     EN
   </button>
-</div>
+</div> -->
