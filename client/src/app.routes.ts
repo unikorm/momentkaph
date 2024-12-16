@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { MainComponent } from './pages/main/main.component';
 import { ActivatedRouteSnapshot } from '@angular/router';
-import { LanguageGuard } from './guards/language.guard';
 
 export const routes: Routes = [
   {
