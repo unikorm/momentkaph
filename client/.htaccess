@@ -6,10 +6,9 @@
     RewriteCond %{REQUEST_URI} ^/$
     RewriteRule ^$ /sk/index.html [L]
     
-    # Handle shared assets that exist in root assets folder
+    # Serve assets directly
     RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_URI} ^/(sk|en)/assets/(.+)$
-    RewriteCond %{DOCUMENT_ROOT}/assets/$2 -f
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(sk|en)/assets/(.+)$ /assets/$2 [L]
     
     # Handle Angular routing for each language
