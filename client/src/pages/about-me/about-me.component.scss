@@ -18,6 +18,7 @@
   left: 0;
   z-index: 3;
 }
+
 nav {
   width: 100%;
   max-width: 1300px;
@@ -66,7 +67,7 @@ a:not(:last-of-type) {
   font: var(--font-label);
   font-size: 2.3rem;
 
-  & > p {
+  &>p {
     margin: 0;
   }
 }
@@ -74,9 +75,10 @@ a:not(:last-of-type) {
 .bio {
   font: var(--font-primary);
   font-size: 1.18rem;
+  padding-bottom: 4rem;
 
-  & > p {
-    margin: 0 0 0.4rem;
+  &>p {
+    margin: 0 0 0.5rem;
   }
 }
 

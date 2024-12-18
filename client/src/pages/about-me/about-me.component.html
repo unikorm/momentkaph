@@ -1,11 +1,8 @@
 <div class="menu_container">
   <nav>
-    <a [routerLink]="['/', languageService.currentLang(), 'about-me']" routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page" i18n>About</a>
-    <a [routerLink]="['/', languageService.currentLang(), 'gallery']" routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page" i18n>Gallery</a>
-    <a [routerLink]="['/', languageService.currentLang(), 'contact-me']" routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page" i18n>Contact</a>
+    <a routerLink="/about-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>O mne</a>
+    <a routerLink="/gallery" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Galéria</a>
+    <a routerLink="/contact-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Kontakt</a>
   </nav>
 </div>
 <div class="about_container">
@@ -15,30 +12,29 @@
         (mouseenter)="onHover()" (mouseleave)="onLeave()" (touchstart)="
           imageState = imageState === 'normal' ? 'hovered' : 'normal'
         " />
-      <span i18n>that's me</span>
+      <span i18n>to som ja</span>
     </div>
     <div class="bio">
       <p i18n>
-        Hi! My name is Anna Lednicka, and I'm a person who once dared to choose her dream. I was born in Ukraine,
-        graduated from medical university, and became a general practitioner. But in my fourth year, I fell in love with
-        photography, and this passion consumed me completely. I combined working as a nurse and taking photos until I
-        finished university and realized: photography is my true calling.
+        Ahoj! Volám sa Anna Lednicka a som človek, ktorý sa raz odvážil vybrať si svoj sen. Narodila som sa na Ukrajine,
+        vyštudovala som lekársku univerzitu a stala som sa všeobecnou lekárkou. Ale vo štvrtom ročníku som sa zamilovala
+        do fotografie a táto vášeň ma úplne pohltila. Kombinovala som prácu zdravotnej sestry a fotografovanie, kým som
+        nedokončila univerzitu a neuvedomila si: fotografia je moje skutočné poslanie.
       </p>
       <p i18n>
-        Now I live in Slovakia, where I'm starting everything from scratch. It's not easy, but I'm inspired by the dream
-        of making photography my profession. I'm a wife, a mother, and a person who believes it's important to do what
-        makes you feel alive inside.
+        Teraz žijem na Slovensku, kde začínam všetko od nuly. Nie je to ľahké, ale inšpiruje ma sen urobiť z fotografie
+        svoje povolanie. Som manželka, mama a človek, ktorý verí, že je dôležité robiť to, čo vás zvnútra oživuje.
       </p>
       <p i18n>
-        What do I love most about my work? It's the moments. Live, genuine emotions, not just posed shots. During my
-        photo sessions, you don't have to worry about how to pose or where to look. I'll create an easy and comfortable
-        atmosphere for you: I'll give you an interesting task, you'll complete it, and meanwhile, I'll capture sincere
-        emotions. You'll start having fun, and the photo session will turn into unforgettably spent time - with me, with
-        yourself, with your family, or with your significant other.
+        Čo mám na svojej práci najradšej? Sú to momenty. Živé, skutočné emócie, nie len naaranžované zábery. Počas
+        mojich fotení sa nemusíte obávať, ako sa postaviť alebo kam sa pozerať. Vytvorím pre vás ľahkú a príjemnú
+        atmosféru: dám vám zaujímavú úlohu, vy ju splníte a ja medzitým zachytím úprimné emócie. Začnete sa baviť a
+        fotenie sa premení na nezabudnuteľne strávený čas - so mnou, so sebou, s vašou rodinou alebo s vašou druhou
+        polovičkou.
       </p>
       <p i18n>
-        I'm confident that photos taken with soul will preserve these moments for a lifetime. Let's create them
-        together!
+        Som presvedčená, že fotografie vytvorené s dušou zachovajú tieto momenty na celý život. Poďme ich vytvárať
+        spolu!
       </p>
     </div>
   </div>

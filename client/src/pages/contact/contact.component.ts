@@ -15,9 +15,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { LanguageService } from '../../services/language.service';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -45,8 +43,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
 })
 export class ContactComponent {
   readonly emailService = inject(EmailService);
-  languageService = inject(LanguageService);
-  private route = inject(ActivatedRoute);
 
   imageState = 'normal';
   formSubmitted = signal<boolean>(false);
@@ -60,12 +56,6 @@ export class ContactComponent {
   }
 
   constructor() {
-    const routeParams = toSignal(this.route.params);
-    const lang = routeParams()?.['lang'];
-    if (lang) {
-      this.languageService.setLanguage(lang);
-    }
-
     effect(
       () => {
         const data = this.emailData();

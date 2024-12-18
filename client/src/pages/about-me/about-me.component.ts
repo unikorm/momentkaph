@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   animate,
   state,
@@ -6,9 +6,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { LanguageService } from '../../services/language.service';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -35,16 +33,6 @@ import { toSignal } from '@angular/core/rxjs-interop';
   ],
 })
 export class AboutMeComponent {
-  languageService = inject(LanguageService);
-  private route = inject(ActivatedRoute);
-
-  constructor() {
-    const routeParams = toSignal(this.route.params);
-    const lang = routeParams()?.['lang'];
-    if (lang) {
-      this.languageService.setLanguage(lang);
-    }
-  }
 
   imageState = 'normal';
 

@@ -6,9 +6,9 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
-import { toSignal } from '@angular/core/rxjs-interop';
+
 
 @Component({
   standalone: true,
@@ -35,16 +35,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
   ],
 })
 export class GalleryComponent {
-  languageService = inject(LanguageService);
-  private route = inject(ActivatedRoute);
-
-  constructor() {
-    const routeParams = toSignal(this.route.params);
-    const lang = routeParams()?.['lang'];
-    if (lang) {
-      this.languageService.setLanguage(lang);
-    }
-  }
+  readonly languageService = inject(LanguageService)
 
   imageStates: { [key: string]: string } = {
     weddings: 'normal',

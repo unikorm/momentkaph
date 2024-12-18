@@ -1,11 +1,8 @@
 <div class="menu_container">
   <nav>
-    <a [routerLink]="['/', languageService.currentLang(), 'about-me']" routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page" i18n>About</a>
-    <a [routerLink]="['/', languageService.currentLang(), 'gallery']" routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page" i18n>Gallery</a>
-    <a [routerLink]="['/', languageService.currentLang(), 'contact-me']" routerLinkActive="activeLink"
-      ariaCurrentWhenActive="page" i18n>Contact</a>
+    <a routerLink="/about-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>O mne</a>
+    <a routerLink="/gallery" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Galéria</a>
+    <a routerLink="/contact-me" routerLinkActive="activeLink" ariaCurrentWhenActive="page" i18n>Kontakt</a>
   </nav>
 </div>
 <div class="contact_container">
@@ -17,58 +14,58 @@
             (mouseenter)="onHover()" (mouseleave)="onLeave()" (touchstart)="
               imageState = imageState === 'normal' ? 'hovered' : 'normal'
             " />
-          <span i18n>that's me</span>
+          <span i18n>to som ja</span>
         </div>
         <div style="width: 100%">
-          <p i18n>get in touch</p>
+          <p i18n>kontaktuj ma</p>
         </div>
       </div>
     </div>
     <div class="contact_container__content_form">
       <form [formGroup]="newMessageForm" (ngSubmit)="onSubmit()">
         <div class="box">
-          <input id="name" type="text" formControlName="name" i18n-placeholder placeholder="Your name"
+          <input id="name" type="text" formControlName="name" i18n-placeholder placeholder="Tvoje meno"
             [class.invalid]="isFieldInvalid('name')" />
           @if (isFieldInvalid('name')) {
-          <span class="error-message" i18n>Too short...</span>
+          <span class="error-message" i18n>Príliš krátke...</span>
           }
         </div>
         <div class="box">
-          <input id="email" type="email" formControlName="email" i18n-placeholder placeholder="Your email"
+          <input id="email" type="email" formControlName="email" i18n-placeholder placeholder="Tvoj email"
             [class.invalid]="isFieldInvalid('email')" />
           @if (isFieldInvalid('email')) {
-          <span class="error-message" i18n>Valid email please...</span>
+          <span class="error-message" i18n>Prosím zadajte platný email...</span>
           }
         </div>
 
         <div class="box">
-          <input id="phone" type="tel" formControlName="phone" i18n-placeholder placeholder="Your phone"
+          <input id="phone" type="tel" formControlName="phone" i18n-placeholder placeholder="Tvoje tel. číslo"
             [class.invalid]="isFieldInvalid('phone')" />
           @if (isFieldInvalid('phone')) {
-          <span class="error-message" i18n>Valid phone please...</span>
+          <span class="error-message" i18n>Prosím zadajte platné telefónne číslo...</span>
           }
         </div>
 
         <div class="box">
-          <textarea id="message" type="text" formControlName="message" i18n-placeholder placeholder="Message to me..."
+          <textarea id="message" type="text" formControlName="message" i18n-placeholder placeholder="Správa pre mňa..."
             rows="3" [class.invalid]="isFieldInvalid('message')"></textarea>
           @if (isFieldInvalid('message')) {
-          <span class="error-message textarea" i18n>Too short...</span>
+          <span class="error-message textarea" i18n>Príliš krátke...</span>
           }
         </div>
         <button type="submit" [class.success]="submitStatus === 'success'" [class.error]="submitStatus === 'error'">
           @switch (submitStatus) { @case ('success') {
-          <span i18n>Message sent!</span>
+          <span i18n>Správa odoslaná!</span>
           } @case ('error') {
-          <span i18n>Something went wrong!</span>
+          <span i18n>Niečo sa pokazilo!</span>
           } @case ('sending') {
-          <span i18n>Sending...</span>
+          <span i18n>Odosielam...</span>
           } @case ('idle') {
-          <span i18n>Send message</span>
+          <span i18n>Odoslať správu</span>
           } }
         </button>
       </form>
-      <p class="or" i18n>OR</p>
+      <p class="or" i18n>ALEBO</p>
       <div class="social_network">
         <div>
           <a href="https://www.instagram.com/momentka.ph/" target="_blank" rel="noopener noreferrer"><img

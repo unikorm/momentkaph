@@ -1,35 +1,38 @@
+import { Location } from '@angular/common';
 import { Injectable, signal, computed, inject } from '@angular/core';
-import { Router } from '@angular/router';
+
 
 @Injectable({
     providedIn: 'root'
 })
 export class LanguageService {
-    private router = inject(Router);
+    private location = inject(Location);
 
-    private languageSignal = signal<string>('sk');
+    private supportedLanguages = ['sk', 'en'];
+    private defaultLanguage = 'sk';
 
-    currentLang = computed(() => this.languageSignal());
-
-    setLanguage(lang: string) {
-        if (this.isValidLanguage(lang)) {
-            this.languageSignal.set(lang);
-        }
+    getPathLanguage = (): string => {
+        const pathSegments = this.location.path().split('/')
+        // console.log(pathSegments)
+        return pathSegments[1] || this.defaultLanguage
     }
+
+    private languageSignal = signal<string>(this.getPathLanguage());
+
+    currentLang = computed(() => {
+        const lang = this.languageSignal()
+        // console.log(lang)
+        return this.supportedLanguages.includes(lang) ? lang : this.defaultLanguage
+    })
 
     switchLanguage(newLang: string) {
-        if (this.isValidLanguage(newLang)) {
-            const urlSegments = this.router.url.split('/');
-            urlSegments[1] = newLang;
+        if (!this.supportedLanguages.includes(newLang) || this.currentLang() === newLang) return
 
-            this.router.navigate([urlSegments.join('/')])
-                .then(
-                    () => { this.setLanguage(newLang) }
-                )
-        }
-    }
+        const currentPath = this.location.path()
+        const currentLang = this.currentLang()
+        const newUrl = currentPath.replace(`/${currentLang}`, `/${newLang}`)
+        // console.log(newUrl)
 
-    isValidLanguage(lang: string): boolean {
-        return ['sk', 'en', 'ua'].includes(lang);
+        window.location.href = newUrl
     }
 }

@@ -14,9 +14,12 @@
       "sourceRoot": "src",
       "prefix": "app",
       "i18n": {
-        "sourceLocale": "en",
+        "sourceLocale": "sk",
         "locales": {
-          "sk": "src/locale/messages.sk.xlf"
+          "en": {
+            "translation": "src/locale/messages.en.xlf",
+            "baseHref": "/en/"
+          }
         }
       },
       "architect": {
@@ -27,7 +30,8 @@
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
-              "zone.js"
+              "zone.js",
+              "@angular/localize/init"
             ],
             "localize": true,
             "tsConfig": "tsconfig.app.json",
@@ -42,10 +46,6 @@
           },
           "configurations": {
             "production": {
-              "localize": [
-                "sk",
-                "en"
-              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -85,14 +85,11 @@
             "production": {
               "buildTarget": "client:build:production"
             },
-            "en": {
-              "buildTarget": "client:build:en"
-            },
-            "sk": {
-              "buildTarget": "client:build:sk"
-            },
             "development": {
               "buildTarget": "client:build:development"
+            },
+            "en": {
+              "buildTarget": "client:build:development,en"
             }
           },
           "defaultConfiguration": "development"
