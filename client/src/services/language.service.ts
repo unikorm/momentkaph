@@ -12,16 +12,16 @@ export class LanguageService {
     private defaultLanguage = 'sk';
 
     getPathLanguage = (): string => {
-        const pathSegments = this.location.path().split('/')
-        // console.log(pathSegments)
-        return pathSegments[1] || this.defaultLanguage
+        const baseHref = document.querySelector('base')?.getAttribute('href') || '';
+        const currentLang = baseHref.replace(/^\/|\/$/g, '');
+
+        return currentLang || this.defaultLanguage;
     }
 
     private languageSignal = signal<string>(this.getPathLanguage());
 
     currentLang = computed(() => {
         const lang = this.languageSignal()
-        // console.log(lang)
         return this.supportedLanguages.includes(lang) ? lang : this.defaultLanguage
     })
 
@@ -29,9 +29,7 @@ export class LanguageService {
         if (!this.supportedLanguages.includes(newLang) || this.currentLang() === newLang) return
 
         const currentPath = this.location.path()
-        const currentLang = this.currentLang()
-        const newUrl = currentPath.replace(`/${currentLang}`, `/${newLang}`)
-        // console.log(newUrl)
+        const newUrl = `/${newLang}${currentPath}`
 
         window.location.href = newUrl
     }

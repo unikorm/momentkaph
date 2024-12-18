@@ -65,13 +65,13 @@ export class ContactComponent {
             .sendEmail(data)
             .pipe(
               tap((value) => {
-                console.log(value);
+                // console.log(value);
                 this.submitStatus = 'success';
                 this.newMessageForm.reset();
                 this.formSubmitted.set(false);
               }),
               catchError((error) => {
-                console.error(error);
+                // console.error(error);
                 this.submitStatus = 'error';
                 this.formSubmitted.set(false);
                 return error;
