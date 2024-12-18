@@ -16,7 +16,7 @@
       <img src="assets/about_photo.webp" />
     </div>
   </div>
-  <div class="grid_item love-story" style="padding-bottom: 3px">
+  <div class="grid_item love-story">
     <div class="image_container" routerLink="/gallery/love-story">
       <img src="assets/gallery_love_story.JPG" alt="photo of love story" [@imageHover]="imageStates['love-story']"
         (mouseenter)="onHover('love-story')" (mouseleave)="onLeave('love-story')"
@@ -25,7 +25,7 @@
     </div>
   </div>
   <div>
-    <div class="grid_item pregnancy" style="padding: 3px 3px 3px 0">
+    <div class="grid_item pregnancy">
       <div class="image_container" routerLink="/gallery/pregnancy">
         <img src="assets/gallery_pregnancy.jpg" alt="photo of pregnancy" [@imageHover]="imageStates['pregnancy']"
           (mouseenter)="onHover('pregnancy')" (mouseleave)="onLeave('pregnancy')"
@@ -33,7 +33,7 @@
         <span i18n>Tehuľky</span>
       </div>
     </div>
-    <div class="grid_item studio" style="padding: 3px 3px 3px 0">
+    <div class="grid_item studio">
       <div class="image_container" routerLink="/gallery/studio">
         <img src="assets/gallery_studio.jpg" alt="photo of studio" [@imageHover]="imageStates['studio']"
           (mouseenter)="onHover('studio')" (mouseleave)="onLeave('studio')" (touchstart)="toggleState('studio')" />
@@ -42,14 +42,14 @@
     </div>
   </div>
   <div>
-    <div class="grid_item family" style="padding: 3px 0 3px 3px">
+    <div class="grid_item family">
       <div class="image_container" routerLink="/gallery/family">
         <img src="assets/gallery_family.jpg" alt="photo of family" [@imageHover]="imageStates['family']"
           (mouseenter)="onHover('family')" (mouseleave)="onLeave('family')" (touchstart)="toggleState('family')" />
         <span i18n>Rodina</span>
       </div>
     </div>
-    <div class="grid_item baptism" style="padding: 3px 0 3px 3px">
+    <div class="grid_item baptism">
       <div class="image_container" routerLink="/gallery/baptism">
         <img src="assets/gallery_baptism.JPG" alt="photo of baptism" [@imageHover]="imageStates['baptism']"
           (mouseenter)="onHover('baptism')" (mouseleave)="onLeave('baptism')" (touchstart)="toggleState('baptism')" />
@@ -57,7 +57,7 @@
       </div>
     </div>
   </div>
-  <div class="grid_item portrait" style="padding-top: 3px">
+  <div class="grid_item portrait">
     <div class="image_container" routerLink="/gallery/portrait">
       <img src="assets/gallery_portrait.jpg" alt="photo of portrait" [@imageHover]="imageStates['portrait']"
         (mouseenter)="onHover('portrait')" (mouseleave)="onLeave('portrait')" (touchstart)="toggleState('portrait')" />

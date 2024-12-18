@@ -28,27 +28,33 @@
   &.love-story {
     grid-column: 1 / span 2;
     height: 41rem;
+    padding-bottom: 3px;
   }
 
   &.pregnancy {
     height: 46rem;
+    padding: 3px 3px 3px 0;
   }
 
   &.family {
     height: 50rem;
+    padding: 3px 0 3px 3px;
   }
 
   &.studio {
     height: 50rem;
+    padding: 3px 3px 3px 0;
   }
 
   &.baptism {
     height: 46rem;
+    padding: 3px 0 3px 3px;
   }
 
   &.portrait {
     grid-column: 1 / span 2;
     height: 41rem;
+    padding-top: 3px
   }
 }
 
@@ -132,6 +138,10 @@ a:not(:last-of-type) {
       order: -1;
     }
 
+    .weddings {
+      padding-bottom: 6px;
+    }
+
     .weddings,
     .empty {
       height: 48rem;
@@ -140,6 +150,16 @@ a:not(:last-of-type) {
     .love-story,
     .portrait {
       height: 30rem;
+    }
+
+    .studio,
+    .pregnancy {
+      padding-right: 0px;
+    }
+
+    .family,
+    .baptism {
+      padding-left: 0px;
     }
 
     .pregnancy,
