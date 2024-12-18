@@ -5,8 +5,9 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { LanguageService } from '../../services/language.service';
 
 
 @Component({
@@ -34,6 +35,7 @@ import { RouterModule } from '@angular/router';
   ],
 })
 export class GalleryComponent {
+  readonly languageService = inject(LanguageService)
 
   imageStates: { [key: string]: string } = {
     weddings: 'normal',

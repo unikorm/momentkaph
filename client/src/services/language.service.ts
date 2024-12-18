@@ -1,35 +1,38 @@
-// import { Injectable, signal, computed, inject } from '@angular/core';
-// import { Router } from '@angular/router';
+import { Location } from '@angular/common';
+import { Injectable, signal, computed, inject } from '@angular/core';
 
-// @Injectable({
-//     providedIn: 'root'
-// })
-// export class LanguageService {
-//     private router = inject(Router);
 
-//     private languageSignal = signal<string>('sk');
+@Injectable({
+    providedIn: 'root'
+})
+export class LanguageService {
+    private location = inject(Location);
 
-//     currentLang = computed(() => this.languageSignal());
+    private supportedLanguages = ['sk', 'en'];
+    private defaultLanguage = 'sk';
 
-//     setLanguage(lang: string) {
-//         if (this.isValidLanguage(lang)) {
-//             this.languageSignal.set(lang);
-//         }
-//     }
+    getPathLanguage = (): string => {
+        const pathSegments = this.location.path().split('/')
+        // console.log(pathSegments)
+        return pathSegments[1] || this.defaultLanguage
+    }
 
-//     switchLanguage(newLang: string) {
-//         if (this.isValidLanguage(newLang)) {
-//             const urlSegments = this.router.url.split('/');
-//             urlSegments[1] = newLang;
+    private languageSignal = signal<string>(this.getPathLanguage());
 
-//             this.router.navigate([urlSegments.join('/')])
-//                 .then(
-//                     () => { this.setLanguage(newLang) }
-//                 )
-//         }
-//     }
+    currentLang = computed(() => {
+        const lang = this.languageSignal()
+        // console.log(lang)
+        return this.supportedLanguages.includes(lang) ? lang : this.defaultLanguage
+    })
 
-//     isValidLanguage(lang: string): boolean {
-//         return ['sk', 'en', 'ua'].includes(lang);
-//     }
-// }
+    switchLanguage(newLang: string) {
+        if (!this.supportedLanguages.includes(newLang) || this.currentLang() === newLang) return
+
+        const currentPath = this.location.path()
+        const currentLang = this.currentLang()
+        const newUrl = currentPath.replace(`/${currentLang}`, `/${newLang}`)
+        // console.log(newUrl)
+
+        window.location.href = newUrl
+    }
+}
