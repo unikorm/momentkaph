@@ -7,26 +7,41 @@
 </div>
 <div class="gallery-container">
   <div class="title-for-gallery">
-    @if (type() === 'baptism') {
+    @switch (type()) {
+    @case ('baptism') {
     <h1 i18n>Krsty</h1>
-    } @if (type() === 'weddings') {
+    }
+    @case ('weddings') {
     <h1 i18n>Svadby</h1>
-    } @if (type() === 'portrait') {
+    }
+    @case ('portrait') {
     <h1 i18n>Portréty</h1>
-    } @if (type() === 'love-story') {
+    }
+    @case ('love-story') {
     <h1 i18n>Príbehy lásky</h1>
-    } @if (type() === 'family') {
+    }
+    @case ('family') {
     <h1 i18n>Rodina</h1>
-    } @if (type() === 'studio') {
+    }
+    @case ('studio') {
     <h1 i18n>Ateliér</h1>
-    } @if (type() === 'pregnancy') {
+    }
+    @case ('pregnancy') {
     <h1 i18n>Tehuľky</h1>
     }
+    }
   </div>
+
+  @if (error()) {
+  <div class="error-message">
+    {{ error() }}
+  </div>
+  }
+
   @if (images().length) {
   <div class="image-grid">
     @for(image of images(); track image) {
-    <div class="image-card">
+    <div class="image-card" @fadeIn>
       <img [src]="image.fullUrl" loading="lazy" />
     </div>
     }

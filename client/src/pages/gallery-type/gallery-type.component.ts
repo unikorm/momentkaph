@@ -3,6 +3,12 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImagesType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { firstValueFrom } from 'rxjs';
+import {
+  animate,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 @Component({
   standalone: true,
@@ -10,6 +16,14 @@ import { firstValueFrom } from 'rxjs';
   imports: [RouterModule],
   templateUrl: './gallery-type.component.html',
   styleUrls: ['./gallery-type.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translateY(20px)' }),
+        animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
+      ])
+    ])
+  ]
 })
 export class GalleryTypeComponent {
   readonly route = inject(ActivatedRoute);
