@@ -7,7 +7,7 @@ import {
 
 @Controller('cloud_storage')
 export class CloudStorageController {
-  constructor(private readonly cloudStorageService: CloudStorageService) {}
+  constructor(private readonly cloudStorageService: CloudStorageService) { }
 
   @Post()
   async fetchGalleryImagesLinks(

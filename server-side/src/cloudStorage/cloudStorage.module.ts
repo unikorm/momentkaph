@@ -8,4 +8,4 @@ import { ConfigModule } from '@nestjs/config';
   controllers: [CloudStorageController],
   providers: [CloudStorageService],
 })
-export class CloudStorageModule {}
+export class CloudStorageModule { }

@@ -4,7 +4,7 @@ import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
 
 @Controller('email_sending')
 export class EmailController {
-  constructor(private readonly emailService: EmailService) {}
+  constructor(private readonly emailService: EmailService) { }
 
   @Post()
   async sendEmail(
