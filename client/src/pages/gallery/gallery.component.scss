@@ -134,7 +134,8 @@ a:not(:last-of-type) {
     font-size: 1rem;
   }
 
-  button:first-of-type {
+  button:first-of-type,
+  button:nth-of-type(2) {
     margin-right: .4rem;
   }
 

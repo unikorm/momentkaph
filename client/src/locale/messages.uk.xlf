@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-  <file source-language="sk" target-language="ua" datatype="plaintext" original="ng2.template">
+  <file source-language="sk" target-language="uk" datatype="plaintext" original="ng2.template">
     <body>
       <trans-unit id="6424663196877340540" datatype="html">
         <source>O mne</source>
-        <target>About Me</target>
+        <target>Про мене</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">3,4</context>
@@ -24,7 +24,7 @@
       </trans-unit>
       <trans-unit id="8448240314342777539" datatype="html">
         <source>Galéria</source>
-        <target>Gallery</target>
+        <target>Галерея</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">4,5</context>
@@ -44,7 +44,7 @@
       </trans-unit>
       <trans-unit id="397497450705980813" datatype="html">
         <source>Kontakt</source>
-        <target>Contact</target>
+        <target>Контакт</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">5,6</context>
@@ -64,7 +64,7 @@
       </trans-unit>
       <trans-unit id="5464430751541054199" datatype="html">
         <source>to som ja</source>
-        <target>that&apos;s me</target>
+        <target>це я</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">15,16</context>
@@ -76,7 +76,7 @@
       </trans-unit>
       <trans-unit id="5857391877043073635" datatype="html">
         <source> Ahoj! Volám sa Anna Lednicka a som človek, ktorý sa raz odvážil vybrať si svoj sen. Narodila som sa na Ukrajine, vyštudovala som lekársku univerzitu a stala som sa všeobecnou lekárkou. Ale vo štvrtom ročníku som sa zamilovala do fotografie a táto vášeň ma úplne pohltila. Kombinovala som prácu zdravotnej sestry a fotografovanie, kým som nedokončila univerzitu a neuvedomila si: fotografia je moje skutočné poslanie. </source>
-        <target>Hi! My name is Anna Lednicka, and I&apos;m a person who once dared to choose her dream. I was born in Ukraine, graduated from medical university, and became a general practitioner. But in my fourth year, I fell in love with photography, and this passion consumed me completely. I combined working as a nurse and taking photos until I finished university and realized: photography is my true calling.</target>
+        <target>Привіт! Мене звати Анна Ледницька, і я людина, яка одного разу наважилася обрати свою мрію. Я народилася в Україні, закінчила медичний університет і здобула спеціальність сімейного лікаря. Але на четвертому курсі мене захопила фотографія, і ця пристрасть поглинула мене з головою, я поєднувала роботу медсестри та зйомки, доки не довчилась в університеті і не зрозуміла: фотографія — це моє справжнє покликання.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">19,22</context>
@@ -84,7 +84,7 @@
       </trans-unit>
       <trans-unit id="3794237999655205636" datatype="html">
         <source> Teraz žijem na Slovensku, kde začínam všetko od nuly. Nie je to ľahké, ale inšpiruje ma sen urobiť z fotografie svoje povolanie. Som manželka, mama a človek, ktorý verí, že je dôležité robiť to, čo vás zvnútra oživuje. </source>
-        <target>Now I live in Slovakia, where I&apos;m starting everything from scratch. It&apos;s not easy, but I&apos;m inspired by the dream of making photography my profession. I&apos;m a wife, a mother, and a person who believes it&apos;s important to do what makes you feel alive inside.</target>
+        <target>Зараз я живу у Словаччині, де починаю все з нуля. Це нелегко, але мене надихає мрія зробити фотографію своєю професією. Я — дружина, мама і людина, яка вірить, що важливо займатися тим, що оживляє тебе зсередини.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">25,26</context>
@@ -92,7 +92,7 @@
       </trans-unit>
       <trans-unit id="1693471890736166631" datatype="html">
         <source> Čo mám na svojej práci najradšej? Sú to momenty. Živé, skutočné emócie, nie len naaranžované zábery. Počas mojich fotení sa nemusíte obávať, ako sa postaviť alebo kam sa pozerať. Vytvorím pre vás ľahkú a príjemnú atmosféru: dám vám zaujímavú úlohu, vy ju splníte a ja medzitým zachytím úprimné emócie. Začnete sa baviť a fotenie sa premení na nezabudnuteľne strávený čas - so mnou, so sebou, s vašou rodinou alebo s vašou druhou polovičkou. </source>
-        <target>What do I love most about my work? It&apos;s the moments. Live, genuine emotions, not just posed shots. During my photo sessions, you don&apos;t have to worry about how to pose or where to look. I&apos;ll create an easy and comfortable atmosphere for you: I&apos;ll give you an interesting task, you&apos;ll complete it, and meanwhile, I&apos;ll capture sincere emotions. You&apos;ll start having fun, and the photo session will turn into unforgettably spent time - with me, with yourself, with your family, or with your significant other.</target>
+        <target>Що я найбільше люблю у своїй роботі? Це моменти. Живі, справжні емоції, а не просто постановочні кадри. На моїх фотосесіях ви не повинні хвилюватися, як стати чи куди дивитися. Я створю для вас легку та комфортну атмосферу: задам цікаве завдання, ви його виконаєте, а я в цей час ловитиму щирі емоції. Ви почнете веселитися, і фотосесія перетвориться на незабутньо проведений час — зі мною, із собою, з вашою родиною чи другою половинкою.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">29,32</context>
@@ -100,7 +100,7 @@
       </trans-unit>
       <trans-unit id="2171024782872831082" datatype="html">
         <source> Som presvedčená, že fotografie vytvorené s dušou zachovajú tieto momenty na celý život. Poďme ich vytvárať spolu! </source>
-        <target>I&apos;m confident that photos taken with soul will preserve these moments for a lifetime. Let&apos;s create them together!</target>
+        <target>Я впевнена, що фотографії, зроблені з душею, збережуть ці моменти на все життя. Давайте створювати їх разом!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/about-me/about-me.component.html</context>
           <context context-type="linenumber">36,37</context>
@@ -108,7 +108,7 @@
       </trans-unit>
       <trans-unit id="2431781138389480523" datatype="html">
         <source>kontaktuj ma</source>
-        <target>get in touch</target>
+        <target>напишіть</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">20,21</context>
@@ -116,7 +116,7 @@
       </trans-unit>
       <trans-unit id="4556994398555359804" datatype="html">
         <source>Tvoje meno</source>
-        <target>Your Name</target>
+        <target>Ваше ім’я</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">27,28</context>
@@ -124,7 +124,7 @@
       </trans-unit>
       <trans-unit id="5437658258303302424" datatype="html">
         <source>Príliš krátke...</source>
-        <target>Too short...</target>
+        <target>Замало символів...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">30,31</context>
@@ -136,7 +136,7 @@
       </trans-unit>
       <trans-unit id="4911300305242025867" datatype="html">
         <source>Tvoj email</source>
-        <target>Your email</target>
+        <target>Ваша електронна пошта</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">34,35</context>
@@ -144,7 +144,7 @@
       </trans-unit>
       <trans-unit id="2623800748042177549" datatype="html">
         <source>Prosím zadajte platný email...</source>
-        <target>Valid email please...</target>
+        <target>Будь ласка, введіть коректну адресу електронної пошти...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">37,38</context>
@@ -152,7 +152,7 @@
       </trans-unit>
       <trans-unit id="177861523053677703" datatype="html">
         <source>Tvoje tel. číslo</source>
-        <target>Your phone</target>
+        <target>Ваш номер телефону</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">42,43</context>
@@ -160,7 +160,7 @@
       </trans-unit>
       <trans-unit id="4307578649017149264" datatype="html">
         <source>Prosím zadajte platné telefónne číslo...</source>
-        <target>Valid phone please...</target>
+        <target>Будь ласка, введіть коректний номер телефону...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">45,46</context>
@@ -168,7 +168,7 @@
       </trans-unit>
       <trans-unit id="1131356421541043559" datatype="html">
         <source>Správa pre mňa...</source>
-        <target>Message to me...</target>
+        <target>Ваше повідомлення...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">50,51</context>
@@ -176,7 +176,7 @@
       </trans-unit>
       <trans-unit id="8767351363298038083" datatype="html">
         <source>Správa odoslaná!</source>
-        <target>Message sent!</target>
+        <target>Повідомлення надіслано!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">58,59</context>
@@ -184,7 +184,7 @@
       </trans-unit>
       <trans-unit id="5004456163003521361" datatype="html">
         <source>Niečo sa pokazilo!</source>
-        <target>Something went wrong!</target>
+        <target>Щось не так!</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">60,61</context>
@@ -192,7 +192,7 @@
       </trans-unit>
       <trans-unit id="5350919129081352814" datatype="html">
         <source>Odosielam...</source>
-        <target>Sending...</target>
+        <target>Відправляю...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">62,63</context>
@@ -200,7 +200,7 @@
       </trans-unit>
       <trans-unit id="8828744963237674119" datatype="html">
         <source>Odoslať správu</source>
-        <target>Send message</target>
+        <target>Відправляю повідомлення</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">64,65</context>
@@ -208,7 +208,7 @@
       </trans-unit>
       <trans-unit id="8427712468660212372" datatype="html">
         <source>ALEBO</source>
-        <target>OR</target>
+        <target>Або</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/contact/contact.component.html</context>
           <context context-type="linenumber">68,69</context>
@@ -216,7 +216,7 @@
       </trans-unit>
       <trans-unit id="4663701267540308085" datatype="html">
         <source>Krsty</source>
-        <target>Baptism</target>
+        <target>Хрестини</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">11,12</context>
@@ -228,7 +228,7 @@
       </trans-unit>
       <trans-unit id="4959944700847842208" datatype="html">
         <source>Svadby</source>
-        <target>Weddings</target>
+        <target>Весілля</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">13,14</context>
@@ -240,7 +240,7 @@
       </trans-unit>
       <trans-unit id="1998300019949051555" datatype="html">
         <source>Portréty</source>
-        <target>Portrait</target>
+        <target>Портрети</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">15,16</context>
@@ -252,7 +252,7 @@
       </trans-unit>
       <trans-unit id="5897279928219725664" datatype="html">
         <source>Príbehy lásky</source>
-        <target>Love Story</target>
+        <target>Історії кохання</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">17,18</context>
@@ -264,7 +264,7 @@
       </trans-unit>
       <trans-unit id="4503058900811189744" datatype="html">
         <source>Rodina</source>
-        <target>Family</target>
+        <target>Родини</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">19,20</context>
@@ -276,7 +276,7 @@
       </trans-unit>
       <trans-unit id="1488100477097473765" datatype="html">
         <source>Ateliér</source>
-        <target>Studio</target>
+        <target>Студія</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">21,22</context>
@@ -288,7 +288,7 @@
       </trans-unit>
       <trans-unit id="922298743861257077" datatype="html">
         <source>Tehuľky</source>
-        <target>Pregnancy</target>
+        <target>Вагітність</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">23,24</context>

@@ -20,8 +20,8 @@
             "translation": "src/locale/messages.en.xlf",
             "baseHref": "/en/"
           },
-          "ua": {
-            "translation": "src/locale/messages.ua.xlf",
+          "uk": {
+            "translation": "src/locale/messages.uk.xlf",
             "baseHref": "/ua/"
           }
         }
@@ -75,9 +75,9 @@
                 "en"
               ]
             },
-            "ua": {
+            "uk": {
               "localize": [
-                "ua"
+                "uk"
               ]
             },
             "development": {
@@ -100,8 +100,8 @@
             "en": {
               "buildTarget": "client:build:development,en"
             },
-            "ua": {
-              "buildTarget": "client:build:development,ua"
+            "uk": {
+              "buildTarget": "client:build:development,uk"
             }
           },
           "defaultConfiguration": "development"
