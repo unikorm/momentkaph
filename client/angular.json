@@ -19,6 +19,10 @@
           "en": {
             "translation": "src/locale/messages.en.xlf",
             "baseHref": "/en/"
+          },
+          "ua": {
+            "translation": "src/locale/messages.ua.xlf",
+            "baseHref": "/ua/"
           }
         }
       },
@@ -55,7 +59,7 @@
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumError": "6kB"
                 }
               ],
               "outputHashing": "all",
@@ -69,6 +73,11 @@
             "en": {
               "localize": [
                 "en"
+              ]
+            },
+            "ua": {
+              "localize": [
+                "ua"
               ]
             },
             "development": {
@@ -90,6 +99,9 @@
             },
             "en": {
               "buildTarget": "client:build:development,en"
+            },
+            "ua": {
+              "buildTarget": "client:build:development,ua"
             }
           },
           "defaultConfiguration": "development"

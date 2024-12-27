@@ -8,7 +8,7 @@ import { Injectable, signal, computed, inject } from '@angular/core';
 export class LanguageService {
     private location = inject(Location);
 
-    private supportedLanguages = ['sk', 'en'];
+    private supportedLanguages = ['sk', 'en', 'ua'];
     private defaultLanguage = 'sk';
 
     getPathLanguage = (): string => {

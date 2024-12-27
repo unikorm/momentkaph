@@ -74,4 +74,8 @@
     (click)="languageService.switchLanguage('en')">
     EN
   </button>
+  <button [class.activeLanguage]="languageService.currentLang() === 'ua'"
+    (click)="languageService.switchLanguage('ua')">
+    UA
+  </button>
 </div>
