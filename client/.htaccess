@@ -9,12 +9,12 @@
     # Serve assets directly
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(sk|en)/assets/(.+)$ /assets/$2 [L]
+    RewriteRule ^(sk|en|ua)/assets/(.+)$ /assets/$2 [L]
 
     # Handle Angular routing for each language
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(sk|en)(/.*)?$ /$1/index.html [L]
+    RewriteRule ^(sk|en|ua)(/.*)?$ /$1/index.html [L]
 </IfModule>
 
 # Set correct MIME types
