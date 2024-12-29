@@ -3,6 +3,10 @@
     RewriteEngine On
     RewriteBase /
 
+    # Redirect 'www' to non-'www'
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+
     # Redirect root URL to /sk/index.html
     RewriteRule ^$ /sk/index.html [R=302,L]
 
