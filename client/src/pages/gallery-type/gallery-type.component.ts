@@ -56,7 +56,7 @@ export class GalleryTypeComponent {
       );
       this.images.set(images);
     } catch (error) {
-      this.error.set(error instanceof Error ? error.message : 'Unknown error');
+      this.error.set('Niečo sa nám pokazilo, ADMIN už o chybe viem a pracuje na jej vyriešení, skúste to o pár hodín opäť prosím'); // for now simple string
     } finally {
       this.loading.set(false);
     }

@@ -215,7 +215,7 @@ button {
   }
 }
 
-button:hover {
+button:not(.success):not(.error):hover {
   background-color: var(--BROWNIE);
   color: var(--TOFFEE);
 }

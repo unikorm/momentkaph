@@ -17,6 +17,7 @@
   left: 0;
   z-index: 3;
 }
+
 nav {
   width: 100%;
   max-width: 1300px;
@@ -70,4 +71,21 @@ a:not(:last-of-type) {
 img {
   max-width: 100%;
   height: auto;
+}
+
+.error-message {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  color: var(--danger-smooth);
+  font-size: 1.2rem;
+}
+
+// smaller screens
+@media screen and (max-width: 700px) {
+  .image-grid {
+    column-count: 1;
+  }
 }
