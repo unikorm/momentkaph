@@ -1,7 +1,7 @@
 <div class="photo_grid">
   <div class="grid_item weddings">
     <div class="image_container" routerLink="/gallery/weddings">
-      <img src="assets/gallery_weddings.JPG" alt="photo of weddings" [@imageHover]="imageStates['weddings']"
+      <img src="assets/gallery_weddings.jpg" alt="photo of weddings" [@imageHover]="imageStates['weddings']"
         (mouseenter)="onHover('weddings')" (mouseleave)="onLeave('weddings')" (touchstart)="toggleState('weddings')" />
       <span i18n>Svadby</span>
     </div>
@@ -18,7 +18,7 @@
   </div>
   <div class="grid_item love-story">
     <div class="image_container" routerLink="/gallery/love-story">
-      <img src="assets/gallery_love_story.JPG" alt="photo of love story" [@imageHover]="imageStates['love-story']"
+      <img src="assets/gallery_love_story.jpg" alt="photo of love story" [@imageHover]="imageStates['love-story']"
         (mouseenter)="onHover('love-story')" (mouseleave)="onLeave('love-story')"
         (touchstart)="toggleState('love-story')" />
       <span i18n>Príbehy lásky</span>
@@ -51,7 +51,7 @@
     </div>
     <div class="grid_item baptism">
       <div class="image_container" routerLink="/gallery/baptism">
-        <img src="assets/gallery_baptism.JPG" alt="photo of baptism" [@imageHover]="imageStates['baptism']"
+        <img src="assets/gallery_baptism.jpg" alt="photo of baptism" [@imageHover]="imageStates['baptism']"
           (mouseenter)="onHover('baptism')" (mouseleave)="onLeave('baptism')" (touchstart)="toggleState('baptism')" />
         <span i18n>Krsty</span>
       </div>
