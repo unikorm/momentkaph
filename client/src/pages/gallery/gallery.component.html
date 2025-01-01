@@ -1,8 +1,9 @@
 <div class="photo_grid">
   <div class="grid_item weddings">
     <div class="image_container" routerLink="/gallery/weddings">
-      <img src="assets/gallery_weddings.jpg" alt="photo of weddings" [@imageHover]="imageStates['weddings']"
-        (mouseenter)="onHover('weddings')" (mouseleave)="onLeave('weddings')" (touchstart)="toggleState('weddings')" />
+      <img src="assets/gallery_weddings.jpg" alt="photo of weddings" loading="eager"
+        [@imageHover]="imageStates['weddings']" (mouseenter)="onHover('weddings')" (mouseleave)="onLeave('weddings')"
+        (touchstart)="toggleState('weddings')" />
       <span i18n>Svadby</span>
     </div>
   </div>
@@ -18,24 +19,24 @@
   </div>
   <div class="grid_item love-story">
     <div class="image_container" routerLink="/gallery/love-story">
-      <img src="assets/gallery_love_story.jpg" alt="photo of love story" [@imageHover]="imageStates['love-story']"
-        (mouseenter)="onHover('love-story')" (mouseleave)="onLeave('love-story')"
-        (touchstart)="toggleState('love-story')" />
+      <img src="assets/gallery_love_story.jpg" alt="photo of love story" loading="eager"
+        [@imageHover]="imageStates['love-story']" (mouseenter)="onHover('love-story')"
+        (mouseleave)="onLeave('love-story')" (touchstart)="toggleState('love-story')" />
       <span i18n>Príbehy lásky</span>
     </div>
   </div>
   <div>
     <div class="grid_item pregnancy">
       <div class="image_container" routerLink="/gallery/pregnancy">
-        <img src="assets/gallery_pregnancy.jpg" alt="photo of pregnancy" [@imageHover]="imageStates['pregnancy']"
-          (mouseenter)="onHover('pregnancy')" (mouseleave)="onLeave('pregnancy')"
-          (touchstart)="toggleState('pregnancy')" />
+        <img src="assets/gallery_pregnancy.jpg" alt="photo of pregnancy" loading="lazy"
+          [@imageHover]="imageStates['pregnancy']" (mouseenter)="onHover('pregnancy')"
+          (mouseleave)="onLeave('pregnancy')" (touchstart)="toggleState('pregnancy')" />
         <span i18n>Tehuľky</span>
       </div>
     </div>
     <div class="grid_item studio">
       <div class="image_container" routerLink="/gallery/studio">
-        <img src="assets/gallery_studio.jpg" alt="photo of studio" [@imageHover]="imageStates['studio']"
+        <img src="assets/gallery_studio.jpg" alt="photo of studio" loading="lazy" [@imageHover]="imageStates['studio']"
           (mouseenter)="onHover('studio')" (mouseleave)="onLeave('studio')" (touchstart)="toggleState('studio')" />
         <span i18n>Ateliér</span>
       </div>
@@ -44,23 +45,25 @@
   <div>
     <div class="grid_item family">
       <div class="image_container" routerLink="/gallery/family">
-        <img src="assets/gallery_family.jpg" alt="photo of family" [@imageHover]="imageStates['family']"
+        <img src="assets/gallery_family.jpg" alt="photo of family" loading="lazy" [@imageHover]="imageStates['family']"
           (mouseenter)="onHover('family')" (mouseleave)="onLeave('family')" (touchstart)="toggleState('family')" />
         <span i18n>Rodina</span>
       </div>
     </div>
     <div class="grid_item baptism">
       <div class="image_container" routerLink="/gallery/baptism">
-        <img src="assets/gallery_baptism.jpg" alt="photo of baptism" [@imageHover]="imageStates['baptism']"
-          (mouseenter)="onHover('baptism')" (mouseleave)="onLeave('baptism')" (touchstart)="toggleState('baptism')" />
+        <img src="assets/gallery_baptism.jpg" alt="photo of baptism" loading="lazy"
+          [@imageHover]="imageStates['baptism']" (mouseenter)="onHover('baptism')" (mouseleave)="onLeave('baptism')"
+          (touchstart)="toggleState('baptism')" />
         <span i18n>Krsty</span>
       </div>
     </div>
   </div>
   <div class="grid_item portrait">
     <div class="image_container" routerLink="/gallery/portrait">
-      <img src="assets/gallery_portrait.jpg" alt="photo of portrait" [@imageHover]="imageStates['portrait']"
-        (mouseenter)="onHover('portrait')" (mouseleave)="onLeave('portrait')" (touchstart)="toggleState('portrait')" />
+      <img src="assets/gallery_portrait.jpg" alt="photo of portrait" loading="lazy"
+        [@imageHover]="imageStates['portrait']" (mouseenter)="onHover('portrait')" (mouseleave)="onLeave('portrait')"
+        (touchstart)="toggleState('portrait')" />
       <span i18n>Portréty</span>
     </div>
   </div>

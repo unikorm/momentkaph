@@ -9,7 +9,6 @@ import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 
-
 @Component({
   standalone: true,
   selector: 'gallery',

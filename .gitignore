@@ -46,3 +46,4 @@ environment.ts
 environment.*.ts
 .env
 secrets.ts
+notes.txt

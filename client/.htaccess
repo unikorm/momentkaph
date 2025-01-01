@@ -1,3 +1,4 @@
+# Rewrite rules for Angular routing
 <IfModule mod_rewrite.c>
     # Enable rewrite engine
     RewriteEngine On
@@ -27,4 +28,38 @@
     AddType application/json .json
     AddType text/css .css
     AddType text/html .html
+</IfModule>
+
+# Enable CORS and caching headers
+<IfModule mod_headers.c>
+    # CORS based on the requesting origin
+    Header set Access-Control-Allow-Origin "https://momentkaph.sk"
+    
+    # Cache control for images
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+        Header set Cache-Control "public, max-age=2628000, immutable"
+    </FilesMatch>
+    
+    # Cache control for static assets (CSS, JS)
+    <FilesMatch "\.(css|js)$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+    
+    # No cache for HTML files
+    <FilesMatch "\.html$">
+        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    </FilesMatch>
+</IfModule>
+
+<IfModule mod_deflate.c>
+    # Text files
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    
+    # JavaScript files
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+    AddOutputFilterByType DEFLATE text/javascript
+
 </IfModule>
