@@ -27,6 +27,7 @@
     "@angular-devkit/build-angular": "^18.1.1",
     "@angular/cli": "^18.2.0",
     "@angular/compiler-cli": "^18.1.0",
+    "@types/locomotive-scroll": "^4.1.4",
     "typescript": "~5.5.2"
   }
 }
