@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'not-found',
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './not-found.component.html',
   styleUrl: './not-found.component.scss',
 })
