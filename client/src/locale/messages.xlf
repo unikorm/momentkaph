@@ -270,6 +270,13 @@
           <context context-type="linenumber">34,35</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="279043380362458601" datatype="html">
+        <source> Niečo sa nám pokazilo, ADMIN už o chybe vie a pracuje na jej vyriešení, skúste to o pár hodín opäť prosím </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="6628313228786963379" datatype="html">
         <source>Ups! Zdá sa, že ste zablúdili na nesprávne miesto. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> Stránka, ktorú hľadáte, sa asi niekde zatúlala. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> Nechcete sa radšej vrátiť na našu hlavnú stránku?</source>
         <context-group purpose="location">

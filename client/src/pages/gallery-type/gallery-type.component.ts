@@ -32,7 +32,7 @@ export class GalleryTypeComponent {
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
   readonly images = signal<GalleryTypeImagesType[]>([]);
   readonly loading = signal(true);
-  readonly error = signal<string | null>(null);
+  readonly error = signal<boolean>(false);
 
   constructor() {
 
@@ -49,14 +49,14 @@ export class GalleryTypeComponent {
   private async loadGalleryImages(type: GalleryTypeEnum) {
     try {
       this.loading.set(true);
-      this.error.set(null);
+      this.error.set(false);
 
       const images = await firstValueFrom(
         this.storageService.fetchGalleryImagesLinks(type)
       );
       this.images.set(images);
     } catch (error) {
-      this.error.set('Niečo sa nám pokazilo, ADMIN už o chybe viem a pracuje na jej vyriešení, skúste to o pár hodín opäť prosím'); // for now simple string
+      this.error.set(true);
     } finally {
       this.loading.set(false);
     }

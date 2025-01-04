@@ -298,6 +298,14 @@
           <context context-type="linenumber">34,35</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="279043380362458601" datatype="html">
+        <source> Niečo sa nám pokazilo, ADMIN už o chybe vie a pracuje na jej vyriešení, skúste to o pár hodín opäť prosím </source>
+        <target>Щось пішло не так, АДМІН вже знає про помилку і працює над її вирішенням. Будь ласка, спробуйте знову через кілька годин.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
+          <context context-type="linenumber">37,38</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="6628313228786963379" datatype="html">
         <source>Ups! Zdá sa, že ste zablúdili na nesprávne miesto. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> Stránka, ktorú hľadáte, sa asi niekde zatúlala. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> Nechcete sa radšej vrátiť na našu hlavnú stránku?</source>
         <target>Ой! Схоже, ви потрапили не туди, куди прямували. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> Сторінка, яку ви шукаєте, мабуть, десь загубилася. <x id="LINE_BREAK" ctype="lb" equiv-text="&lt;br&gt;"/> Можливо, хочете повернутися на головну сторінку?</target>
@@ -308,7 +316,7 @@
       </trans-unit>
       <trans-unit id="6647926669474038411" datatype="html">
         <source>Hlavná stránka</source>
-        <target></target>
+        <target>Головна</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/not-found/not-found.component.html</context>
           <context context-type="linenumber">6,7</context>
