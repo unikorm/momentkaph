@@ -2,5 +2,32 @@
     display: block;
     width: 100%;
     height: 100vh;
-    background-color: var(--TOFFEE);
+    background-color: var(--LATTE);
+}
+
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    color: var(--danger-smooth);
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 2rem;
+}
+
+.error {
+    font: var(--font-label);
+    margin: .6rem 0;
+    color: var(--danger-smooth);
+}
+
+a {
+    all: unset;
+    cursor: pointer;
+    font-size: 1.4rem;
+    text-decoration: underline;
+    color: var(--success-smooth);
 }
