@@ -60,16 +60,13 @@ a:not(:last-of-type) {
 }
 
 .image-grid {
-  // column-count: 2;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  column-count: 2;
   gap: 0.5rem;
   padding: 0 0.5rem;
 }
 
 .image-card {
   padding: 0.3rem 0;
-  width: 100%;
 }
 
 img {
@@ -90,7 +87,6 @@ img {
 // smaller screens
 @media screen and (max-width: 700px) {
   .image-grid {
-    // column-count: 1;
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
 }
