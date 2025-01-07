@@ -52,6 +52,7 @@ export class GalleryTypeComponent {
       this.error.set(false);
 
       const images = await firstValueFrom(
+        // not right if it is good usage of firstValueFrom, but i need make promise from observable to store it in signal
         this.storageService.fetchGalleryImagesLinks(type)
       );
       this.images.set(images);

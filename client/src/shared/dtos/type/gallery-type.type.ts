@@ -12,6 +12,6 @@ export enum GalleryTypeEnum {
   BAPTISM = 'baptism',
 }
 
-export type PostGallryImageLinkResponseType = {
+export type PostGalleryTypeImageTypeResponseType = {
   fullUrl: string;
 };

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
   GalleryTypeEnum,
-  PostGallryImageLinkResponseType,
+  PostGalleryTypeImageTypeResponseType,
   httpHeader,
 } from '../shared/dtos';
 import { environment } from '../environments/environment';
@@ -17,9 +17,8 @@ export class CloudStorageService {
 
   fetchGalleryImagesLinks(
     galleryType: GalleryTypeEnum
-  ): Observable<PostGallryImageLinkResponseType[]> {
-    console.log(httpHeader);
-    return this.http.post<PostGallryImageLinkResponseType[]>(
+  ): Observable<PostGalleryTypeImageTypeResponseType[]> {
+    return this.http.post<PostGalleryTypeImageTypeResponseType[]>(
       `${this.apiUrl}/cloud_storage`,
       { galleryType: galleryType },
       httpHeader // ??
