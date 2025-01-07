@@ -1,4 +1,4 @@
-export type GalleryTypeImagesType = {
+export type GalleryTypeImageType = {
   fullUrl: string;
 };
 
