@@ -13,7 +13,7 @@ export class EmailService {
     try {
       await this.mailService.sendMail({
         to: 'adaled00@gmail.com',
-        subject: 'Test Subject',
+        subject: 'Žiadosť o kontakt',
         text: message + name + email + phone,
       });
       return { status: true };
