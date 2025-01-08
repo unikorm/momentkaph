@@ -12,7 +12,7 @@ import { EmailService } from './email.service';
         transport: {
           host: configService.get('EMAIL_HOST'),
           port: 587,
-          secure: false,
+          secure: false, // need to use it in future, but for now it's ok
           auth: {
             user: configService.get('EMAIL_USER'),
             pass: configService.get('EMAIL_PASSWORD'),
