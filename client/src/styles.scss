@@ -4,17 +4,12 @@
   --LATTE: #d0bca0;
   --BROWNIE: #5e3023;
 
-  --danger-smooth: #f06449;
-  --success-smooth: #386c0b;
+  --DANGER-SMOOTH: #f06449;
+  --SUCCESS-SMOOTH: #386c0b;
 
   /* fonts */
-  --font-primary: 400 normal 1rem "Cutive Mono", monospace;
-  --font-label: 400 normal 4rem/1 "Major Mono Display", monospace;
-
-  /* text */
-  --font-base: 1rem;
-  --font-smaller: 0.75rem;
-  --font-title: 2rem;
+  --FONT-PRIMARY: 400 normal 1rem "Cutive Mono", monospace;
+  --FONT-LABEL: 400 normal 4rem/1 "Major Mono Display", monospace;
 }
 
 html,
@@ -23,7 +18,7 @@ body {
   padding: 0;
   width: 100%;
   display: block;
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   color: var(--BROWNIE);
   background-color: var(--LATTE);
   scroll-behavior: smooth;

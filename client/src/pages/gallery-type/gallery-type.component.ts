@@ -1,6 +1,6 @@
 import { Component, computed, signal, inject, effect } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { GalleryTypeEnum, GalleryTypeImagesType } from '../../shared/dtos';
+import { GalleryTypeEnum, GalleryTypeImageType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { firstValueFrom } from 'rxjs';
 import {
@@ -30,7 +30,7 @@ export class GalleryTypeComponent {
   private storageService = inject(CloudStorageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
-  readonly images = signal<GalleryTypeImagesType[]>([]);
+  readonly images = signal<GalleryTypeImageType[]>([]);
   readonly loading = signal(true);
   readonly error = signal<boolean>(false);
 
@@ -52,6 +52,7 @@ export class GalleryTypeComponent {
       this.error.set(false);
 
       const images = await firstValueFrom(
+        // not right if it is good usage of firstValueFrom, but i need make promise from observable to store it in signal
         this.storageService.fetchGalleryImagesLinks(type)
       );
       this.images.set(images);

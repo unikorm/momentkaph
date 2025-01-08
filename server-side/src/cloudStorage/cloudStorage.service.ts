@@ -3,7 +3,7 @@ import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
 import { ConfigService } from '@nestjs/config';
 import {
   GalleryTypeEnum,
-  GetGallryImagesLinksResponseServerType,
+  PostGalleryTypeImageTypeResponseType,
 } from './dtos';
 
 @Injectable()
@@ -29,14 +29,14 @@ export class CloudStorageService {
 
   async fetchGalleryImagesLinks(
     galleryType: GalleryTypeEnum,
-  ): Promise<GetGallryImagesLinksResponseServerType[]> {
+  ): Promise<PostGalleryTypeImageTypeResponseType[]> {
     try {
       const fullCommand = new ListObjectsV2Command({
         Bucket: this.configService.get('BUCKET_NAME'),
         Prefix: `${galleryType}/full/`,
       });
 
-      const [fullResponse] = await Promise.all([this.client.send(fullCommand)]);
+      const [fullResponse] = await Promise.all([this.client.send(fullCommand)]); // better approach needed here
 
       if (!fullResponse.Contents || fullResponse.Contents.length === 0) {
         this.logger.warn(`No images found for gallery type: ${galleryType}`);
@@ -44,7 +44,7 @@ export class CloudStorageService {
       }
 
       const fullImages = (fullResponse.Contents || [])
-        .filter((item) => !item.Key.endsWith('/'))
+        .filter((item) => !item.Key.endsWith('/')) // i manage cloud storage, so i know that i have no folders on that level, but just in case 
         .map((item) => ({
           fullUrl: `${this.baseUrl}/${item.Key}`,
         }));

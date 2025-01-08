@@ -1,4 +1,4 @@
-export type GalleryTypeImagesType = {
+export type GalleryTypeImageType = {
   fullUrl: string;
 };
 
@@ -12,6 +12,6 @@ export enum GalleryTypeEnum {
   BAPTISM = 'baptism',
 }
 
-export type GetGallryImagesLinksResponseServerType = {
+export type PostGalleryTypeImageTypeResponseType = {
   fullUrl: string;
 };

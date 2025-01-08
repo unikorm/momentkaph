@@ -15,7 +15,7 @@ export class EmailService {
     return this.http.post<SendEmailResponseType>(
       `${this.apiUrl}/email_sending`,
       data,
-      httpHeader
+      httpHeader // ??
     );
   }
 }

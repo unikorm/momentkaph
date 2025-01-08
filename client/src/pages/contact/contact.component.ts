@@ -80,7 +80,7 @@ export class ContactComponent {
                 setTimeout(() => (this.submitStatus = 'idle'), 3000);
               })
             )
-            .subscribe();
+            .subscribe(); // HttpClient works only when subscribed
         }
       },
       { allowSignalWrites: true }

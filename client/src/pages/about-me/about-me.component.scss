@@ -64,7 +64,7 @@ a:not(:last-of-type) {
 // content logic
 .title {
   margin: 0;
-  font: var(--font-label);
+  font: var(--FONT-LABEL);
   font-size: 2.3rem;
 
   &>p {
@@ -73,7 +73,7 @@ a:not(:last-of-type) {
 }
 
 .bio {
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   font-size: 1.18rem;
   padding-bottom: 4rem;
 
@@ -106,7 +106,7 @@ a:not(:last-of-type) {
   position: absolute;
   bottom: 0;
   left: 0;
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   color: var(--LATTE);
   font-size: 1.05rem;
   z-index: 1;

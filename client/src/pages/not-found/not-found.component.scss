@@ -12,16 +12,16 @@ div {
     flex-direction: column;
     height: 100%;
     width: 100%;
-    color: var(--danger-smooth);
+    color: var(--DANGER-SMOOTH);
     text-align: center;
     font-size: 1.3rem;
     padding: 2rem;
 }
 
 .error {
-    font: var(--font-label);
+    font: var(--FONT-LABEL);
     margin: .6rem 0;
-    color: var(--danger-smooth);
+    color: var(--DANGER-SMOOTH);
 }
 
 a {
@@ -29,5 +29,5 @@ a {
     cursor: pointer;
     font-size: 1.4rem;
     text-decoration: underline;
-    color: var(--success-smooth);
+    color: var(--SUCCESS-SMOOTH);
 }

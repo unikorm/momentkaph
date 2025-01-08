@@ -65,7 +65,7 @@ a:not(:last-of-type) {
 
       & > div > div > p {
         margin: 0.9rem 0 0;
-        font: var(--font-label);
+        font: var(--FONT-LABEL);
         color: var(--BROWNIE);
         font-size: 2.3rem;
       }
@@ -83,7 +83,7 @@ a:not(:last-of-type) {
 
 .or {
   margin: 2.5rem 0;
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   font-size: 1.5rem;
 }
 
@@ -117,7 +117,7 @@ input {
   margin: 0;
   padding: 0.5rem;
   border: 0.23rem solid var(--TOFFEE);
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   color: var(--BROWNIE);
   margin-bottom: 1.1rem;
   background-color: transparent;
@@ -135,7 +135,7 @@ input:focus {
 }
 
 .invalid {
-  border-color: var(--danger-smooth);
+  border-color: var(--DANGER-SMOOTH);
 }
 
 // for preventing autofill styles
@@ -160,7 +160,7 @@ textarea {
   margin: 0;
   padding: 0.5rem;
   border: 0.23rem solid var(--TOFFEE);
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   color: var(--BROWNIE);
   margin-bottom: 1.1rem;
   background-color: transparent;
@@ -183,8 +183,8 @@ textarea:focus {
 }
 
 .error-message {
-  color: var(--danger-smooth);
-  font: var(--font-primary);
+  color: var(--DANGER-SMOOTH);
+  font: var(--FONT-PRIMARY);
   font-size: 0.95rem;
   position: absolute;
   bottom: 0;
@@ -199,7 +199,7 @@ button {
   width: 100%;
   margin: 0.5rem 0;
   padding: 0.5rem;
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   border: none;
   color: var(--LATTE);
   background-color: var(--TOFFEE);
@@ -208,10 +208,10 @@ button {
   box-sizing: border-box;
 
   &.success {
-    background-color: var(--success-smooth);
+    background-color: var(--SUCCESS-SMOOTH);
   }
   &.error {
-    background-color: var(--danger-smooth);
+    background-color: var(--DANGER-SMOOTH);
   }
 }
 
@@ -243,7 +243,7 @@ button:not(.success):not(.error):hover {
   position: absolute;
   bottom: 0;
   left: 0;
-  font: var(--font-primary);
+  font: var(--FONT-PRIMARY);
   color: var(--LATTE);
   font-size: 1.05rem;
   z-index: 1;

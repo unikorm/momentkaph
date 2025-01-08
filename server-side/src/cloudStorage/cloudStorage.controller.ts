@@ -2,7 +2,7 @@ import { Body, Controller, Post } from '@nestjs/common';
 import { CloudStorageService } from './cloudStorage.service';
 import {
   GalleryTypeEnum,
-  GetGallryImagesLinksResponseServerType,
+  PostGalleryTypeImageTypeResponseType,
 } from './dtos';
 
 @Controller('cloud_storage')
@@ -12,7 +12,7 @@ export class CloudStorageController {
   @Post()
   async fetchGalleryImagesLinks(
     @Body('galleryType') galleryType: GalleryTypeEnum,
-  ): Promise<GetGallryImagesLinksResponseServerType[]> {
+  ): Promise<PostGalleryTypeImageTypeResponseType[]> {
     return await this.cloudStorageService.fetchGalleryImagesLinks(galleryType);
   }
 }
