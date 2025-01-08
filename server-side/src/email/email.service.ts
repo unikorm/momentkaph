@@ -11,7 +11,7 @@ export class EmailService {
   ): Promise<SendEmailResponseServerType> => {
     const { name, email, phone, message } = sendEmailDto;
     try {
-      await this.mailService.sendMail({
+      await this.mailService.sendMail({ // make this prettier in future
         to: 'adaled00@gmail.com',
         subject: 'Žiadosť o kontakt',
         text: message + name + email + phone,
