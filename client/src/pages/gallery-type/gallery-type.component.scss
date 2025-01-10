@@ -44,19 +44,36 @@ a:not(:last-of-type) {
 }
 
 // container logic
-.title-for-gallery {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 25rem;
-}
-
 .gallery-container {
   width: 100%;
   max-width: 2500px;
   margin: 0 auto;
   padding-bottom: 10rem;
+}
+
+
+.title-for-gallery {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h1 {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+    margin: 0;
+  }
 }
 
 .image-grid {
@@ -67,11 +84,11 @@ a:not(:last-of-type) {
 
 .image-card {
   padding: 0.3rem 0;
-}
 
-img {
-  max-width: 100%;
-  height: auto;
+  img {
+    max-width: 100%;
+    height: auto;
+  }
 }
 
 .error-message {
