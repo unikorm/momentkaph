@@ -23,6 +23,12 @@
   &.empty {
     height: 37.75rem;
     background: var(--TOFFEE);
+
+    img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+    }
   }
 
   &.love-story {
@@ -245,6 +251,7 @@ a:not(:last-of-type) {
   }
 
   .empty_section img {
-    width: 300px;
+    width: 300px !important;
+    height: 300px !important;
   }
 }
