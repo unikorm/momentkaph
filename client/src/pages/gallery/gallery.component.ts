@@ -36,9 +36,9 @@ import { LanguageService } from '../../services/language.service';
 export class GalleryComponent {
   readonly languageService = inject(LanguageService)
 
-  constructor() {
-    window.scrollTo(0, 0);
-  }
+  // constructor() {
+  //   window.scrollTo(0, 0);
+  // }
 
   imageStates: { [key: string]: string } = {
     weddings: 'normal',
