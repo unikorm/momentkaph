@@ -16,7 +16,7 @@ export class EmailService {
         ...sendEmailDto,
         timestamp: new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }),
       }
-      await this.mailService.sendMail({ // make this prettier in future
+      await this.mailService.sendMail({
         to: 'adaled00@gmail.com',
         subject: `New Request from ${sendEmailDto.name} on momentkaph.sk`,
         html: EmailFormTemplate.generateEmailFormTemplate(templateData),
