@@ -35,6 +35,7 @@ export class GalleryTypeComponent {
   readonly error = signal<boolean>(false);
 
   constructor() {
+    window.scrollTo(0, 0);
 
     effect(
       () => {

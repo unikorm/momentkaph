@@ -8,4 +8,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss',
 })
-export class MainComponent {}
+export class MainComponent {
+
+  constructor() {
+    window.scrollTo(0, 0);
+  }
+}
