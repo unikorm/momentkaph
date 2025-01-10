@@ -3,6 +3,7 @@ export type SendEmailServerType = {
   email: string;
   phone: string;
   message: string;
+  timestamp?: string;
 };
 
 export type SendEmailResponseServerType = {

@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
+import { EmailFormTemplate } from './templates/email-form.template';
+import { time } from 'console';
 
 @Injectable()
 export class EmailService {
@@ -9,12 +11,15 @@ export class EmailService {
   sendEmail = async (
     sendEmailDto: SendEmailServerType,
   ): Promise<SendEmailResponseServerType> => {
-    const { name, email, phone, message } = sendEmailDto;
     try {
+      const templateData = {
+        ...sendEmailDto,
+        timestamp: new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }),
+      }
       await this.mailService.sendMail({ // make this prettier in future
         to: 'adaled00@gmail.com',
-        subject: 'Žiadosť o kontakt',
-        text: message + name + email + phone,
+        subject: `New Request from ${sendEmailDto.name} on momentkaph.sk`,
+        html: EmailFormTemplate.generateEmailFormTemplate(templateData),
       });
       return { status: true };
     } catch (error) {

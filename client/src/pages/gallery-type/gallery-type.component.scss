@@ -122,6 +122,13 @@ a:not(:last-of-type) {
   .image-grid {
     column-count: 1;
   }
+
+  .title-for-gallery {
+
+    h1 {
+      font-size: 2.25rem;
+    }
+  }
 }
 
 // bigger screens
