@@ -7,7 +7,9 @@
 </div>
 <div class="gallery-container">
   <div class="title-for-gallery">
-    <img [src]="'assets/gallery_' + type() + '.jpg'" alt="title of gallery" />
+    <img [src]="'assets/gallery_' + type() + '.jpg'" alt="title of gallery"
+      [class.adjusted-title]="type() === 'portrait' || type() === 'love-story'"
+      [class.pregnancy-title]="type() === 'pregnancy'" />
     @switch (type()) {
     @case ('baptism') {
     <h1 i18n>Krsty</h1>

@@ -78,10 +78,18 @@ a:not(:last-of-type) {
   }
 }
 
+.adjusted-title {
+  object-position: 75%;
+}
+
+.pregnancy-title {
+  object-position: 25%;
+}
+
 .image-grid {
   column-count: 3;
   gap: 0.5rem;
-  padding: 0 0.5rem;
+  padding: 3rem 0.5rem 0;
 }
 
 .image-card {
