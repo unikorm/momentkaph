@@ -54,13 +54,13 @@ a:not(:last-of-type) {
 
 .gallery-container {
   width: 100%;
-  max-width: 1300px;
+  max-width: 2500px;
   margin: 0 auto;
   padding-bottom: 10rem;
 }
 
 .image-grid {
-  column-count: 2;
+  column-count: 3;
   gap: 0.5rem;
   padding: 0 0.5rem;
 }
@@ -85,8 +85,21 @@ img {
 }
 
 // smaller screens
+@media screen and (max-width: 1366px) {
+  .image-grid {
+    column-count: 2;
+  }
+}
+
 @media screen and (max-width: 700px) {
   .image-grid {
     column-count: 1;
+  }
+}
+
+// bigger screens
+@media screen and (min-width: 2100px) {
+  .image-grid {
+    column-count: 4;
   }
 }
