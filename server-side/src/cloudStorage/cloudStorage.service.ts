@@ -36,22 +36,23 @@ export class CloudStorageService {
         Prefix: `${galleryType}/full/`,
       });
 
-      const [fullResponse] = await Promise.all([this.client.send(fullCommand)]); // better approach needed here
+      const fullResponse = await this.client.send(fullCommand);
+      console.log('fullResponse:', fullResponse);
 
       if (!fullResponse.Contents || fullResponse.Contents.length === 0) {
         this.logger.warn(`No images found for gallery type: ${galleryType}`);
         return [];
       }
 
-      const fullImages = (fullResponse.Contents || [])
+      const fullImages = (fullResponse.Contents)
         .filter((item) => !item.Key.endsWith('/')) // i manage cloud storage, so i know that i have no folders on that level, but just in case 
         .map((item) => ({
           fullUrl: `${this.baseUrl}/${item.Key}`,
         }));
 
-      return fullImages.filter(Boolean);
+      return fullImages
     } catch (error) {
-      console.error('Error fetching images:', error);
+      this.logger.error('Error fetching images:', error);
       throw error;
     }
   }
