@@ -35,8 +35,6 @@ export class GalleryTypeComponent implements AfterViewInit {
   readonly error = signal<boolean>(false);
 
   constructor() {
-    // window.scrollTo(0, 0);
-
     effect(
       () => {
         if (this.type()) {
