@@ -1,4 +1,4 @@
-import { Component, computed, signal, inject, effect } from '@angular/core';
+import { Component, computed, signal, inject, effect, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImageType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
@@ -25,7 +25,7 @@ import {
     ])
   ]
 })
-export class GalleryTypeComponent {
+export class GalleryTypeComponent implements AfterViewInit {
   readonly route = inject(ActivatedRoute);
   private storageService = inject(CloudStorageService);
 
@@ -35,7 +35,7 @@ export class GalleryTypeComponent {
   readonly error = signal<boolean>(false);
 
   constructor() {
-    window.scrollTo(0, 0);
+    // window.scrollTo(0, 0);
 
     effect(
       () => {
@@ -45,6 +45,15 @@ export class GalleryTypeComponent {
       },
       { allowSignalWrites: true }
     );
+  }
+
+  ngAfterViewInit() { // scroll to top after view init, there was problem on mobile devices to not scroll to top properly, so this is workaround, works on IOS, Firefox, Chrome...
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 0);
   }
 
   private async loadGalleryImages(type: GalleryTypeEnum) {
