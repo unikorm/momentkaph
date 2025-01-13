@@ -37,7 +37,6 @@ export class CloudStorageService {
       });
 
       const fullResponse = await this.client.send(fullCommand);
-      console.log('fullResponse:', fullResponse);
 
       if (!fullResponse.Contents || fullResponse.Contents.length === 0) {
         this.logger.warn(`No images found for gallery type: ${galleryType}`);

@@ -11,7 +11,7 @@ async function bootstrap() {
   const corsOrigin = configService.get('CORS_ORIGIN');
   const corsMethods = configService.get('CORS_METHODS').split(',');
   const corsHeaders = configService.get('CORS_HEADERS').split(',');
-  const corsMaxAge = parseInt(configService.get('CORS_MAX_AGE'), 3600);
+  const corsMaxAge = parseInt(configService.get('CORS_MAX_AGE')) || 3600;
 
   app.enableCors({
     origin: corsOrigin,
