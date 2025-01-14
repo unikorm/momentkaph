@@ -44,15 +44,15 @@ import { RouterModule } from '@angular/router';
 export class ContactComponent {
   readonly emailService = inject(EmailService);
 
-  imageState = 'normal';
-  formSubmitted = signal<boolean>(false);
-  submitStatus: 'idle' | 'sending' | 'success' | 'error' = 'idle';
+  readonly imageState = signal<'normal' | 'hovered'>('normal');
+  readonly formSubmitted = signal<boolean>(false);
+  readonly submitStatus = signal<'idle' | 'sending' | 'success' | 'error'>('idle');
 
   onHover() {
-    this.imageState = 'hovered';
+    this.imageState.set('hovered');
   }
   onLeave() {
-    this.imageState = 'normal';
+    this.imageState.set('normal');
   }
 
   constructor() {
@@ -60,22 +60,22 @@ export class ContactComponent {
       () => {
         const data = this.emailData();
         if (data) {
-          this.submitStatus = 'sending';
+          this.submitStatus.set('sending');
           this.emailService
             .sendEmail(data)
             .pipe(
               tap((value) => {
-                this.submitStatus = 'success';
+                this.submitStatus .set('success');
                 this.newMessageForm.reset();
                 this.formSubmitted.set(false);
               }),
               catchError((error) => {
-                this.submitStatus = 'error';
+                this.submitStatus.set('error');
                 this.formSubmitted.set(false);
                 return error;
               }),
               finalize(() => {
-                setTimeout(() => (this.submitStatus = 'idle'), 3000);
+                setTimeout(() => (this.submitStatus.set('idle')), 3000);
               })
             )
             .subscribe(); // HttpClient works only when subscribed

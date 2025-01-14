@@ -213,9 +213,11 @@ button {
 
   &.success {
     background-color: var(--SUCCESS-SMOOTH);
+    pointer-events: none;
   }
   &.error {
     background-color: var(--DANGER-SMOOTH);
+    pointer-events: none;
   }
 }
 

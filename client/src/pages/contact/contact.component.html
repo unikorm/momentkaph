@@ -10,9 +10,9 @@
     <div class="contact_container__content_title">
       <div>
         <div class="image-container">
-          <img src="assets/contact_photo.jpg" alt="photo of me on contact page" [@imageHover]="imageState"
+          <img src="assets/contact_photo.jpg" alt="photo of me on contact page" [@imageHover]="imageState()"
             (mouseenter)="onHover()" (mouseleave)="onLeave()" (touchstart)="
-              imageState = imageState === 'normal' ? 'hovered' : 'normal'
+              imageState() = imageState === 'normal' ? 'hovered' : 'normal'
             " />
           <span i18n>to som ja</span>
         </div>
@@ -54,7 +54,7 @@
           }
         </div>
         <button type="submit" [class.success]="submitStatus === 'success'" [class.error]="submitStatus === 'error'">
-          @switch (submitStatus) { @case ('success') {
+          @switch (submitStatus()) { @case ('success') {
           <span i18n>Správa odoslaná!</span>
           } @case ('error') {
           <span i18n>Niečo sa pokazilo!</span>

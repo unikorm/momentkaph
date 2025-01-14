@@ -26,9 +26,9 @@ import {
   ]
 })
 export class GalleryTypeComponent implements OnInit, AfterViewInit {
-  private route = inject(ActivatedRoute);
-  private router = inject(Router);
-  private storageService = inject(CloudStorageService);
+  readonly route = inject(ActivatedRoute);
+  readonly router = inject(Router);
+  readonly storageService = inject(CloudStorageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
   readonly images = signal<GalleryTypeImageType[]>([]);
