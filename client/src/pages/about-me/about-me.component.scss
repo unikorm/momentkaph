@@ -32,7 +32,9 @@ a {
   all: unset;
   cursor: pointer;
   color: var(--LATTE);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  line-height: 1;
 }
 
 a:not(:last-of-type) {
@@ -74,7 +76,9 @@ a:not(:last-of-type) {
 
 .bio {
   font: var(--FONT-PRIMARY);
-  font-size: 1.18rem;
+  font-size: 1.52rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
   padding-bottom: 4rem;
 
   &>p {
@@ -108,7 +112,7 @@ a:not(:last-of-type) {
   left: 0;
   font: var(--FONT-PRIMARY);
   color: var(--LATTE);
-  font-size: 1.05rem;
+  font-size: 1.3rem;
   z-index: 1;
 }
 

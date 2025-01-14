@@ -86,7 +86,7 @@
   left: 5px;
   font: var(--FONT-PRIMARY);
   color: var(--LATTE);
-  font-size: 1.25rem;
+  font-size: 1.55rem;
   z-index: 1;
 }
 
@@ -117,7 +117,9 @@ a {
   all: unset;
   cursor: pointer;
   color: var(--LATTE);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  line-height: 1;
 }
 
 a:not(:last-of-type) {
