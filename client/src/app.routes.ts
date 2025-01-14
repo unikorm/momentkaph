@@ -45,15 +45,19 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'gallery',
         pathMatch: 'full',
-      },
+      }
     ],
   },
   {
-    path: '**',
+    path: '404',
     title: '404',
     loadComponent: () =>
       import('./pages/not-found/not-found.component').then(
         (m) => m.NotFoundComponent
       ),
   },
+  {
+    path: '**',
+    redirectTo: '404',
+  }
 ];

@@ -1,5 +1,5 @@
-import { Component, computed, signal, inject, effect, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Component, computed, signal, inject, effect, AfterViewInit, OnInit } from '@angular/core';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImageType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { firstValueFrom } from 'rxjs';
@@ -25,16 +25,19 @@ import {
     ])
   ]
 })
-export class GalleryTypeComponent implements AfterViewInit {
-  readonly route = inject(ActivatedRoute);
+export class GalleryTypeComponent implements OnInit, AfterViewInit {
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
   private storageService = inject(CloudStorageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
   readonly images = signal<GalleryTypeImageType[]>([]);
   readonly loading = signal(true);
   readonly error = signal<boolean>(false);
+  readonly validTypes = Object.values(GalleryTypeEnum);
 
-  constructor() {
+  constructor(
+  ) {
     effect(
       () => {
         if (this.type()) {
@@ -43,6 +46,12 @@ export class GalleryTypeComponent implements AfterViewInit {
       },
       { allowSignalWrites: true }
     );
+  }
+
+  ngOnInit() {
+    if (!this.validTypes.includes(this.type() as GalleryTypeEnum)) {
+      this.router.navigate(['/404']);
+    }
   }
 
   ngAfterViewInit() { // scroll to top after view init, there was problem on mobile devices to not scroll to top properly, so this is workaround, works on IOS, Firefox, Chrome...
