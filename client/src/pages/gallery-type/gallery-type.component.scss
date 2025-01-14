@@ -31,7 +31,9 @@ a {
   all: unset;
   cursor: pointer;
   color: var(--LATTE);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  line-height: 1;
 }
 
 a:not(:last-of-type) {
@@ -105,11 +107,22 @@ a:not(:last-of-type) {
   width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   text-align: center;
   padding: 0 2rem;
   color: var(--DANGER-SMOOTH);
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   margin-top: 19rem;
+
+  p {
+    margin: 0;
+  }
+}
+
+.error {
+  margin-bottom: 1rem !important;
+  color: var(--DANGER-SMOOTH);
+  font-size: 4rem;
 }
 
 // smaller screens

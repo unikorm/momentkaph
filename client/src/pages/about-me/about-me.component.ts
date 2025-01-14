@@ -25,7 +25,7 @@ import { RouterModule } from '@angular/router';
       state(
         'hovered',
         style({
-          transform: 'scale(0.875)',
+          transform: 'scale(0.87)',
         })
       ),
       transition('normal <=> hovered', animate('300ms ease-in-out')),

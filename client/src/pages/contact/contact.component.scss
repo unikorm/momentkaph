@@ -67,7 +67,6 @@ a:not(:last-of-type) {
 
       & > div > div > p {
         margin: 0.9rem 0 0;
-        font: var(--FONT-LABEL);
         color: var(--BROWNIE);
         font-size: 2.5rem;
       }
@@ -124,7 +123,6 @@ input {
   margin-bottom: 1.1rem;
   background-color: transparent;
   font-size: 1.45rem;
-  line-height: 1;
   box-sizing: border-box;
 }
 
