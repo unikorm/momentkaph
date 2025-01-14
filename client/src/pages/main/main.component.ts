@@ -9,8 +9,4 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './main.component.scss',
 })
 export class MainComponent {
-
-  // constructor() {
-  //   window.scrollTo(0, 0);
-  // }
 }
