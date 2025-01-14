@@ -64,7 +64,7 @@ export class ContactComponent {
           this.emailService
             .sendEmail(data)
             .pipe(
-              tap((value) => {
+              tap(() => {
                 this.submitStatus .set('success');
                 this.newMessageForm.reset();
                 this.formSubmitted.set(false);

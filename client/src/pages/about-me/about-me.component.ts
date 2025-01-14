@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
   animate,
   state,
@@ -34,12 +34,12 @@ import { RouterModule } from '@angular/router';
 })
 export class AboutMeComponent {
 
-  imageState = 'normal';
+  readonly imageState = signal<'normal' | 'hovered'>('normal');
 
   onHover() {
-    this.imageState = 'hovered';
+    this.imageState.set('hovered');
   }
   onLeave() {
-    this.imageState = 'normal';
+    this.imageState.set('normal');
   }
 }

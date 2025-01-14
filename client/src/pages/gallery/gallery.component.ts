@@ -5,7 +5,7 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 
@@ -36,7 +36,7 @@ import { LanguageService } from '../../services/language.service';
 export class GalleryComponent {
   readonly languageService = inject(LanguageService)
 
-  imageStates: { [key: string]: string } = {
+  imageStates = signal<{ [key: string]: string }>({
     weddings: 'normal',
     'love-story': 'normal',
     pregnancy: 'normal',
@@ -44,17 +44,31 @@ export class GalleryComponent {
     studio: 'normal',
     baptism: 'normal',
     portrait: 'normal',
-  };
+  });
 
   onHover(section: string) {
-    this.imageStates[section] = 'hovered';
+    this.imageStates.update(states => {
+      return {
+        ...states,
+        [section]: 'hovered',
+      };
+    })
   }
   onLeave(section: string) {
-    this.imageStates[section] = 'normal';
+    this.imageStates.update(states => {
+      return {
+        ...states,
+        [section]: 'normal',
+      }
+    });
   }
 
   toggleState(section: string) {
-    this.imageStates[section] =
-      this.imageStates[section] === 'normal' ? 'hovered' : 'normal';
+    this.imageStates.update(states => {
+      return {
+        ...states,
+        [section]: states[section] === 'normal' ? 'hovered' : 'normal',
+      };
+    })
   }
 }

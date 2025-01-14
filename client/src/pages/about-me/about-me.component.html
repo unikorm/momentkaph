@@ -8,9 +8,9 @@
 <div class="about_container">
   <div class="about_container_content">
     <div class="image-container">
-      <img src="assets/about_photo.jpg" alt="photo of me on about page" [@imageHover]="imageState"
+      <img src="assets/about_photo.jpg" alt="photo of me on about page" [@imageHover]="imageState()"
         (mouseenter)="onHover()" (mouseleave)="onLeave()" (touchstart)="
-          imageState = imageState === 'normal' ? 'hovered' : 'normal'
+          imageState.set(imageState() === 'normal' ? 'hovered' : 'normal')
         " />
       <span i18n>to som ja</span>
     </div>

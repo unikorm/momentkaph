@@ -12,7 +12,7 @@
         <div class="image-container">
           <img src="assets/contact_photo.jpg" alt="photo of me on contact page" [@imageHover]="imageState()"
             (mouseenter)="onHover()" (mouseleave)="onLeave()" (touchstart)="
-              imageState() = imageState === 'normal' ? 'hovered' : 'normal'
+              imageState.set(imageState() === 'normal' ? 'hovered' : 'normal')
             " />
           <span i18n>to som ja</span>
         </div>
@@ -53,7 +53,7 @@
           <span class="error-message textarea" i18n>Príliš krátke...</span>
           }
         </div>
-        <button type="submit" [class.success]="submitStatus === 'success'" [class.error]="submitStatus === 'error'">
+        <button type="submit" [class.success]="submitStatus() === 'success'" [class.error]="submitStatus() === 'error'">
           @switch (submitStatus()) { @case ('success') {
           <span i18n>Správa odoslaná!</span>
           } @case ('error') {
