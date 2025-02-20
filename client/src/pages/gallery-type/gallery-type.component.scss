@@ -133,10 +133,6 @@ a:not(:last-of-type) {
 }
 
 @media screen and (max-width: 700px) {
-  .image-grid {
-    column-count: 1;
-  }
-
   .title-for-gallery {
 
     h1 {
