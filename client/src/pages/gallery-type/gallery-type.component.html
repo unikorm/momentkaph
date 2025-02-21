@@ -38,15 +38,20 @@
   @if (error()) {
   <div class="error-message">
     <p class="error">404</p>
-    <p i18n>Niečo sa nám pokazilo, ADMIN už o chybe vie a pracuje na jej vyriešení, skúste to o pár hodín opäť prosím</p>
+    <p i18n>Niečo sa nám pokazilo, ADMIN už o chybe vie a pracuje na jej vyriešení, skúste to o pár hodín opäť prosím
+    </p>
   </div>
   }
 
-  @if (images().length) {
+  @if (columnImages().length) {
   <div class="image-grid">
-    @for(image of images(); track image) {
-    <div class="image-card" @fadeIn>
-      <img [src]="image.fullUrl" loading="lazy" />
+    @for (column of columnImages(); track column.columnIndex) {
+    <div class="image-column">
+      @for (image of column.images; track image.fullUrl) {
+      <div class="image-card">
+        <img [src]="image.fullUrl" loading="lazy" />
+      </div>
+      }
     </div>
     }
   </div>

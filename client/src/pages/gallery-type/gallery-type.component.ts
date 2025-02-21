@@ -10,20 +10,17 @@ import {
   trigger,
 } from '@angular/animations';
 
+interface ColumnImages {
+  columnIndex: number;
+  images: GalleryTypeImageType[];
+}
+
 @Component({
   standalone: true,
   selector: 'gallery-type',
   imports: [RouterModule],
   templateUrl: './gallery-type.component.html',
   styleUrls: ['./gallery-type.component.scss'],
-  animations: [
-    trigger('fadeIn', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateY(20px)' }),
-        animate('400ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
-      ])
-    ])
-  ]
 })
 export class GalleryTypeComponent implements OnInit, AfterViewInit {
   readonly route = inject(ActivatedRoute);
@@ -31,7 +28,8 @@ export class GalleryTypeComponent implements OnInit, AfterViewInit {
   readonly storageService = inject(CloudStorageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
-  readonly images = signal<GalleryTypeImageType[]>([]);
+  readonly columnImages = signal<ColumnImages[]>([]);
+  readonly COLUMN_COUNT = signal<number>(3);
   readonly loading = signal(true);
   readonly error = signal<boolean>(false);
   readonly validTypes = Object.values(GalleryTypeEnum);
@@ -72,7 +70,16 @@ export class GalleryTypeComponent implements OnInit, AfterViewInit {
         // not right if it is good usage of firstValueFrom, but i need make promise from observable to store it in signal
         this.storageService.fetchGalleryImagesLinks(type)
       );
-      this.images.set(images);
+      const columns: ColumnImages[] = Array.from({ length: this.COLUMN_COUNT() }, (_, index) => ({
+        columnIndex: index,
+        images: []
+      }));
+
+      images.forEach((image, index) => {
+        columns[index % this.COLUMN_COUNT()].images.push(image);
+      });
+      
+      this.columnImages.set(columns);
     } catch (error) {
       this.error.set(true);
     } finally {
