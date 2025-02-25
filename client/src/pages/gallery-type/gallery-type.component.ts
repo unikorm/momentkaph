@@ -78,7 +78,7 @@ export class GalleryTypeComponent implements OnInit, AfterViewInit {
       images.forEach((image, index) => {
         columns[index % this.COLUMN_COUNT()].images.push(image);
       });
-      
+
       this.columnImages.set(columns);
     } catch (error) {
       this.error.set(true);

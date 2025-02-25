@@ -144,3 +144,14 @@ a:not(:last-of-type) {
     }
   }
 }
+
+@media screen and (max-width: 540px) {
+  .image-grid {
+    gap: 0.3rem;
+    padding: 3rem 0.3rem 0;
+  }
+
+  .image-card {
+    padding: 0 0;
+  }
+}
