@@ -31,7 +31,7 @@ nav {
 a {
   all: unset;
   cursor: pointer;
-  color: var(--LATTE);
+  color: var(--LATTE-ACCESSIBLE);
   font-size: 1.3rem;
   letter-spacing: 1px;
   line-height: 1;
@@ -42,7 +42,7 @@ a:not(:last-of-type) {
 }
 
 .activeLink {
-  color: var(--LATTE);
+  color: var(--LATTE-ACCESSIBLE);
   text-decoration: line-through;
 }
 

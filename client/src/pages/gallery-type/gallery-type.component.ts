@@ -3,12 +3,6 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImageType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { firstValueFrom } from 'rxjs';
-import {
-  animate,
-  style,
-  transition,
-  trigger,
-} from '@angular/animations';
 
 interface ColumnImages {
   columnIndex: number;

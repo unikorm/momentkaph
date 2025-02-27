@@ -49,7 +49,7 @@
     <div class="image-column">
       @for (image of column.images; track image.fullUrl) {
       <div class="image-card">
-        <img [src]="image.fullUrl" loading="lazy" />
+        <img [src]="image.fullUrl" loading="lazy" alt="some photo of actual section" />
       </div>
       }
     </div>

@@ -30,7 +30,7 @@ nav {
 a {
   all: unset;
   cursor: pointer;
-  color: var(--LATTE);
+  color: var(--LATTE-ACCESSIBLE);
   font-size: 1.3rem;
   letter-spacing: 1px;
   line-height: 1;
@@ -41,7 +41,7 @@ a:not(:last-of-type) {
 }
 
 .activeLink {
-  color: var(--LATTE);
+  color: var(--LATTE-ACCESSIBLE);
   text-decoration: line-through;
 }
 
@@ -204,7 +204,7 @@ button {
   padding: 0.5rem;
   font: var(--FONT-PRIMARY);
   border: none;
-  color: var(--LATTE);
+  color: var(--LATTE-ACCESSIBLE);
   background-color: var(--TOFFEE);
   cursor: pointer;
   font-size: 1.45rem;
