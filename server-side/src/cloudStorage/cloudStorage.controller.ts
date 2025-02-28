@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, Param, UseInterceptors } from '@nestjs/common';
 import { CloudStorageService } from './cloudStorage.service';
 import {
   GalleryTypeEnum,
@@ -11,9 +11,9 @@ import { CacheHeaderInterceptor } from 'src/interceptors/cache.interceptor';
 export class CloudStorageController {
   constructor(private readonly cloudStorageService: CloudStorageService) { }
 
-  @Post()
+  @Get(':galleryType')
   async fetchGalleryImagesLinks(
-    @Body('galleryType') galleryType: GalleryTypeEnum,
+    @Param('galleryType') galleryType: GalleryTypeEnum,
   ): Promise<PostGalleryTypeImageTypeResponseType[]> {
     return await this.cloudStorageService.fetchGalleryImagesLinks(galleryType);
   }

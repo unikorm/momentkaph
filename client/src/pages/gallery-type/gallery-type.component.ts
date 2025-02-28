@@ -60,6 +60,12 @@ export class GalleryTypeComponent implements OnInit, AfterViewInit {
       this.loading.set(true);
       this.error.set(false);
 
+      if (!this.validTypes.includes(type)) {
+        this.error.set(true);
+        this.loading.set(false);
+        return; // Exit early to prevent the API call
+      }
+
       const images = await firstValueFrom(
         // not right if it is good usage of firstValueFrom, but i need make promise from observable to store it in signal
         this.storageService.fetchGalleryImagesLinks(type)
