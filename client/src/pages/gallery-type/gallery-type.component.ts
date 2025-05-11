@@ -44,6 +44,8 @@ export class GalleryTypeComponent implements OnInit, AfterViewInit {
     if (!this.validTypes.includes(this.type() as GalleryTypeEnum)) {
       this.router.navigate(['/404']);
     }
+    // test this if it works to scroll to top as simplier solution
+    // window.scrollTo(0, 0)
   }
 
   ngAfterViewInit() { // scroll to top after view init, there was problem on mobile devices to not scroll to top properly, so this is workaround, works on IOS, Firefox, Chrome...
