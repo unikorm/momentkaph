@@ -92,6 +92,28 @@ a:not(:last-of-type) {
   object-position: 25%;
 }
 
+.description-for-gallery {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100svh; // smallest screen height, it is better then dvh (dynamic viewport height) cause it is better on look when it doesn't resize on scroll
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  scroll-snap-align: start;
+  padding: 5rem 3rem;
+
+  p {
+    font: var(--FONT-PRIMARY);
+    font-size: 1.52rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    text-align: center;
+  }
+}
+
+
 .image-grid {
   min-height: 100svh;
   gap: 0.5rem;
@@ -153,6 +175,10 @@ a:not(:last-of-type) {
 }
 
 @media screen and (max-width: 540px) {
+  .description-for-gallery {
+    padding: 5rem 2rem;
+  }
+
   .image-grid {
     gap: 0.3rem;
     padding: 3rem 0.3rem 0;
