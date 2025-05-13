@@ -7,7 +7,7 @@
 </div>
 <div class="gallery-container">
   <div class="title-for-gallery">
-    <img [src]="'assets/gallery_' + type() + '.jpg'" alt="title of gallery"
+    <img [src]="'assets/gallery_' + type() + '.avif'" alt="title of gallery"
       [class.adjusted-title]="type() === 'portrait' || type() === 'love-story'"
       [class.pregnancy-title]="type() === 'pregnancy'" />
     @switch (type()) {
@@ -38,6 +38,13 @@
   <div class="description-for-gallery">
     <p>here would be some epic shits written about particular gallery, as how much i want to fuck princess in the throat and so on. Btw, it could be anywhere, i just prefer throat. Peace</p>
   </div>
+
+  @if (type() === "baptism") {
+    <div>
+      <p>baptism</p>
+      <p>babies</p>
+    </div>
+  }
 
   @if (error()) {
   <div class="error-message">
