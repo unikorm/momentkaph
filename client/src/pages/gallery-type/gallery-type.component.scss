@@ -116,8 +116,8 @@ a:not(:last-of-type) {
 
 .image-grid {
   min-height: 100svh;
-  gap: 0.5rem;
-  padding: 3rem 0.5rem 0;
+  gap: .8rem;
+  padding: 5.1rem 0.8rem 0.4rem;
   display: flex;
   scroll-snap-align: start;
 }
@@ -129,9 +129,9 @@ a:not(:last-of-type) {
 }
 
 .image-card {
-  padding: 0.1rem 0;
+  padding: 0.2rem 0;
   width: 100%;
-  break-inside: avoid; // ???
+  break-inside: avoid;
 
   img {
     max-width: 100%;

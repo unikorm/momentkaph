@@ -36,14 +36,24 @@
   </div>
 
   <div class="description-for-gallery">
-    <p>here would be some epic shits written about particular gallery, as how much i want to fuck princess in the throat and so on. Btw, it could be anywhere, i just prefer throat. Peace</p>
+    <p>{{currentContent().description}}</p>
+    <div class="gallery-tips">
+      @for (tip of currentContent().tips; track $index) {
+      @if (tip.trim()) {
+      <div class="tip">
+        <span class="tip-number">{{ $index + 1 }}</span>
+        <p>{{ tip }}</p>
+      </div>
+      }
+      }
+    </div>
   </div>
 
   @if (type() === "baptism") {
-    <div>
-      <p>baptism</p>
-      <p>babies</p>
-    </div>
+  <div>
+    <p>baptism</p>
+    <p>babies</p>
+  </div>
   }
 
   @if (error()) {

@@ -2,6 +2,7 @@ import { Component, computed, signal, inject, effect, AfterViewInit, OnInit } fr
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImageType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
+import { GALLERY_CONTENT } from '../../shared/gallery-type-description.data';
 import { firstValueFrom } from 'rxjs';
 
 interface ColumnImages {
@@ -56,6 +57,14 @@ export class GalleryTypeComponent implements OnInit {
       });
     }, 0);
   } */
+
+  readonly currentContent = computed(() => {
+    const currentType = this.type();
+    return GALLERY_CONTENT[currentType as keyof typeof GALLERY_CONTENT] || {
+      description: '',
+      tips: []
+    };
+  })
 
   private async loadGalleryImages(type: GalleryTypeEnum) {
     try {
