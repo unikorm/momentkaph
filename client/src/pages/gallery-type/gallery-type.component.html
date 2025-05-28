@@ -36,13 +36,13 @@
   </div>
 
   <div class="description-for-gallery">
-    <p>{{currentContent().description}}</p>
+    <div [innerHTML]="currentContent().description" class="description"></div>
     <div class="gallery-tips">
       @for (tip of currentContent().tips; track $index) {
       @if (tip.trim()) {
       <div class="tip">
-        <span class="tip-number">{{ $index + 1 }}</span>
-        <p>{{ tip }}</p>
+        <span class="tip-number">{{ $index + 1 }}#</span>
+        <div [innerHTML]="tip"></div>
       </div>
       }
       }

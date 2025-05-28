@@ -95,21 +95,48 @@ a:not(:last-of-type) {
 .description-for-gallery {
   width: 100%;
   display: flex;
-  justify-content: center;
+  gap: 3rem;
+  justify-content: space-between;
   align-items: center;
   height: 100svh; // smallest screen height, it is better then dvh (dynamic viewport height) cause it is better on look when it doesn't resize on scroll
   display: flex;
+  flex-direction: column;
   position: relative;
-  overflow: hidden;
   scroll-snap-align: start;
   padding: 5rem 3rem;
 
-  p {
+  .description,
+  .tip {
     font: var(--FONT-PRIMARY);
     font-size: 1.52rem;
     letter-spacing: 1px;
     line-height: 1.2;
     text-align: center;
+  }
+
+  .description {
+    width: 100%;
+    max-width: 1564px;
+    padding: 9rem 2rem 0;
+  }
+}
+
+.gallery-tips {
+  display: flex;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1500px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  color: var(--BROWNIE-LITE);
+
+  .tip {
+    width: 28rem;
+    flex-shrink: 0;
+
+    strong {
+      font-weight: bold;
+    }
   }
 }
 
