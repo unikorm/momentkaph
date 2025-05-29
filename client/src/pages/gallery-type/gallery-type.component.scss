@@ -108,7 +108,7 @@ a:not(:last-of-type) {
   .description,
   .tip {
     font: var(--FONT-PRIMARY);
-    font-size: 1.52rem;
+    font-size: 1.5rem;
     letter-spacing: 1px;
     line-height: 1.2;
     text-align: center;
@@ -117,7 +117,7 @@ a:not(:last-of-type) {
   .description {
     width: 100%;
     max-width: 1564px;
-    padding: 9rem 2rem 0;
+    padding: 8rem 2rem 0;
   }
 }
 
@@ -128,18 +128,17 @@ a:not(:last-of-type) {
   max-width: 1500px;
   overflow-x: auto;
   overflow-y: hidden;
-  color: var(--BROWNIE-LITE);
+  opacity: .85;
 
   .tip {
     width: 28rem;
     flex-shrink: 0;
 
-    strong {
-      font-weight: bold;
+    .tip-number {
+      font-weight: 700;
     }
   }
 }
-
 
 .image-grid {
   min-height: 100svh;

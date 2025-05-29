@@ -4,7 +4,6 @@
   --LATTE: #d0bca0;
   --LATTE-ACCESSIBLE: #e2d7c0;
   --BROWNIE: #5e3023;
-  --BROWNIE-LITE: #7a4b3cd2;
   --BROWNIE-ACCESSIBLE: #4a1f13;
 
   --DANGER-SMOOTH: #f06449;
@@ -28,4 +27,26 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* styles for description part in gallery type, it must be here cause i have raw strings in object from where it is added to innerHTML in component */
+.headlineOfTextInDescription {
+  font-weight: 700;
+  letter-spacing: .1rem;
+  padding-top: .6rem;
+  font-size: 1.65rem;
+}
+
+.contentOfTextInDescription {
+  opacity: .85;
+}
+
+.headlineOfTipInDescription {
+  font-weight: 700;
+  letter-spacing: .1rem;
+  font-size: 1.65rem;
+}
+
+.contentOfTipInDescription {
+  opacity: .85;
 }

@@ -41,8 +41,9 @@
       @for (tip of currentContent().tips; track $index) {
       @if (tip.trim()) {
       <div class="tip">
-        <span class="tip-number">{{ $index + 1 }}#</span>
+        <span class="tip-number">---</span>
         <div [innerHTML]="tip"></div>
+        <span class="tip-number">---</span>
       </div>
       }
       }
