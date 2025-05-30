@@ -10,6 +10,7 @@ export enum GalleryTypeEnum {
   STUDIO = 'studio',
   PREGNANCY = 'pregnancy',
   BAPTISM = 'baptism',
+  NEWBORN = 'newborn',
 }
 
 export type PostGalleryTypeImageTypeResponseType = {

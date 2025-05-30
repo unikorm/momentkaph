@@ -11,8 +11,8 @@
       [class.adjusted-title]="type() === 'portrait' || type() === 'love-story'"
       [class.pregnancy-title]="type() === 'pregnancy'" />
     @switch (type()) {
-    @case ('baptism') {
-    <h1 i18n>Krsty</h1>
+    @case ('babies') {
+    <h1 i18n>Bábetká</h1>
     }
     @case ('weddings') {
     <h1 i18n>Svadby</h1>
@@ -36,13 +36,15 @@
   </div>
 
   <div class="description-for-gallery">
-    @if (type() === "baptism") {
-    <div class="selection-of-baby-type">
+    @if (type() === "babies") {
+    <div class="selection-of-babies-variant">
       <p>Krsty</p>
-      <p>Bábetká</p>
+      <p>Novorodenci</p>
     </div>
     }
-    <div [innerHTML]="currentContent().description" class="description"></div>
+    <div [innerHTML]="currentContent().description" class="description"
+      [style.padding-top]="(type() === 'baptism' || type() === 'newborn') ? '0' : null">
+    </div>
     <div class="arrow-wrapper">
       <img src="assets/arrow.svg" alt="arrow" class="arrow-left" />
       <div class="gallery-tips">

@@ -34,6 +34,18 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'gallery/:type/:variant',
+        title: (route: ActivatedRouteSnapshot) => {
+          const type = route.params['type'];
+          const variant = route.params['variant'];
+          return `Gallery - ${type} - ${variant}`;
+        },
+        loadComponent: () =>
+          import('./pages/gallery-type/gallery-type.component').then(
+            (m) => m.GalleryTypeComponent
+          ),
+      },
+      {
         path: 'about-me',
         title: 'About Me',
         loadComponent: () =>

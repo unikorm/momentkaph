@@ -23,6 +23,7 @@ export class GalleryTypeComponent implements OnInit {
   readonly storageService = inject(CloudStorageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
+  readonly variant = computed(() => this.route.snapshot.paramMap.get('variant') || null);
   readonly columnImages = signal<ColumnImages[]>([]);
   readonly COLUMN_COUNT = signal<number>(3);
   readonly loading = signal(true);
@@ -33,7 +34,9 @@ export class GalleryTypeComponent implements OnInit {
   ) {
     effect(
       () => {
-        if (this.type()) {
+        if (this.type() === 'babies') {
+          this.loadGalleryImages(this.variant() as GalleryTypeEnum);
+        } else {
           this.loadGalleryImages(this.type() as GalleryTypeEnum);
         }
       },
@@ -49,17 +52,17 @@ export class GalleryTypeComponent implements OnInit {
     window.scrollTo(0, 0)
   }
 
-/*   ngAfterViewInit() { // scroll to top after view init, there was problem on mobile devices to not scroll to top properly, so this is workaround, works on IOS, Firefox, Chrome...
-    setTimeout(() => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    }, 0);
-  } */
+  /*   ngAfterViewInit() { // scroll to top after view init, there was problem on mobile devices to not scroll to top properly, so this is workaround, works on IOS, Firefox, Chrome...
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }, 0);
+    } */
 
   readonly currentContent = computed(() => {
-    const currentType = this.type();
+    const currentType = this.variant() ? this.variant() : this.type();
     return GALLERY_CONTENT[currentType as keyof typeof GALLERY_CONTENT] || {
       description: '',
       tips: []
