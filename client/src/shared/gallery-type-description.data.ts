@@ -32,9 +32,13 @@ export const GALLERY_CONTENT = {
     "description": "",
     "tips": ["", "", ""]
   },
+  "baptism": {
+    "description": "iehwr ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hre iehwr ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hreyu iehwr ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hreyu iehwr ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hreyu yu",
+    "tips": ["esurhgtvubj rehughvirdkis dhgkr hnkiskefile surhgtvubj rehughvirdkis dhgkr hnkissurhgtvubj rehughvirdkis dhgkr hnkis", "awejrhg  akrfbaw surhgtvubj rehughvirdkis dhgkr hnkis jkae kjges h aekrf gkuesggkue", "iuserh ueur gesug surhgtvubj rehughvirdkis dhgkr hnkis surhgtvubj rehughvirdkis dhgkr hnkis surhgtvubj rehughvirdkis dhgkr hnkis rfugesruf k  srfug sekurgf esu rfkesrgf ku"]
+  },
   "babies": {
-    "description": "",
-    "tips": ["", "", ""]
+    "description": "babies ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hre iehwr ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hreyu iehwr ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hreyu iehwr ugekwu rfhe srugfh ishekirfh iawuefugsildfvdf bv jyersgukfes hkuy rvskzedbfiut4wgugsheukrgretjtkdtaeryeyjtdjydryr5yh esrgset tgheryit8ofdxzretewtureryhsertye5jeyjrdtyjeydrt hreyu yu",
+    "tips": ["babies rehughvirdkis dhgkr hnkiskefile surhgtvubj rehughvirdkis dhgkr hnkissurhgtvubj rehughvirdkis dhgkr hnkis", "awejrhg  akrfbaw surhgtvubj rehughvirdkis dhgkr hnkis jkae kjges h aekrf gkuesggkue", "iuserh ueur gesug surhgtvubj rehughvirdkis dhgkr hnkis surhgtvubj rehughvirdkis dhgkr hnkis surhgtvubj rehughvirdkis dhgkr hnkis rfugesruf k  srfug sekurgf esu rfkesrgf ku"]
   }
 } as const;
 

@@ -121,6 +121,23 @@ a:not(:last-of-type) {
   }
 }
 
+.selection-of-baby-type {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  max-width: 100%;
+  padding: 1rem 0 0;
+
+  p {
+    font-size: 1.6rem;
+    font-weight: 500;
+    letter-spacing: .6rem;
+    margin: 0;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
+
 .gallery-tips {
   display: flex;
   gap: 2rem;

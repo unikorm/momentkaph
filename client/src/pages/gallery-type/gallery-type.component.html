@@ -36,9 +36,15 @@
   </div>
 
   <div class="description-for-gallery">
+    @if (type() === "baptism") {
+    <div class="selection-of-baby-type">
+      <p>Krsty</p>
+      <p>Bábetká</p>
+    </div>
+    }
     <div [innerHTML]="currentContent().description" class="description"></div>
     <div class="arrow-wrapper">
-      <img src="assets/arrow.svg" alt="arrow" class="arrow-left"/>
+      <img src="assets/arrow.svg" alt="arrow" class="arrow-left" />
       <div class="gallery-tips">
         @for (tip of currentContent().tips; track $index) {
         @if (tip.trim()) {
@@ -50,16 +56,9 @@
         }
         }
       </div>
-      <img src="assets/arrow.svg" alt="arrow" class="arrow-right"/>
+      <img src="assets/arrow.svg" alt="arrow" class="arrow-right" />
     </div>
   </div>
-
-  @if (type() === "baptism") {
-  <div>
-    <p>baptism</p>
-    <p>babies</p>
-  </div>
-  }
 
   @if (error()) {
   <div class="error-message">
