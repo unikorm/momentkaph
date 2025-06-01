@@ -25,6 +25,11 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'gallery/babies',
+        redirectTo: 'gallery/babies/baptism',
+        pathMatch: 'full',
+      },
+      {
         path: 'gallery/:type',
         title: (route: ActivatedRouteSnapshot) =>
           `Gallery - ${route.params['type']}`,

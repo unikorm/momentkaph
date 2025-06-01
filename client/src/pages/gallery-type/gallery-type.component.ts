@@ -4,6 +4,7 @@ import { GalleryTypeEnum, GalleryTypeImageType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { GALLERY_CONTENT } from '../../shared/gallery-type-description.data';
 import { firstValueFrom } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 interface ColumnImages {
   columnIndex: number;
@@ -23,7 +24,7 @@ export class GalleryTypeComponent implements OnInit {
   readonly storageService = inject(CloudStorageService);
 
   readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
-  readonly variant = computed(() => this.route.snapshot.paramMap.get('variant') || null);
+  readonly variant = computed(() => this.route.snapshot.paramMap.get('variant'));
   readonly columnImages = signal<ColumnImages[]>([]);
   readonly COLUMN_COUNT = signal<number>(3);
   readonly loading = signal(true);
@@ -34,20 +35,18 @@ export class GalleryTypeComponent implements OnInit {
   ) {
     effect(
       () => {
-        if (this.type() === 'babies') {
-          this.loadGalleryImages(this.variant() as GalleryTypeEnum);
-        } else {
-          this.loadGalleryImages(this.type() as GalleryTypeEnum);
-        }
+        this.loadGalleryImages(this.type() === 'babies' ? this.variant() as GalleryTypeEnum : this.type() as GalleryTypeEnum);
       },
       { allowSignalWrites: true }
     );
   }
 
   ngOnInit() {
-    if (!this.validTypes.includes(this.type() as GalleryTypeEnum)) {
+    if (!this.validTypes.includes(this.type() === 'babies' ? this.variant() as GalleryTypeEnum : this.type() as GalleryTypeEnum)) {
       this.router.navigate(['/404']);
     }
+
+
     // test this if it works to scroll to top as simplier solution
     window.scrollTo(0, 0)
   }

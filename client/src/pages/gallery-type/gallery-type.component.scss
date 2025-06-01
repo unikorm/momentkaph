@@ -128,14 +128,21 @@ a:not(:last-of-type) {
   max-width: 100%;
   padding: 1rem 0 0;
 
-  p {
-    font-size: 1.6rem;
-    font-weight: 500;
+  a {
+    font-size: 1.8rem;
+    font-weight: 600;
     letter-spacing: .5rem;
     margin: 0;
-    text-decoration: underline;
-    cursor: pointer;
+    color: var(--BROWNIE);
   }
+}
+
+.activeLinkSection {
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: .5rem;
+  margin: 0;
+  text-decoration: underline;
 }
 
 .gallery-tips {

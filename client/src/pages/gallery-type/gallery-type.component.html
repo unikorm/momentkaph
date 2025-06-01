@@ -38,8 +38,8 @@
   <div class="description-for-gallery">
     @if (type() === "babies") {
     <div class="selection-of-babies-variant">
-      <p>Krsty</p>
-      <p>Novorodenci</p>
+      <a routerLink="../baptism" routerLinkActive="activeLinkSection" ariaCurrentWhenActive="page" i18n>Krsty</a>
+      <a routerLink="../newborn" routerLinkActive="activeLinkSection" ariaCurrentWhenActive="page" i18n>Novorodenci</a>
     </div>
     }
     <div [innerHTML]="currentContent().description" class="description"
