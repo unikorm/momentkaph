@@ -62,7 +62,7 @@ export class GalleryTypeComponent implements OnInit {
 
   readonly currentContent = computed(() => {
     const currentType = this.variant() ? this.variant() : this.type();
-    return GALLERY_CONTENT[currentType as keyof typeof GALLERY_CONTENT] || {
+    return GALLERY_CONTENT[currentType as keyof typeof GALLERY_CONTENT] || { // use GalleryContentType ??
       description: '',
       tips: []
     };
