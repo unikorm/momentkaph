@@ -18,28 +18,21 @@ import {
 import { RouterModule } from '@angular/router';
 
 @Component({
-  standalone: true,
-  selector: 'contact',
-  imports: [ReactiveFormsModule, RouterModule],
-  templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss',
-  animations: [
-    trigger('imageHover', [
-      state(
-        'normal',
-        style({
-          transform: 'scale(1)',
-        })
-      ),
-      state(
-        'hovered',
-        style({
-          transform: 'scale(0.87)',
-        })
-      ),
-      transition('normal <=> hovered', animate('300ms ease-in-out')),
-    ]),
-  ],
+    selector: 'contact',
+    imports: [ReactiveFormsModule, RouterModule],
+    templateUrl: './contact.component.html',
+    styleUrl: './contact.component.scss',
+    animations: [
+        trigger('imageHover', [
+            state('normal', style({
+                transform: 'scale(1)',
+            })),
+            state('hovered', style({
+                transform: 'scale(0.87)',
+            })),
+            transition('normal <=> hovered', animate('300ms ease-in-out')),
+        ]),
+    ]
 })
 export class ContactComponent {
   readonly emailService = inject(EmailService);

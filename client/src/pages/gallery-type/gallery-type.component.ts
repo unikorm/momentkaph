@@ -12,11 +12,10 @@ interface ColumnImages {
 }
 
 @Component({
-  standalone: true,
-  selector: 'gallery-type',
-  imports: [RouterModule],
-  templateUrl: './gallery-type.component.html',
-  styleUrls: ['./gallery-type.component.scss'],
+    selector: 'gallery-type',
+    imports: [RouterModule],
+    templateUrl: './gallery-type.component.html',
+    styleUrls: ['./gallery-type.component.scss']
 })
 export class GalleryTypeComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
