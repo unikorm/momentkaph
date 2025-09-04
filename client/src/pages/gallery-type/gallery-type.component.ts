@@ -13,6 +13,7 @@ interface ColumnImages {
 
 @Component({
     selector: 'gallery-type',
+    standalone: true,
     imports: [RouterModule],
     templateUrl: './gallery-type.component.html',
     styleUrls: ['./gallery-type.component.scss']

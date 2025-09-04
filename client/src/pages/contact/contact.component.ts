@@ -19,6 +19,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'contact',
+    standalone: true,
     imports: [ReactiveFormsModule, RouterModule],
     templateUrl: './contact.component.html',
     styleUrl: './contact.component.scss',

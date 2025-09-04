@@ -11,6 +11,7 @@ import { LanguageService } from '../../services/language.service';
 
 @Component({
     selector: 'gallery',
+    standalone: true,
     imports: [RouterModule],
     templateUrl: './gallery.component.html',
     styleUrl: './gallery.component.scss',

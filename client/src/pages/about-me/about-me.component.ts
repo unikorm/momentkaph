@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'about-me',
+    standalone: true,
     imports: [RouterModule],
     templateUrl: './about-me.component.html',
     styleUrl: './about-me.component.scss',

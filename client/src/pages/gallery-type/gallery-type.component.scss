@@ -95,10 +95,10 @@ a:not(:last-of-type) {
 .description-for-gallery {
   width: 100%;
   display: flex;
-  gap: 3rem;
+  gap: 7rem;
   justify-content: space-between;
   align-items: center;
-  height: 100svh; // smallest screen height, it is better then dvh (dynamic viewport height) cause it is better on look when it doesn't resize on scroll
+  height: auto;
   display: flex;
   flex-direction: column;
   position: relative;
