@@ -8,8 +8,8 @@
 <div class="contact_container">
   <div class="contact_container__content">
     <div class="contact_container__content_title">
-      <div>
-        <div class="image-container">
+      <div class="image_group">
+        <div class="image_container">
           <img src="assets/contact_photo.avif" alt="photo of me on contact page" [@imageHover]="imageState()"
             (mouseenter)="onHover()" (mouseleave)="onLeave()" (touchstart)="
               imageState.set(imageState() === 'normal' ? 'hovered' : 'normal')
