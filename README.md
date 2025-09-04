@@ -11,4 +11,4 @@ BE: DigitalOcean droplet
 images on DigitalOcean cloud  
 ...SurrealDB  
 
-thoughts: Node.js, HTMX
+thoughts: Node.js, HTMX, Ruby on Rails
