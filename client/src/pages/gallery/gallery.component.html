@@ -36,8 +36,9 @@
     </div>
     <div class="grid_item studio">
       <div class="image_container" routerLink="/gallery/studio">
-        <img src="assets/gallery_studio.avif" alt="photo of studio" loading="lazy" [@imageHover]="imageStates()['studio']"
-          (mouseenter)="onHover('studio')" (mouseleave)="onLeave('studio')" (touchstart)="toggleState('studio')" />
+        <img src="assets/gallery_studio.avif" alt="photo of studio" loading="lazy"
+          [@imageHover]="imageStates()['studio']" (mouseenter)="onHover('studio')" (mouseleave)="onLeave('studio')"
+          (touchstart)="toggleState('studio')" />
         <span i18n>Ateliér</span>
       </div>
     </div>
@@ -45,8 +46,9 @@
   <div>
     <div class="grid_item family">
       <div class="image_container" routerLink="/gallery/family">
-        <img src="assets/gallery_family.avif" alt="photo of family" loading="lazy" [@imageHover]="imageStates()['family']"
-          (mouseenter)="onHover('family')" (mouseleave)="onLeave('family')" (touchstart)="toggleState('family')" />
+        <img src="assets/gallery_family.avif" alt="photo of family" loading="lazy"
+          [@imageHover]="imageStates()['family']" (mouseenter)="onHover('family')" (mouseleave)="onLeave('family')"
+          (touchstart)="toggleState('family')" />
         <span i18n>Rodina</span>
       </div>
     </div>
@@ -66,6 +68,21 @@
         (touchstart)="toggleState('portrait')" />
       <span i18n>Portréty</span>
     </div>
+  </div>
+</div>
+<div class="review_section">
+  <div class="arrow-wrapper">
+    <img src="assets/arrow.svg" alt="arrow" class="arrow-left" />
+    <div class="gallery-reviews">
+      @for (review of allReviews(); track $index) {
+      <div class="review">
+        <span class="review-border">---</span>
+        <div [innerHTML]="review"></div>
+        <span class="review-border">---</span>
+      </div>
+      }
+    </div>
+    <img src="assets/arrow.svg" alt="arrow" class="arrow-right" />
   </div>
 </div>
 <div class="language_switcher">

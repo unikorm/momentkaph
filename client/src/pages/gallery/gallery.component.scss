@@ -131,6 +131,52 @@ a:not(:last-of-type) {
   text-decoration: line-through;
 }
 
+.review_section {
+  display: flex;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto 2rem;
+}
+
+.arrow-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: fit-content;
+}
+
+.arrow-left,
+.arrow-right {
+  height: 5rem;
+  opacity: .15;
+}
+
+.arrow-right {
+  rotate: 180deg;
+}
+
+.gallery-reviews {
+  display: flex;
+  gap: 2rem;
+  width: 100%;
+  max-width: 32rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  opacity: .85;
+  scroll-snap-type: x mandatory !important; // must be !important, otherwise it doesn't work
+
+  .review {
+    width: 32rem;
+    padding: 0 2rem;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+
+    .review-border {
+      font-weight: 700;
+    }
+  }
+}
+
 .language_switcher {
   display: flex;
   width: 100%;

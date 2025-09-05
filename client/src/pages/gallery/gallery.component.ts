@@ -8,6 +8,7 @@ import {
 import { Component, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
+import { GALLERY_REVIEWS } from '../../shared/gallery-reviews.data';
 
 @Component({
     selector: 'gallery',
@@ -29,6 +30,8 @@ import { LanguageService } from '../../services/language.service';
 })
 export class GalleryComponent {
   readonly languageService = inject(LanguageService)
+
+  readonly allReviews = signal<string[]>(GALLERY_REVIEWS);
 
   imageStates = signal<{ [key: string]: string }>({
     weddings: 'normal',
