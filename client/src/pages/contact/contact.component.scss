@@ -273,9 +273,13 @@ button:not(.success):not(.error):hover {
   .contact_container__content_title {
     align-items: center;
 
-    & > p {
+    & > div > div > p {
       text-align: center;
     }
+  }
+
+  .image_group {
+    max-width: 35rem;
   }
 
   .img {
