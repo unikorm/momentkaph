@@ -35,6 +35,7 @@
     }
   </div>
 
+  @if (type() === "weddings" || type() === "babies") {
   <div class="description-for-gallery">
     @if (type() === "babies") {
     <div class="selection-of-babies-variant">
@@ -42,6 +43,7 @@
       <a routerLink="../newborn" routerLinkActive="activeLinkSection" ariaCurrentWhenActive="page" i18n>Novorodenci</a>
     </div>
     }
+    @if (type() === "weddings") {
     <div [innerHTML]="currentContent().description" class="description"
       [style.padding-top]="(type() === 'baptism' || type() === 'newborn') ? '0' : null">
     </div>
@@ -60,7 +62,9 @@
       </div>
       <img src="assets/arrow.svg" alt="arrow" class="arrow-right" />
     </div>
+    }
   </div>
+  }
 
   @if (error()) {
   <div class="error-message">
