@@ -10,7 +10,7 @@
   width: 100%;
   max-width: 1300px;
   margin: 0 auto;
-  padding-bottom: 10rem;
+  padding-bottom: 5rem;
 }
 
 .grid_item {
@@ -135,7 +135,8 @@ a:not(:last-of-type) {
   display: flex;
   width: 100%;
   max-width: 1300px;
-  margin: 0 auto 2rem;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .arrow-wrapper {
@@ -182,7 +183,7 @@ a:not(:last-of-type) {
   width: 100%;
   max-width: 1300px;
   justify-content: end;
-  padding: 0 .5rem .5rem;
+  padding: 5rem .5rem .5rem;
   margin: 0 auto;
 
   button {

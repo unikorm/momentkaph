@@ -1,21 +1,19 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { GetReviewsResponseType } from '../shared/dtos';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
-    providedIn: 'root',
+  providedIn: 'root',
 })
 export class FacebookReviewService {
-    readonly http = inject(HttpClient);
-    
-    private pageAccessToken: string;
-    private pageId: string;
+  readonly http = inject(HttpClient);
+  private apiUrl = environment.apiUrl;
 
-    async fetchReviews(): Promise<FacebookReview[]> {
-        // Makes API call to Facebook Graph API
-        const response = await fetch(
-            `https://graph.facebook.com/v18.0/${this.pageId}/ratings?access_token=${this.pageAccessToken}`
-        );
-        return await response.json();
-    }
+  fetchReviews(): Observable<GetReviewsResponseType> {
+    return this.http.get<GetReviewsResponseType>(
+      `${this.apiUrl}/facebook_reviews`
+    );
+  }
 }

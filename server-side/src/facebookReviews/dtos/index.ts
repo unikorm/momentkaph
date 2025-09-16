@@ -1,0 +1,1 @@
+export * from './type/facebook_reviews.type';
