@@ -2,11 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
 import { EmailFormTemplate } from './templates/email-form.template';
-import { time } from 'console';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class EmailService {
-  constructor(private readonly mailService: MailerService) { }
+  constructor(private readonly mailService: MailerService, private configService: ConfigService) { }
 
   sendEmail = async (
     sendEmailDto: SendEmailServerType,
@@ -17,7 +17,7 @@ export class EmailService {
         timestamp: new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }),
       }
       await this.mailService.sendMail({
-        to: 'adaled00@gmail.com',
+        to: this.configService.get('EMAIL_RECIPIENT'),
         subject: `New Request from ${sendEmailDto.name} on momentkaph.sk`,
         html: EmailFormTemplate.generateEmailFormTemplate(templateData),
       });
