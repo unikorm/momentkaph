@@ -33,7 +33,7 @@ export class GalleryComponent {
   readonly languageService = inject(LanguageService)
   readonly facebookReviewService = inject(FacebookReviewService);
 
-  readonly allReviews = signal<string[]>();
+  // readonly allReviews = signal<string[]>();
 
   imageStates = signal<{ [key: string]: string }>({
     weddings: 'normal',
@@ -71,7 +71,7 @@ export class GalleryComponent {
     })
   }
 
-  private async fetchReviews() {
+  /* private async fetchReviews() {
     try {
       const response = await this.facebookReviewService.fetchReviews().toPromise();
       if (response && response.reviews) {
@@ -81,5 +81,5 @@ export class GalleryComponent {
     } catch (error) {
       console.error('Error fetching Facebook reviews:', error);
     }
-  }
+  } */
 }
