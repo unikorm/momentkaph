@@ -6,7 +6,10 @@ import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class EmailService {
-  constructor(private readonly mailService: MailerService, private configService: ConfigService) { }
+  constructor(private readonly mailService: MailerService, private configService: ConfigService) {
+    console.log('EMAIL_RECIPIENT from env:', this.configService.get('EMAIL_RECIPIENT'));
+    console.log('All env vars:', process.env); // This will show you everything available
+  }
 
   sendEmail = async (
     sendEmailDto: SendEmailServerType,

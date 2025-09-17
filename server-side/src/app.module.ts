@@ -6,6 +6,7 @@ import { CloudStorageModule } from './cloudStorage/cloudStorage.module';
 @Module({
   imports: [ConfigModule.forRoot({
     isGlobal: true,
+    cache: false,
   }), EmailModule, CloudStorageModule,],
   controllers: [],
   providers: [],
