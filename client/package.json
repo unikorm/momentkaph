@@ -5,7 +5,10 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "start:sk": "ng serve --configuration=sk",
+    "start:en": "ng serve --configuration=en",
+    "start:uk": "ng serve --configuration=uk"
   },
   "private": true,
   "dependencies": {

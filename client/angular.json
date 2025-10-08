@@ -70,20 +70,20 @@
                 }
               ]
             },
-            "en": {
-              "localize": [
-                "en"
-              ]
-            },
-            "uk": {
-              "localize": [
-                "uk"
-              ]
-            },
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "localize": false
+            },
+            "sk": {
+              "localize": ["sk"]
+            },
+            "en": {
+              "localize": ["en"]
+            },
+            "uk": {
+              "localize": ["uk"]
             }
           },
           "defaultConfiguration": "production"
@@ -96,6 +96,9 @@
             },
             "development": {
               "buildTarget": "client:build:development"
+            },
+            "sk": {
+              "buildTarget": "client:build:development,sk"
             },
             "en": {
               "buildTarget": "client:build:development,en"

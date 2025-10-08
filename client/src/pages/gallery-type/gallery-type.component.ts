@@ -2,7 +2,6 @@ import { Component, computed, signal, inject, effect, AfterViewInit, OnInit } fr
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { GalleryTypeEnum, GalleryTypeImageType } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
-import { GALLERY_CONTENT } from '../../shared/gallery-type-description.data';
 import { firstValueFrom } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 
@@ -12,19 +11,20 @@ interface ColumnImages {
 }
 
 @Component({
-    selector: 'gallery-type',
-    standalone: true,
-    imports: [RouterModule],
-    templateUrl: './gallery-type.component.html',
-    styleUrls: ['./gallery-type.component.scss']
+  selector: 'gallery-type',
+  standalone: true,
+  imports: [RouterModule],
+  templateUrl: './gallery-type.component.html',
+  styleUrls: ['./gallery-type.component.scss']
 })
 export class GalleryTypeComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
   readonly storageService = inject(CloudStorageService);
 
-  readonly type = computed(() => this.route.snapshot.paramMap.get('type'));
-  readonly variant = computed(() => this.route.snapshot.paramMap.get('variant'));
+  readonly routeParams = toSignal(this.route.paramMap, { requireSync: true });
+  readonly type = computed(() => this.routeParams().get('type'));
+  readonly variant = computed(() => this.routeParams().get('variant'));
   readonly columnImages = signal<ColumnImages[]>([]);
   readonly COLUMN_COUNT = signal<number>(3);
   readonly loading = signal(true);
@@ -59,14 +59,6 @@ export class GalleryTypeComponent implements OnInit {
         });
       }, 0);
     } */
-
-  readonly currentContent = computed(() => {
-    const currentType = this.variant() ? this.variant() : this.type();
-    return GALLERY_CONTENT[currentType as keyof typeof GALLERY_CONTENT] || { // use GalleryContentType ??
-      description: '',
-      tips: []
-    };
-  })
 
   private async loadGalleryImages(type: GalleryTypeEnum) {
     try {
