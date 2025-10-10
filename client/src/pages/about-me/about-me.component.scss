@@ -106,3 +106,9 @@ a:not(:last-of-type) {
   font-size: 1.3rem;
   z-index: 1;
 }
+
+@media screen and (max-width: 600px) {
+  .about_container {
+    padding: 6rem 2rem 3rem;
+  }
+}

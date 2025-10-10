@@ -18,6 +18,7 @@
   left: 0;
   z-index: 3;
 }
+
 nav {
   width: 100%;
   max-width: 1300px;
@@ -65,7 +66,7 @@ a:not(:last-of-type) {
       align-items: center;
       flex: 1;
 
-      & > div > div > p {
+      &>div>div>p {
         margin: 0.9rem 0 0;
         color: var(--BROWNIE);
         font-size: 2.5rem;
@@ -92,13 +93,13 @@ a:not(:last-of-type) {
   display: flex;
   gap: 2rem;
 
-  & > div > a > img {
+  &>div>a>img {
     width: 2rem;
     height: 2rem;
     cursor: pointer;
   }
 
-  & > div > a {
+  &>div>a {
     width: 2rem;
     height: 2rem;
     display: flex;
@@ -148,6 +149,7 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: var(--BROWNIE) !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+
 input:autofill,
 input:autofill:hover,
 input:autofill:focus,
@@ -215,6 +217,7 @@ button {
     background-color: var(--SUCCESS-SMOOTH);
     pointer-events: none;
   }
+
   &.error {
     background-color: var(--DANGER-SMOOTH);
     pointer-events: none;
@@ -232,6 +235,7 @@ button:not(.success):not(.error):hover {
   display: flex;
   flex-direction: column;
 }
+
 .image_container {
   display: flex;
   width: fit-content;
@@ -273,7 +277,7 @@ button:not(.success):not(.error):hover {
   .contact_container__content_title {
     align-items: center;
 
-    & > div > div > p {
+    &>div>div>p {
       text-align: center;
     }
   }
@@ -284,5 +288,11 @@ button:not(.success):not(.error):hover {
 
   .img {
     margin: 1rem 0 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .contact_container {
+    padding: 7rem 2rem 3rem;
   }
 }

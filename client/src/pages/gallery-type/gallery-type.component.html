@@ -36,7 +36,7 @@
   </div>
 
   @if (type() === "weddings" || type() === "babies") {
-  <div class="description-for-gallery">
+  <div class="description-for-gallery" [style.padding-bottom]="(type() === 'babies') ? '0' : null">
     @if (type() === "babies") {
     <div class="selection-of-babies-variant">
       <a routerLink="../baptism" routerLinkActive="activeLinkSection" ariaCurrentWhenActive="page" i18n>Krsty</a>

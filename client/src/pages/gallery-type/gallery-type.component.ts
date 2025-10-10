@@ -48,17 +48,17 @@ export class GalleryTypeComponent implements OnInit {
 
 
     // test this if it works to scroll to top as simplier solution
-    window.scrollTo(0, 0)
+    // window.scrollTo(0, 0)
   }
 
-  /*   ngAfterViewInit() { // scroll to top after view init, there was problem on mobile devices to not scroll to top properly, so this is workaround, works on IOS, Firefox, Chrome...
-      setTimeout(() => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }, 0);
-    } */
+  ngAfterViewInit() { // scroll to top after view init, there was problem on mobile devices to not scroll to top properly, so this is workaround, works on IOS, Firefox, Chrome...
+    setTimeout(() => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }, 0);
+  }
 
   private async loadGalleryImages(type: GalleryTypeEnum) {
     try {

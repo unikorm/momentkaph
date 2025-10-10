@@ -156,7 +156,8 @@ a:not(:last-of-type) {
   scroll-snap-type: x mandatory !important; // must be !important, otherwise it doesn't work
 
   .tip {
-    width: 32rem;
+    max-width: 32rem;
+    width: 100%;
     padding: 0 2rem;
     flex-shrink: 0;
     scroll-snap-align: start;
@@ -242,6 +243,34 @@ a:not(:last-of-type) {
       font-size: 2.25rem;
     }
   }
+
+  .description-for-gallery {
+    .description {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .arrow-wrapper {
+    display: block;
+  }
+
+  .arrow-left,
+  .arrow-right {
+    display: none;
+  }
+
+  .gallery-tips {
+    .tip {
+      padding: 0;
+    }
+  }
+
+  .selection-of-babies-variant {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -251,7 +280,7 @@ a:not(:last-of-type) {
 
   .image-grid {
     gap: 0.3rem;
-    padding: 3rem 0.3rem 0;
+    padding: 5rem 0.3rem 0;
   }
 
   .image-card {
