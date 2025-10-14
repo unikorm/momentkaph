@@ -54,7 +54,7 @@ a:not(:last-of-type) {
   padding-bottom: 10rem;
   overflow-y: scroll;
   scroll-behavior: smooth;
-  scroll-snap-type: y mandatory !important; // must be !important, otherwise it doesn't work
+  scroll-snap-type: y proximity !important; // must be !important, otherwise it doesn't work
 }
 
 .title-for-gallery {
@@ -173,6 +173,7 @@ a:not(:last-of-type) {
   align-items: center;
   width: 100%;
   max-width: fit-content;
+  position: relative;
 }
 
 .arrow-left,
@@ -182,6 +183,29 @@ a:not(:last-of-type) {
 }
 
 .arrow-right {
+  rotate: 180deg;
+}
+
+.arrow-smaller-left,
+.arrow-smaller-right {
+  height: 2rem;
+  opacity: .15;
+  position: absolute;
+  display: none;
+}
+
+.arrow-smaller-left {
+  top: calc(50% - 1rem);
+  left: -1.665rem;
+}
+
+.arrow-smaller-right {
+  top: calc(50% - 1rem);
+  right: -1.665rem;
+}
+
+
+.arrow-smaller-right {
   rotate: 180deg;
 }
 
@@ -260,6 +284,29 @@ a:not(:last-of-type) {
     display: none;
   }
 
+  .arrow-smaller-left,
+  .arrow-smaller-right {
+    height: 2rem;
+    opacity: .15;
+    position: absolute;
+    display: block;
+  }
+
+  .arrow-smaller-left {
+    top: calc(50% - 1rem);
+    left: -2.665rem;
+  }
+
+  .arrow-smaller-right {
+    top: calc(50% - 1rem);
+    right: -2.665rem;
+  }
+
+
+  .arrow-smaller-right {
+    rotate: 180deg;
+  }
+
   .gallery-tips {
     .tip {
       padding: 0;
@@ -276,6 +323,16 @@ a:not(:last-of-type) {
 @media screen and (max-width: 540px) {
   .description-for-gallery {
     padding: 5rem 2rem;
+  }
+
+  .arrow-smaller-left {
+    top: calc(50% - 1rem);
+    left: -1.665rem;
+  }
+
+  .arrow-smaller-right {
+    top: calc(50% - 1rem);
+    right: -1.665rem;
   }
 
   .image-grid {
