@@ -193,8 +193,8 @@
           <context context-type="linenumber">68,69</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7180798187664969417" datatype="html">
-        <source>Bábetká</source>
+      <trans-unit id="2109674261413490598" datatype="html">
+        <source>Bábätká</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
           <context context-type="linenumber">15,16</context>
@@ -330,119 +330,119 @@
         <source>Pripravte si detaily dopredu.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">71,72</context>
+          <context context-type="linenumber">72,73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8517275617619097515" datatype="html">
         <source>Prstienky, pozvánky, parfum, topánky či svadobnú kyticu si pripravte na jedno miesto. Ušetríme čas a ja ich môžem krásne nafotiť ešte pred obliekaním.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">72,74</context>
+          <context context-type="linenumber">73,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="155448962104228403" datatype="html">
         <source>Zastavte sa.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">81,82</context>
+          <context context-type="linenumber">82,83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2468229067036266370" datatype="html">
         <source>Počas dňa si vedome doprajte chvíľku len pre seba. Uvedomte si, že ten deň je o vás dvoch – nie len o programe. Tie najkrajšie momenty vznikajú práve v týchto tichých, úprimných okamihoch.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">82,85</context>
+          <context context-type="linenumber">83,86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="676764724653797670" datatype="html">
         <source>Nechajte si viac času na prípravy.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">92,93</context>
+          <context context-type="linenumber">93,94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2671112703545727604" datatype="html">
         <source>Ráno vždy letí rýchlejšie, ako sa zdá. Zarezervujte si aspoň o 15–20 minút viac, ako si myslíte, že potrebujete – pre pokoj a pohodu.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">93,95</context>
+          <context context-type="linenumber">94,96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2061142701586771811" datatype="html">
         <source>Nebojte sa emócií.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">102,103</context>
+          <context context-type="linenumber">103,104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3220267268646542488" datatype="html">
         <source>Plač, smiech, objatia – to všetko tvorí silné a nezabudnuteľné fotografie a zábery. Byť autentický = byť krásny.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">103,104</context>
+          <context context-type="linenumber">104,105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6288302556823885158" datatype="html">
         <source>Dôverujte svojmu fotografovi.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">111,112</context>
+          <context context-type="linenumber">112,113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4769433795332020445" datatype="html">
         <source>Niektoré pózy alebo miesta môžu na prvý pohľad pôsobiť zvláštne, ale výsledok bude stáť za to. Niekedy ten najnudnejší múr dá najkrajšiu fotku.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">112,114</context>
+          <context context-type="linenumber">113,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2746684000851963894" datatype="html">
         <source>Zlatá hodina je váš priateľ.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">121,122</context>
+          <context context-type="linenumber">122,123</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2238653868281309012" datatype="html">
         <source>Plánujte párové fotenie na čas pred západom slnka – svetlo bude mäkké, teplé a veľmi lichotivé.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">122,123</context>
+          <context context-type="linenumber">123,124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1658961789374833284" datatype="html">
         <source>Majte plán B.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">130,131</context>
+          <context context-type="linenumber">131,132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5415255829408322968" datatype="html">
         <source>Ak svadba je vonku, myslite aj na dáždniky, prístrešok alebo alternatívnu lokalitu – aby vás počasie nezaskočilo.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">131,132</context>
+          <context context-type="linenumber">132,133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8421670945928180985" datatype="html">
         <source>Foťme aj s hosťami.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">139,140</context>
+          <context context-type="linenumber">140,141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9207999033699969336" datatype="html">
         <source>Nezabudnite si vytvoriť zoznam ľudí, s ktorými chcete spoločnú fotku. V svadobnom zhone sa ľahko na niekoho zabudne.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">140,142</context>
+          <context context-type="linenumber">141,143</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9006461252779415438" datatype="html">
         <source>Niečo sa nám pokazilo, ADMIN už o chybe vie a pracuje na jej vyriešení, skúste to o pár hodín opäť prosím </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">156,158</context>
+          <context context-type="linenumber">158,160</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6628313228786963379" datatype="html">

@@ -214,7 +214,7 @@
           <context context-type="linenumber">68,69</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7180798187664969417" datatype="html">
+      <trans-unit id="2109674261413490598" datatype="html">
         <source>Bábetká</source>
         <target>Babies</target>
         <context-group purpose="location">
@@ -367,7 +367,7 @@
         <target>Prepare the details in advance.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">71,72</context>
+          <context context-type="linenumber">72,73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8517275617619097515" datatype="html">
@@ -375,7 +375,7 @@
         <target>Prepare the rings, invitations, perfume, shoes or wedding bouquet in one place. We'll save time and I can photograph them beautifully even before getting dressed.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">72,74</context>
+          <context context-type="linenumber">73,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="155448962104228403" datatype="html">
@@ -383,7 +383,7 @@
         <target>Stop and pause.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">81,82</context>
+          <context context-type="linenumber">82,83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2468229067036266370" datatype="html">
@@ -391,7 +391,7 @@
         <target>During the day, consciously give yourself a moment just for yourselves. Realize that the day is about the two of you – not just about the schedule. The most beautiful moments are created in these quiet, genuine moments.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">82,85</context>
+          <context context-type="linenumber">83,86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="676764724653797670" datatype="html">
@@ -399,7 +399,7 @@
         <target>Allow more time for preparations.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">92,93</context>
+          <context context-type="linenumber">93,94</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2671112703545727604" datatype="html">
@@ -407,7 +407,7 @@
         <target>Mornings always fly by faster than they seem. Reserve at least 15–20 minutes more than you think you need – for peace and comfort.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">93,95</context>
+          <context context-type="linenumber">94,96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2061142701586771811" datatype="html">
@@ -415,7 +415,7 @@
         <target>Don't be afraid of emotions.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">102,103</context>
+          <context context-type="linenumber">103,104</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3220267268646542488" datatype="html">
@@ -423,7 +423,7 @@
         <target>Tears, laughter, hugs – all of this creates powerful and unforgettable photographs and shots. Being authentic = being beautiful.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">103,104</context>
+          <context context-type="linenumber">104,105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6288302556823885158" datatype="html">
@@ -431,7 +431,7 @@
         <target>Trust your photographer.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">111,112</context>
+          <context context-type="linenumber">112,113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4769433795332020445" datatype="html">
@@ -439,7 +439,7 @@
         <target>Some poses or places may seem strange at first glance, but the result will be worth it. Sometimes the most boring wall makes the most beautiful photo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">112,114</context>
+          <context context-type="linenumber">113,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2746684000851963894" datatype="html">
@@ -447,7 +447,7 @@
         <target>Golden hour is your friend.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">121,122</context>
+          <context context-type="linenumber">122,123</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2238653868281309012" datatype="html">
@@ -455,7 +455,7 @@
         <target>Plan couple photos for the time before sunset – the light will be soft, warm and very flattering.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">122,123</context>
+          <context context-type="linenumber">123,124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1658961789374833284" datatype="html">
@@ -463,7 +463,7 @@
         <target>Have a plan B.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">130,131</context>
+          <context context-type="linenumber">131,132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5415255829408322968" datatype="html">
@@ -471,7 +471,7 @@
         <target>If the wedding is outdoors, think about umbrellas, shelter or an alternative location – so the weather doesn't catch you off guard.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">131,132</context>
+          <context context-type="linenumber">132,133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8421670945928180985" datatype="html">
@@ -479,7 +479,7 @@
         <target>Let's take photos with guests too.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">139,140</context>
+          <context context-type="linenumber">140,141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9207999033699969336" datatype="html">
@@ -487,7 +487,7 @@
         <target>Don't forget to create a list of people you want a photo with. In the wedding rush, it's easy to forget someone.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">140,142</context>
+          <context context-type="linenumber">141,143</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9006461252779415438" datatype="html">
@@ -495,7 +495,7 @@
         <target>Something went wrong, the ADMIN has been notified of the error and is working on fixing it. Please try again in a few hours.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">156,158</context>
+          <context context-type="linenumber">158,160</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6628313228786963379" datatype="html">
