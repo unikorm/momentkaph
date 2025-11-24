@@ -155,13 +155,28 @@ a:not(:last-of-type) {
   opacity: .85;
   scroll-snap-type: x mandatory !important; // must be !important, otherwise it doesn't work
 
-  // Hide scrollbar for Chrome, Safari and Opera
+  // scrollbar on desktop browsers Chrome/Safari
   &::-webkit-scrollbar {
-    display: none;
+    height: 8px; // thin but visible
   }
-  // Hide scrollbar for IE, Edge and Firefox
-  -ms-overflow-style: none;  // IE and Edge
-  scrollbar-width: none;  // Firefox
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    
+    &:hover {
+      background: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  // For Firefox/Edge
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1); // thumb and track colors
 
   .tip {
     max-width: 32rem;
@@ -350,5 +365,15 @@ a:not(:last-of-type) {
 
   .image-card {
     padding: 0 0;
+  }
+}
+
+// Hide scrollbar on touch devices only
+@media (hover: none) and (pointer: coarse) {
+  .gallery-tips {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
   }
 }
