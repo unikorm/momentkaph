@@ -52,7 +52,7 @@ http {
         log_format detailed '$remote_addr - $remote_user [$time_local] '
                        '"$request" $status $body_bytes_sent '
                        '"$http_referer" "$http_user_agent" '
-                       'requestTime=$request_time TCP="$upstream_connect_time" '
+                       'totalRequestTime=$request_time TCP="$upstream_connect_time" '
                        'responseHeaders="$upstream_header_time" requestToResponse="$upstream_response_time"';
         access_log /var/log/nginx/access.log detailed;
 
