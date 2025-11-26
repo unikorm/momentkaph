@@ -1,14 +1,17 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
 import { EmailFormTemplate } from './templates/email-form.template';
-import * as sgMail from '@sendgrid/mail';
+import { Resend } from 'resend';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class EmailService {
+  private resend: Resend;
+  private readonly logger = new Logger(EmailService.name);
+
   constructor(private configService: ConfigService) {
-    const apikey = this.configService.get('SENDGRID_API_KEY');
-    sgMail.setApiKey(apikey);
+    const apikey = this.configService.get('RESEND_API_KEY');
+    this.resend = new Resend(apikey);
   }
 
   sendEmail = async (
@@ -18,19 +21,36 @@ export class EmailService {
       const templateData = {
         ...sendEmailDto,
         timestamp: new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }),
-      }
+      };
+
       const msg = {
+        from: this.configService.get('EMAIL_SENDER'),
         to: this.configService.get('EMAIL_RECIPIENT'),
-        from: this.configService.get('SENDGRID_FROM_EMAIL'),
-        subject: `New message from ${sendEmailDto.name} on momenntkaph.sk`,
+        subject: `New message from ${sendEmailDto.name} on momentkaph.sk`,
         html: EmailFormTemplate.generateEmailFormTemplate(templateData),
       };
 
-      await sgMail.send(msg);
-      return { status: true };
+      const response = await this.resend.emails.send(msg);
+
+      // Log error if resend API returns an error
+      if (response.error) {
+        this.logger.error(
+          `Resend API returned an error: ${response.error.message}`,
+          response.error
+        );
+        return { status: false };
+      }
+
+      // If email is sent successfully
+      if (response.data?.id) {
+        return { status: true };
+      }
     } catch (error) {
-      const errorMessage = error.message || 'Unknown error';
-      return { status: false, error: errorMessage };
+      this.logger.error(
+        `Failed to send email due to exception: ${error.message}`,
+        error.stack
+      );
+      return { status: false };
     }
   };
 }
