@@ -18,22 +18,22 @@ import {
 import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'contact',
-    standalone: true,
-    imports: [ReactiveFormsModule, RouterModule],
-    templateUrl: './contact.component.html',
-    styleUrl: './contact.component.scss',
-    animations: [
-        trigger('imageHover', [
-            state('normal', style({
-                transform: 'scale(1)',
-            })),
-            state('hovered', style({
-                transform: 'scale(0.87)',
-            })),
-            transition('normal <=> hovered', animate('300ms ease-in-out')),
-        ]),
-    ]
+  selector: 'contact',
+  standalone: true,
+  imports: [ReactiveFormsModule, RouterModule],
+  templateUrl: './contact.component.html',
+  styleUrl: './contact.component.scss',
+  animations: [
+    trigger('imageHover', [
+      state('normal', style({
+        transform: 'scale(1)',
+      })),
+      state('hovered', style({
+        transform: 'scale(0.87)',
+      })),
+      transition('normal <=> hovered', animate('300ms ease-in-out')),
+    ]),
+  ]
 })
 export class ContactComponent {
   readonly emailService = inject(EmailService);
@@ -58,13 +58,23 @@ export class ContactComponent {
           this.emailService
             .sendEmail(data)
             .pipe(
-              tap(() => {
-                this.submitStatus .set('success');
-                this.newMessageForm.reset();
-                this.formSubmitted.set(false);
+              tap((response) => {
+                // The response object contains { status: true } or { status: false }
+                if (response.status === true) {
+                  // Email was sent successfully by Resend
+                  this.submitStatus.set('success');
+                  this.newMessageForm.reset();
+                  this.formSubmitted.set(false);
+                } else {
+                  // Backend returned status: false, meaning Resend couldn't send the email
+                  this.submitStatus.set('error');
+                  this.newMessageForm.reset();
+                  this.formSubmitted.set(false);
+                }
               }),
               catchError((error) => {
                 this.submitStatus.set('error');
+                this.newMessageForm.reset();
                 this.formSubmitted.set(false);
                 return error;
               }),
