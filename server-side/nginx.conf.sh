@@ -24,10 +24,10 @@ http {
 
         # Aggressive Rate Limiting - Single Zone Strategy
         # Using a single unified zone reduces memory overhead and simplifies management
-        # 10m zone can track ~160,000 unique IP addresses
-        # 10 requests per second
-        limit_req_zone $binary_remote_addr zone=api_req_limit:10m rate=10r/s;
-        limit_conn_zone $binary_remote_addr zone=api_conn_limit:10m; # creating api_conn_limit zone with 10 open concurrent connections per IP
+        # 5m zone can track ~80,000 unique IP addresses -> shared memory for rate limiting
+        # 5 requests per second per IP
+        limit_req_zone $binary_remote_addr zone=api_req_limit:5m rate=5r/s;
+        limit_conn_zone $binary_remote_addr zone=api_conn_limit:5m; # creating api_conn_limit zone with 5m of shared memory -> ~80,000 unique IPs
         limit_req_status 429; # respond Too Many Requests
         limit_conn_status 429; # respond Too Many Requests
 
