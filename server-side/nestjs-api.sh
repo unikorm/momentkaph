@@ -1,9 +1,17 @@
 server {
+    listen 443 ssl;
     server_name api.momentkaph.sk;
 
-    # max request size
-    client_max_body_size 1M;
-    client_body_buffer_size 128k;
+    # block bad bots
+    if ($is_bad_bot) {
+        set $block_bot 1;
+    }
+    if ($is_search_bot) {
+        set $block_bot 0; # allow search engine bots
+    }
+    if ($block_bot) {
+        return 418; # I'm a teapot
+    }
 
     # Block requests containing suspicious commands
     location ~* "(wget|curl|rm|eval|bash|sh)" {
@@ -12,7 +20,6 @@ server {
 
     # handle bots requests
     location ~ /(\.env|\.git|credentials|conf|ini|sh|bak|log|\.cgi) {
-        limit_req zone=critical_paths burst=1 nodelay;
         deny all;
         return 404;
     }
@@ -57,7 +64,7 @@ server {
 
     listen 80;
     server_name api.momentkaph.sk;
-    return 404; # managed by Certbot
+    return 418; # managed by Certbot
 
 
 }

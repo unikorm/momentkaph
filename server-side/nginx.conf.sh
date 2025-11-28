@@ -22,6 +22,20 @@ http {
         include /etc/nginx/mime.types; # Map file extensions to MIME types
         default_type application/octet-stream; # Default MIME type, if Nginx can't determine actual type of content being served
 
+        # Search bots detection
+        map $http_user_agent $is_search_bot {
+            default 0;
+            ~*(googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebot|ia_archiver) 1;
+        }
+
+        # Malicious bots detection
+        map $http_user_agent $is_bad_bot {
+            default 0;
+            # this could be endless list, just adding the most known bad bots / scanners / vulnerability scanners / exploit tools
+            ~*(masscan|python-requests|curl|wget|nikto|acunetix|sqlmap|fimap|havij|morfeus|netsparker|openvas|nessus|dirbuster|dirb|wfuzz|bot|crawler|spider|scraper|java|Bytespider|GPTBot|SeekportBot|TinyTestBot) 1;
+            "" 1;  # Empty user agent
+        }
+
         # Aggressive Rate Limiting - Single Zone Strategy -> global resources
         # Using a single unified zone reduces memory overhead and simplifies management
         # 5m zone can track ~80,000 unique IPv4 addresses -> shared memory for rate limiting
