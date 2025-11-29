@@ -22,13 +22,7 @@ http {
         include /etc/nginx/mime.types; # Map file extensions to MIME types
         default_type application/octet-stream; # Default MIME type, if Nginx can't determine actual type of content being served
 
-        # Search bots detection
-        map $http_user_agent $is_search_bot {
-            default 0;
-            ~*(googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebot|ia_archiver) 1;
-        }
-
-        # Malicious bots detection
+        # Malicious bots detection for 418
         map $http_user_agent $is_bad_bot {
             default 0;
             # this could be endless list, just adding the most known bad bots / scanners / vulnerability scanners / exploit tools
