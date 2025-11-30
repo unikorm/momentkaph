@@ -2,49 +2,73 @@ server {
     listen 443 ssl;
     server_name api.momentkaph.sk;
 
-    # SSL logic (for SSL handshake using certificates)
-    ssl_certificate /etc/letsencrypt/live/api.momentkaph.sk/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # managed by Certbot
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
     # block bad bots
     if ($is_bad_bot) {
         return 418; # I'm a teapot
     }
 
+    # enforce correct case-sensitive hostname and prevent attacks as direct IP access, etc.
+    if ($host !~ ^api\.momentkaph\.sk$) {
+    return 421; # Misdirected Request
+    }
+
+    # Handle preflight requests
+    if ($request_method = 'OPTIONS') {
+        return 204;
+    }
+
+    # SSL logic (for SSL handshake using certificates)
+    ssl_certificate /etc/letsencrypt/live/api.momentkaph.sk/fullchain.pem; # managed by Certbot
+    ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    # add CA trusted certificates ??
+
     # Rate limiting applied to all endpoints
-    limit_req zone=api_req_limit burst=0 nodelay;
+    limit_req zone=api_req_limit burst=0;
     limit_conn api_conn_limit 2;
 
     # request timeouts to prevent hanging connections
-    proxy_connect_timeout 60;
-    proxy_send_timeout 60;
-    proxy_read_timeout 60;
-    send_timeout 60;
+    proxy_connect_timeout 10; # 60 sec is default; connection to localhost BE server is in milliseconds
+    proxy_send_timeout 10; # 60 sec is default; timeout set between two successive write operations, not for the transmission of the whole request.
+    proxy_read_timeout 10; # 60 sec is default; timeout for reading two successive read operations, not for the transmission of the whole response.
 
-    # add security headers
-    add_header X-Frame-Options "SAMEORIGIN";
-    add_header X-Content-Type-Options "nosniff";
-    add_header X-XSS-Protection "1; mode=block";
-    add_header Strict-Transport-Security "max-age=31536000" always;
-    add_header X-Content-Security-Policy "default-src 'self'";
-    add_header X-Permitted-Cross-Domain-Policies "none";
+    # add security headers to responses
+    add_header Strict-Transport-Security "max-age=31536000" always; # enforce HTTPS for 1 year
+    add_header X-Content-Type-Options "nosniff"; # prevents browsers from guessing MIME types and forces them to stick with the declared content type
 
-    # Email sending endpoint
+    # CORS headers -> for browser to know from response with those headers who is allowed to access resources, browser enforces CORS policy then
+    add_header Access-Control-Allow-Origin "https://www.momentkaph.sk" always;
+    add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
+    add_header Access-Control-Allow-Headers "Content-Type" always;
+    add_header Access-Control-Max-Age "3600" always;
+
+    # Proxy setup
+    proxy_http_version 1.1; # use HTTP/1.1 to support keep-alive connections to backend
+
+    # Proxy buffering settings -> per-request resources
+    proxy_buffering on; # default is on; enable buffering of responses from the proxied server
+    proxy_buffer_size 4kb; # default is 4k or 8k; size of the buffer used for reading the first part of the response (headers) from the proxied server
+    proxy_buffers 8 8k; # default is 8 4k or 8 8k; number and size of buffers used for reading a response from the proxied server
+    proxy_busy_buffers_size 32k; # default is 8k or 16k; size of buffers that can be busy sending a response to the client while the response is not yet fully read.
+
+    # Shared proxy headers to backend services
+    proxy_set_header Host $host; # pass the original Host header
+    proxy_set_header X-Real-IP $remote_addr; # pass the client IP address
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; # pass the original X-Forwarded-For header -> list of IPs through which request passed; not useful in my case, but standard practice
+    proxy_set_header X-Forwarded-Proto $scheme; # pass the original protocol (http or https) used by the client
+    proxy_set_header Connection ""; # disable connection header to allow keep-alive connections to backend
+
+    # Email sending endpoint, 
     location = /email_sending {
         # backend handling
-        proxy_pass http://localhost:3000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://localhost:3000$uri$is_args$args; # default is $uri without args -> $uri is decoded/normalized version of original request URI -> safer
     }
 
     # Cloud storage endpoint with parameter
     location ~ ^/cloud_storage/(weddings|portrait|love-story|family|studio|pregnancy|baptism|newborn)$ {
-        # backedn handling
-        proxy_pass http://localhost:3000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        # backend handling
+        proxy_pass http://localhost:3000$uri$is_args$args;
 }
 
     location / {
@@ -53,11 +77,10 @@ server {
 
 }
 
-server {
+erver {
     listen 80;
     server_name api.momentkaph.sk;
     
-    if ($host = api.momentkaph.sk) {
-        return 301 https://$host$request_uri;
-    }
+    # redirect all HTTP to HTTPS
+    return 301 https://$server_name$request_uri;
 }

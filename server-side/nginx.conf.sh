@@ -43,7 +43,7 @@ http {
         client_header_timeout 25s; # default is 60sec;  25 seconds to wait for client to send headers
         client_body_timeout 35s; # default is 60sec; 35 seconds to waits for client to send request body (for POST requests)
         keepalive_timeout 40s; # default is 65sec; 40 seconds idle keepalive connections stays open
-        send_timeout 35s; # 35 seconds to transmit response to client -> arrays of links of photos are quite large
+        send_timeout 35s; # default is 60sec; 35 seconds to transmit response to client -> arrays of links of photos are quite large
         client_max_body_size 100k; # default is 1M; 100kb maximum allowed size of client request body -> there would be only text in contact form, so it is enough
         
         # Buffer sizes -> conservative -> per-request resources 
@@ -53,7 +53,7 @@ http {
 
         # SSL Settings
         ssl_protocols TLSv1.2 TLSv1.3; # what encryption types must connections use
-        ssl_prefer_server_ciphers on; # enforce that connections use strong ciphers
+        ssl_prefer_server_ciphers on; # enforce that connections use strong ciphers (server preference over client preference)
 
 
         # Logging Settings
