@@ -12,16 +12,16 @@ server {
     return 421; # Misdirected Request
     }
 
-    # Handle preflight requests
+    # Handle preflight requests -> OPTIONS preflight requests are for non-simple requests and tell the browser what is actually allowed to send on this BE
     if ($request_method = 'OPTIONS') {
-        add_header Access-Control-Allow-Origin "https://www.momentkaph.sk" always;
-        add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
-        add_header Access-Control-Allow-Headers "Content-Type" always;
-        add_header Access-Control-Max-Age "3600" always;
-        return 204;
+        add_header Access-Control-Allow-Origin "https://www.momentkaph.sk" always; # only from this origin
+        add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always; # only these methods
+        add_header Access-Control-Allow-Headers "Content-Type" always; # with Content-Type header -> in future, i want Authorization implements too
+        add_header Access-Control-Max-Age "3600" always; # tells the browser how long he can cache this headers, in this case 1 hour, then it must send another OPTIONS preflight request before actual request
+        return 204; # No Content -> standart response for OPTIONS
     }
 
-    # SSL logic (for SSL handshake using certificates) -> on network layer for TCP connection
+    # SSL logic (for SSL handshake using certificates) -> on network layer for TCP connection before actual HTTP connection
     ssl_certificate /etc/letsencrypt/live/api.momentkaph.sk/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
@@ -29,8 +29,8 @@ server {
     # add CA trusted certificates ??
 
     # Rate limiting applied to all endpoints
-    limit_req zone=api_req_limit burst=0;
-    limit_conn api_conn_limit 2;
+    limit_req zone=api_req_limit burst=0; # no additional request allowed (burst-0)
+    limit_conn api_conn_limit 2; # max 2 concurent request from one IP
 
     # request timeouts to prevent hanging connections
     proxy_connect_timeout 10; # 60 sec is default; connection to localhost BE server is in milliseconds
@@ -65,17 +65,23 @@ server {
 
     # Email sending endpoint, 
     location = /email_sending {
+        limit_except POST { # allow only POST requests on this uri
+            deny all;
+        }
         # backend handling
         proxy_pass http://localhost:3000$uri$is_args$args; # default is $uri without args -> $uri is decoded/normalized version of original request URI -> safer
     }
 
     # Cloud storage endpoint with parameter
     location ~ ^/cloud_storage/(weddings|portrait|love-story|family|studio|pregnancy|baptism|newborn)$ {
+        limit_except GET { # allow only GET requests on this uri
+            deny all;
+        }
         # backend handling
         proxy_pass http://localhost:3000$uri$is_args$args;
 }
 
-    location / {
+    location / { # all other uri-s
         return 404;
     }
 
