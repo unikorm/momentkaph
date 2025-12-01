@@ -14,10 +14,14 @@ server {
 
     # Handle preflight requests
     if ($request_method = 'OPTIONS') {
+        add_header Access-Control-Allow-Origin "https://www.momentkaph.sk" always;
+        add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
+        add_header Access-Control-Allow-Headers "Content-Type" always;
+        add_header Access-Control-Max-Age "3600" always;
         return 204;
     }
 
-    # SSL logic (for SSL handshake using certificates)
+    # SSL logic (for SSL handshake using certificates) -> on network layer for TCP connection
     ssl_certificate /etc/letsencrypt/live/api.momentkaph.sk/fullchain.pem; # managed by Certbot
     ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # managed by Certbot
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
