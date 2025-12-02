@@ -39,7 +39,7 @@ http {
         limit_req_status 429; # default 503; respond Too Many Requests
         limit_conn_status 429; # default 503; respond Too Many Requests
 
-        # Aggressive Timeout Settings -> per-request resources 
+        # Aggressive Timeout Settings -> per-request resources (client <-> nginx)
         client_header_timeout 25s; # default is 60sec;  25 seconds to wait for client to send headers
         client_body_timeout 35s; # default is 60sec; 35 seconds to waits for client to send request body (for POST requests)
         keepalive_timeout 40s; # default is 65sec; 40 seconds idle keepalive connections stays open
