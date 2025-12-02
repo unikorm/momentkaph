@@ -27,7 +27,6 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # private part for *.momentkaph.sk
     include /etc/letsencrypt/options-ssl-nginx.conf; # TLS settings prefered by Cerbot/nginx
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # use stronger cipher suites/ perform Diffle-Hellman key exchange
-    # add CA trusted certificates ??
 
     # Rate limiting applied to all endpoints
     limit_req zone=api_req_limit burst=0; # no additional request allowed (burst-0)
