@@ -21,9 +21,10 @@ server {
         return 204; # No Content -> standart response for OPTIONS
     }
 
-    # SSL logic (for SSL handshake using certificates) -> on network layer for TCP connection before actual HTTP connection
-    ssl_certificate /etc/letsencrypt/live/api.momentkaph.sk/fullchain.pem; # managed by Certbot
-    ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # managed by Certbot
+    # SSL/TLS logic (for TLS handshake using certificates) -> on network layer with TCP and TLS above it connection before actual HTTPS connection
+    # Cerbot is ACME client, who orchestrate certificate renewal -> add location for challenge automatically if cerbot nginx is used -> needs to test out if webroot is not used here
+    ssl_certificate /etc/letsencrypt/live/api.momentkaph.sk/fullchain.pem; # public part with intermediate
+    ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # private part for *.momentkaph.sk
     include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
     # add CA trusted certificates ??
