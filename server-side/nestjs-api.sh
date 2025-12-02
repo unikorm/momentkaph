@@ -1,6 +1,6 @@
 server {
-    listen 443 ssl;
-    server_name api.momentkaph.sk;
+    listen 443 ssl; # accept TCP connections on port 443 and and treat these connections as HTTPS (use SSL/TLS)
+    server_name api.momentkaph.sk; # nginx looks for SNI (server name indication) on the request and finds that distinct server segment
 
     # block bad bots
     if ($is_bad_bot) {
@@ -21,12 +21,12 @@ server {
         return 204; # No Content -> standart response for OPTIONS
     }
 
-    # SSL/TLS logic (for TLS handshake using certificates) -> on network layer with TCP and TLS above it connection before actual HTTPS connection
+    # SSL/TLS logic (for TLS handshake using certificates) -> on network layer with TCP and TLS above it connection before actual HTTPS connection -> for proving to browser i am api.momentkaph.sk
     # Cerbot is ACME client, who orchestrate certificate renewal -> add location for challenge automatically if cerbot nginx is used -> needs to test out if webroot is not used here
     ssl_certificate /etc/letsencrypt/live/api.momentkaph.sk/fullchain.pem; # public part with intermediate
     ssl_certificate_key /etc/letsencrypt/live/api.momentkaph.sk/privkey.pem; # private part for *.momentkaph.sk
-    include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
-    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+    include /etc/letsencrypt/options-ssl-nginx.conf; # TLS settings prefered by Cerbot/nginx
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # use stronger cipher suites/ perform Diffle-Hellman key exchange
     # add CA trusted certificates ??
 
     # Rate limiting applied to all endpoints
