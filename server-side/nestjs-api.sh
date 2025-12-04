@@ -12,12 +12,15 @@ server {
     return 421; # Misdirected Request
     }
 
+    # CORS headers -> for browser to know from response with those headers who is allowed to access resources, browser enforces CORS policy then
+    add_header Access-Control-Allow-Origin "https://momentkaph.sk" always; # only from this origin
+    add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always; # only these methods
+    add_header Access-Control-Allow-Headers "Content-Type" always; # with Content-Type header -> in future, i want Authorization implements too
+    add_header Access-Control-Max-Age "3600" always; # tells the browser how long he can cache this headers, in this case 1 hour, then it must send another OPTIONS preflight request before actual request
+
+
     # Handle preflight requests -> OPTIONS preflight requests are for non-simple requests and tell the browser what is actually allowed to send on this BE
     if ($request_method = 'OPTIONS') {
-        add_header Access-Control-Allow-Origin "https://www.momentkaph.sk" always; # only from this origin
-        add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always; # only these methods
-        add_header Access-Control-Allow-Headers "Content-Type" always; # with Content-Type header -> in future, i want Authorization implements too
-        add_header Access-Control-Max-Age "3600" always; # tells the browser how long he can cache this headers, in this case 1 hour, then it must send another OPTIONS preflight request before actual request
         return 204; # No Content -> standart response for OPTIONS
     }
 
@@ -29,7 +32,7 @@ server {
     ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # use stronger cipher suites/ perform Diffle-Hellman key exchange
 
     # Rate limiting applied to all endpoints
-    limit_req zone=api_req_limit burst=0; # no additional request allowed (burst-0)
+    limit_req zone=api_req_limit; # no additional request allowed (burst-0)
     limit_conn api_conn_limit 2; # max 2 concurent request from one IP
 
     # request timeouts to prevent hanging connections
@@ -41,18 +44,12 @@ server {
     add_header Strict-Transport-Security "max-age=31536000" always; # enforce HTTPS for 1 year
     add_header X-Content-Type-Options "nosniff"; # prevents browsers from guessing MIME types and forces them to stick with the declared content type
 
-    # CORS headers -> for browser to know from response with those headers who is allowed to access resources, browser enforces CORS policy then
-    add_header Access-Control-Allow-Origin "https://www.momentkaph.sk" always;
-    add_header Access-Control-Allow-Methods "GET, POST, OPTIONS" always;
-    add_header Access-Control-Allow-Headers "Content-Type" always;
-    add_header Access-Control-Max-Age "3600" always;
-
     # Proxy setup
     proxy_http_version 1.1; # use HTTP/1.1 to support keep-alive connections to backend
 
     # Proxy buffering settings -> per-request resources
     proxy_buffering on; # default is on; enable buffering of responses from the proxied server
-    proxy_buffer_size 4kb; # default is 4k or 8k; size of the buffer used for reading the first part of the response (headers) from the proxied server
+    proxy_buffer_size 4k; # default is 4k or 8k; size of the buffer used for reading the first part of the response (headers) from the proxied server
     proxy_buffers 8 8k; # default is 8 4k or 8 8k; number and size of buffers used for reading a response from the proxied server
     proxy_busy_buffers_size 32k; # default is 8k or 16k; size of buffers that can be busy sending a response to the client while the response is not yet fully read.
 
@@ -69,7 +66,7 @@ server {
             deny all;
         }
         # backend handling
-        proxy_pass http://localhost:3000$uri$is_args$args; # default is $uri without args -> $uri is decoded/normalized version of original request URI -> safer
+        proxy_pass http://127.0.0.1:3000$uri$is_args$args; # default is $uri without args -> $uri is decoded/normalized version of original request URI -> safer
     }
 
     # Cloud storage endpoint with parameter
@@ -78,7 +75,7 @@ server {
             deny all;
         }
         # backend handling
-        proxy_pass http://localhost:3000$uri$is_args$args;
+        proxy_pass http://127.0.0.1:3000$uri$is_args$args;
 }
 
     location / { # all other uri-s
@@ -87,7 +84,7 @@ server {
 
 }
 
-erver {
+server {
     listen 80;
     server_name api.momentkaph.sk;
     
