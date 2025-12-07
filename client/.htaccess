@@ -1,4 +1,8 @@
 # Rewrite rules for Angular routing
+
+# managed hosting settings
+# only .htaccess file config is able to modify so i need explore and set all needed settings here
+# get to know mod_rewrite.c, mod_headers.c, mod_mime.c, mod_deflate.c, etc.
 <IfModule mod_rewrite.c>
     # Enable rewrite engine
     RewriteEngine On
@@ -44,7 +48,7 @@
     Header set Access-Control-Allow-Origin "https://momentkaph.sk"
     
     # Cache control for images
-    <FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    <FilesMatch "\.(jpg|jpeg|png|gif|webp)$"> # here should be only avif, i don't use other formats
         Header set Cache-Control "public, max-age=2628000, immutable"
     </FilesMatch>
     
