@@ -1,12 +1,12 @@
-# Rewrite rules for Angular routing
-
 # managed hosting settings
-# only .htaccess file config is able to modify so i need explore and set all needed settings here
-# get to know mod_rewrite.c, mod_headers.c, mod_mime.c, mod_deflate.c, etc.
+# only .htaccess file config is able to modify so i use it for all settings within allowed modules
+
+# rewrite module to handle URL rewriting and redirection to support SPA routing
 <IfModule mod_rewrite.c>
     # Enable rewrite engine
     RewriteEngine On
-    RewriteBase /
+    # Set the base path for all subsequent rewrite rules, relative to the document root -> in my case already in /web/
+    RewriteBase / 
 
     # Handle social media and tracking parameters
     RewriteCond %{QUERY_STRING} ^(.*&)?fbclid=[^&]+(&.*)?$ [OR]
@@ -20,58 +20,80 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
-    # Redirect root URL to /sk/index.html
-    RewriteRule ^$ /sk/index.html [R=302,L]
+    # Redirect root URL momentkaph.sk/ to momentkaph.sk/sk/index.html
+    # if REQUEST_URI would be / -> evaluates to empty after normalize in per-directory context, redirect to sk version
+    RewriteRule ^$ /sk/index.html [R=301,L]
 
-    # Serve assets directly
+    # Serve assets directly from /assets/ for all languages
+    # check if the requested file or directory does not exist before rewriting 
+    # -> this will evaluate to true for non-existing files, cause i have them in /assets/ only
+    # example: https://momentkaph.sk/en/assets/image.avif -> serves /assets/image.avif
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(sk|en|ua)/assets/(.+)$ /assets/$2 [L]
 
     # Handle Angular routing for each language
+    # If the requested file or directory does not exist, rewrite to the corresponding language's index.html
+    # example: https://momentkaph.sk/en/gallery/love-story -> serves /en/index.html -> angular app handles routing client-side
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(sk|en|ua)(/.*)?$ /$1/index.html [L]
+
+    #notes:
+    # L flag: Last rule - stop processing further rules if this one matches
+    # R=301 flag: Permanent redirect
+    # NC flag: Case-insensitive match
 </IfModule>
 
-# Set correct MIME types
-<IfModule mod_mime.c>
+# Module used to assign correct content metadata (Content-Type) to the corresponding content 
+# selected for HTTP response by mapping file extensions/patterns in the URI to MIME types.
+# this metadata is also used in content negotiation
+# also this module runs earlier in the processing chain to properly set Content-Type before other modules would act on it
+<IfModule mod_mime.c> # mod_mime.c is source file
     AddType application/javascript .js
-    AddType application/json .json
     AddType text/css .css
     AddType text/html .html
+    AddType image/avif .avif
+    AddType image/x-icon .ico
+    AddType image/png .png
+    AddType image/svg+xml .svg
 </IfModule>
 
-# Enable CORS and caching headers
+# headers module to set custom headers in HTTP response
 <IfModule mod_headers.c>
     # CORS based on the requesting origin
     Header set Access-Control-Allow-Origin "https://momentkaph.sk"
-    
-    # Cache control for images
-    <FilesMatch "\.(jpg|jpeg|png|gif|webp)$"> # here should be only avif, i don't use other formats
-        Header set Cache-Control "public, max-age=2628000, immutable"
+
+    # no cache for html/webmanifest - must always check for updated version
+    # these files are not content-hashed, so we need to ensure the client always gets the latest version
+    # using no-cache instead of no-store to allow caching but require revalidation
+    # index.html is only source of truth for app versioning and asset references
+    <FilesMatch "\.(html|webmanifest)$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
+
+    # cache js/css - long cache => 31536000 seconds ~ 1 year
+    # these files are content-hashed, so they can be cached for a long time
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
     
-    # Cache control for static assets (CSS, JS)
-    <FilesMatch "\.(css|js)$">
-        Header set Cache-Control "no-cache, no-store, must-revalidate"
+    # cache control for static assets - long cache => 31536000 seconds ~ 1 year
+    <FilesMatch "\.(avif|png|svg)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
-    
-    # No cache for HTML files
-    <FilesMatch "\.html$">
-        Header set Cache-Control "no-cache, no-store, must-revalidate"
+
+    # fonts - long cache => 31536000 seconds ~ 1 year
+    <FilesMatch "\.(woff2)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
     </FilesMatch>
 </IfModule>
 
-<IfModule mod_deflate.c>
-    # Text files
-    AddOutputFilterByType DEFLATE text/plain
-    AddOutputFilterByType DEFLATE text/html
-    AddOutputFilterByType DEFLATE text/css
-    
-    # JavaScript files
-    AddOutputFilterByType DEFLATE application/javascript
-    AddOutputFilterByType DEFLATE application/x-javascript
-    AddOutputFilterByType DEFLATE text/javascript
-
+# compress content on-the-fly (transport layer) before sending to client (Content-Encoding: )
+# avif/png/woff2 are already compressed formats, no need for further compression
+# using BROTLI algorithm (Huffman encoding, LZSS and second-order context modeling)=> br
+# alternatively, could use mod_deflate (gzip) as global fallback if brotli not supported on server
+<IfModule mod_brotli.c>
+    # AddOutputFilterByType assigns a filter to specific MIME types
+    AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript # compress only html, css, js
 </IfModule>
