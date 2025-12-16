@@ -8,6 +8,32 @@
     # Set the base path for all subsequent rewrite rules, relative to the document root -> in my case already in /web/
     RewriteBase / 
 
+    # block common exploit attempts -> heavy-lifting filter is i believe managed by root configuration
+    # no essential to filter wide spectrum of different threats
+    # WordPress, PHP, CMS-specific paths, 
+    RewriteRule ^wp- - [F,L]
+    RewriteRule ^wordpress - [F,L]
+    RewriteRule \.php$ - [F,L]
+    RewriteRule ^admin - [F,L]
+    RewriteRule ^login - [F,L]
+    RewriteRule ^xmlrpc\.php - [F,L]
+    # hidden files and sensitive extensions
+    RewriteRule (^|/)\. - [F,L]
+    RewriteRule \.(env|git|svn|htaccess|htpasswd|log|sql|bak)$ - [F,L]
+
+    # block SQL injection, script injection, traversal attempts, block remote file inclusion
+    RewriteCond %{QUERY_STRING} (union.*select|insert.*into|delete.*from|drop.*table) [NC,OR]
+    RewriteCond %{QUERY_STRING} (<script|javascript:|onerror=|onload=) [NC,OR]
+    RewriteCond %{QUERY_STRING} (\.\./|\.\.\\|/etc/passwd) [NC,OR]
+    RewriteCond %{QUERY_STRING} (http://|https://|ftp://) [NC]
+    RewriteRule .* - [F,L]
+
+    # block requests without a User-Agent header
+    # legitimate browsers always send this, but many automated scanners don't + block known bad bot patterns
+    RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
+    RewriteCond %{HTTP_USER_AGENT} (semrush|ahrefs|mj12bot|majestic) [NC]
+    RewriteRule .* - [F,L]
+    
     # Handle social media and tracking parameters
     RewriteCond %{QUERY_STRING} ^(.*&)?fbclid=[^&]+(&.*)?$ [OR]
     RewriteCond %{QUERY_STRING} ^(.*&)?utm_[^&]+(&.*)?$ [OR]
@@ -40,6 +66,7 @@
     RewriteRule ^(sk|en|ua)(/.*)?$ /$1/index.html [L]
 
     #notes:
+    # F flag: returns 403 Forbidden
     # L flag: Last rule - stop processing further rules if this one matches
     # R=301 flag: Permanent redirect
     # NC flag: Case-insensitive match
