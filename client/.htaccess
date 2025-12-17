@@ -90,6 +90,23 @@
 <IfModule mod_headers.c>
     # Content Security Policy (CSP)
     Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' momentkaph.fra1.cdn.digitaloceanspaces.com; font-src fonts.gstatic.com; connect-src 'self' api.momentkaph.sk; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'self';"
+    
+    # before CSP frame-ancestors directive
+    Header set X-Frame-Options "DENY"
+
+    # X-Content-Type-Options - prevents MIME type sniffing
+    # Browsers will trust your Content-Type headers and won't try to guess
+    # This prevents attacks where malicious content is disguised as safe files
+    X-Content-Type-Options: nosniff
+
+    # Referrer-Policy - controls how much information is sent in Referer header
+    # 'strict-origin-when-cross-origin' (default) sends full URL for same-origin requests
+    # but only the origin for cross-origin requests, protecting user privacy
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # Permissions-Policy - (experimental, low support) controls which browser features your site can use
+    # This limits the attack surface by disabling features you don't need
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=(), payment=()"
 
     # CORS based on the requesting origin
     Header set Access-Control-Allow-Origin "https://momentkaph.sk"
