@@ -79,7 +79,7 @@
                 "fonts": {
                   "inline": true
                 }
-              },
+              }
             },
             "development": {
               "optimization": false,
