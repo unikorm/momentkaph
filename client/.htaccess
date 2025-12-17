@@ -88,6 +88,9 @@
 
 # headers module to set custom headers in HTTP response
 <IfModule mod_headers.c>
+    # Content Security Policy (CSP)
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' momentkaph.fra1.cdn.digitaloceanspaces.com; font-src fonts.gstatic.com; connect-src 'self' api.momentkaph.sk; frame-ancestors 'none'; base-uri 'none'; object-src 'none'; form-action 'self';"
+
     # CORS based on the requesting origin
     Header set Access-Control-Allow-Origin "https://momentkaph.sk"
 
