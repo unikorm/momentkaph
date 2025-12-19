@@ -50,7 +50,7 @@
           <textarea id="message" type="text" formControlName="message" i18n-placeholder placeholder="Správa pre mňa..."
             rows="3" [class.invalid]="isFieldInvalid('message')"></textarea>
           @if (isFieldInvalid('message')) {
-          <span class="error-message textarea" i18n>Príliš krátke...</span>
+          <span class="error-message textarea" i18n>Príliš krátke alebo dlhé...</span>
           }
         </div>
         <button type="submit" [class.success]="submitStatus() === 'success'" [class.error]="submitStatus() === 'error'">

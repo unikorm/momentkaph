@@ -99,6 +99,7 @@ export class ContactComponent {
     message: new FormControl('', [
       Validators.required,
       Validators.minLength(20),
+      Validators.maxLength(700),
     ]),
   });
 
