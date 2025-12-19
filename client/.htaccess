@@ -139,7 +139,7 @@
 # compress content on-the-fly (transport layer) before sending to client (Content-Encoding: )
 # avif/png/woff2 are already compressed formats, no need for further compression
 # using BROTLI algorithm (Huffman encoding, LZSS and second-order context modeling)=> br
-# alternatively, could use mod_deflate (gzip) as global fallback if brotli not supported on server
+# alternatively, could use mod_deflate (gzip), but brotli has wide support, so...
 <IfModule mod_brotli.c>
     # AddOutputFilterByType assigns a filter to specific MIME types
     AddOutputFilterByType BROTLI_COMPRESS text/html text/css application/javascript # compress only html, css, js
