@@ -150,40 +150,16 @@ a:not(:last-of-type) {
   gap: 2rem;
   width: 100%;
   max-width: 32rem;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   opacity: .85;
-  scroll-snap-type: x mandatory !important; // must be !important, otherwise it doesn't work
 
-  // scrollbar on desktop browsers Chrome/Safari
-  &::-webkit-scrollbar {
-    height: 8px; // thin but visible
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 4px;
-    
-    &:hover {
-      background: rgba(0, 0, 0, 0.5);
-    }
-  }
-
-  // For Firefox/Edge
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.1); // thumb and track colors
 
   .tip {
     max-width: 32rem;
     width: 100%;
     padding: 0 2rem;
     flex-shrink: 0;
-    scroll-snap-align: start;
 
     .tip-number {
       font-weight: 700;
@@ -202,7 +178,13 @@ a:not(:last-of-type) {
 .arrow-left,
 .arrow-right {
   height: 5rem;
-  opacity: .15;
+  opacity: .19;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.05;
+  }
 }
 
 .arrow-right {
@@ -212,9 +194,15 @@ a:not(:last-of-type) {
 .arrow-smaller-left,
 .arrow-smaller-right {
   height: 2rem;
-  opacity: .15;
+  opacity: .19;
   position: absolute;
+  cursor: pointer;
   display: none;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.05;
+  }
 }
 
 .arrow-smaller-left {
@@ -254,6 +242,7 @@ a:not(:last-of-type) {
   img {
     max-width: 100%;
     height: auto;
+    min-height: 90px; // to avoid layout shift -> experiment
   }
 }
 

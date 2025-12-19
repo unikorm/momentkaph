@@ -63,8 +63,10 @@
         sa budete cítiť uvoľnenejšie.</div>
     </div>
     <div class="arrow-wrapper">
-      <img src="assets/arrow.svg" alt="arrow" class="arrow-left" />
-      <img src="assets/arrow-smaller.svg" alt="arrow-smaller" class="arrow-smaller-left" />
+      <img src="assets/arrow.svg" alt="arrow" class="arrow-left" [class.disabled]="isAtStart()"
+        (click)="navigateToPreviousTip()" />
+      <img src="assets/arrow-smaller.svg" alt="arrow-smaller" class="arrow-smaller-left" [class.disabled]="isAtStart()"
+        (click)="navigateToPreviousTip()" />
       <div class="gallery-tips">
         <div class="tip">
           <span class="tip-number">---</span>
@@ -145,8 +147,10 @@
           <span class="tip-number">---</span>
         </div>
       </div>
-      <img src="assets/arrow.svg" alt="arrow" class="arrow-right" />
-      <img src="assets/arrow-smaller.svg" alt="arrow-smaller" class="arrow-smaller-right" />
+      <img src="assets/arrow.svg" alt="arrow" class="arrow-right" [class.disabled]="isAtEnd()"
+        (click)="navigateToNextTip()" />
+      <img src="assets/arrow-smaller.svg" alt="arrow-smaller" [class.disabled]="isAtEnd()" class="arrow-smaller-right"
+        (click)="navigateToNextTip()" />
     </div>
     }
   </div>
