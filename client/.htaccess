@@ -46,8 +46,17 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
+    # Language detection and redirect for root URL only
+    # This checks if someone visits exactly momentkaph.sk (no language prefix)
+    RewriteCond %{HTTP:Accept-Language} ^(uk|ru) [NC]
+    RewriteRule ^$ /ua/index.html [R=302,L]
+    
+    RewriteCond %{HTTP:Accept-Language} ^en [NC]
+    RewriteRule ^$ /en/index.html [R=302,L]
+
     # Redirect root URL momentkaph.sk/ to momentkaph.sk/sk/index.html
     # if REQUEST_URI would be / -> evaluates to empty after normalize in per-directory context, redirect to sk version
+    # fallback for other languages or no Accept-Language header
     RewriteRule ^$ /sk/index.html [R=301,L]
 
     # Serve assets directly from /assets/ for all languages
