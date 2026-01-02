@@ -1,5 +1,8 @@
 export type GalleryTypeImageType = {
   fullUrl: string;
+  width: number;
+  height: number;
+  aspectRatio?: number;
 };
 
 export enum GalleryTypeEnum {
@@ -16,4 +19,7 @@ export enum GalleryTypeEnum {
 
 export type PostGalleryTypeImageTypeResponseType = {
   fullUrl: string;
+  width: number;
+  height: number;
+  aspectRatio?: number;
 };

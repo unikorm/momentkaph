@@ -242,9 +242,6 @@ a:not(:last-of-type) {
   img {
     max-width: 100%;
     height: auto;
-    min-height: 90px; // to avoid layout shift -> experiment -> better, but not proper solution i think
-    // what if i downloaded like first 15 images and so on in separate sections to enhance UX of first ones and then load in order next and next segments of 15 images to maximalize efficiency, 
-    // cause now it loads all images at once that is nightmare
   }
 }
 

@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { S3Client, ListObjectsV2Command } from '@aws-sdk/client-s3';
+import { S3Client, ListObjectsV2Command, GetObjectCommand } from '@aws-sdk/client-s3';
 import { ConfigService } from '@nestjs/config';
+import * as sharp from 'sharp';
 import {
   GalleryTypeEnum,
   PostGalleryTypeImageTypeResponseType,
@@ -45,14 +46,64 @@ export class CloudStorageService {
 
       const fullImages = (fullResponse.Contents)
         .filter((item) => !item.Key.endsWith('/')) // i manage cloud storage, so i know that i have no folders on that level, but just in case 
-        .map((item) => ({
-          fullUrl: `${this.baseUrl}/${item.Key}`,
-        }));
+        .map((item) => item.Key);
 
-      return fullImages
+      // Now fetch dimensions for each image
+      // We process them in parallel using Promise.all for better performance
+      const imagesWithDimensions = await Promise.all(
+        fullImages.map(async (key) => {
+          try {
+            // Fetch just enough of the image to read its header
+            // The Range header requests only the first 10KB, which is typically
+            // enough to read image metadata without downloading the full file
+            const getObjectCommand = new GetObjectCommand({
+              Bucket: this.configService.get('BUCKET_NAME'),
+              Key: key,
+              Range: 'bytes=0-10239', // First 10KB should be enough for headers
+            });
+
+            const response = await this.client.send(getObjectCommand);
+
+            // Convert the stream to a buffer that sharp can process
+            const buffer = await this.streamToBuffer(response.Body);
+
+            // Use sharp to extract dimensions from the image header
+            const metadata = await sharp(buffer).metadata();
+
+            return {
+              fullUrl: `${this.baseUrl}/${key}`,
+              width: metadata.width,
+              height: metadata.height,
+            };
+          } catch (error) {
+            // If we fail to get dimensions for a specific image, log it but don't
+            // fail the entire request. You could also set default dimensions here.
+            this.logger.error(`Error processing image ${key}:`, error);
+
+            // Return with default dimensions so the gallery still works
+            return {
+              fullUrl: `${this.baseUrl}/${key}`,
+              width: 200, // fallback dimensions
+              height: 200,
+            };
+          }
+        })
+      );
+
+      return imagesWithDimensions;
     } catch (error) {
       this.logger.error('Error fetching images:', error);
       throw error;
     }
+  }
+
+  // Helper method to convert S3 stream to buffer -> need to understand this better
+  private async streamToBuffer(stream: any): Promise<Buffer> {
+    return new Promise((resolve, reject) => {
+      const chunks: Buffer[] = [];
+      stream.on('data', (chunk: Buffer) => chunks.push(chunk));
+      stream.on('error', reject);
+      stream.on('end', () => resolve(Buffer.concat(chunks)));
+    });
   }
 }

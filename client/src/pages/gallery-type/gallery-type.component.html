@@ -169,8 +169,9 @@
     @for (column of columnImages(); track column.columnIndex) {
     <div class="image-column">
       @for (image of column.images; track image.fullUrl) {
-      <div class="image-card">
-        <img [src]="image.fullUrl" loading="lazy" alt="some photo of actual section" />
+      <div class="image-card" [style.aspect-ratio]="image.aspectRatio">
+        <img [src]="image.fullUrl" [width]="image.width" [height]="image.height" loading="lazy"
+          alt="some photo of actual section" />
       </div>
       }
     </div>

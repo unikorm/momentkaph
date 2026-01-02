@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import {
   GalleryTypeEnum,
   PostGalleryTypeImageTypeResponseType
@@ -19,6 +19,12 @@ export class CloudStorageService {
   ): Observable<PostGalleryTypeImageTypeResponseType[]> {
     return this.http.get<PostGalleryTypeImageTypeResponseType[]>(
       `${this.apiUrl}/cloud_storage/${galleryType}`
+    ).pipe(
+      // Calculate aspect ratio for easier CSS handling
+      map(images => images.map(img => ({
+        ...img,
+        aspectRatio: img.width / img.height
+      })))
     );
   }
 }
