@@ -10,7 +10,7 @@
   --SUCCESS-SMOOTH: #386c0b;
 
   /* fonts */
-  --FONT-PRIMARY: 400 normal 1rem "Caveat", monospace;
+  --FONT-PRIMARY: 400 normal 1rem "Caveat", cursive;
 }
 
 html,
@@ -27,6 +27,14 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Caveat";
+  src: url("/fonts/CaveatReg.woff2") format("woff2");
+  font-display: optional;
+  font-weight: normal;
+  font-style: normal;
 }
 
 /* styles for description part in gallery type, it must be here cause i have raw strings in object from where it is added to innerHTML in component */
