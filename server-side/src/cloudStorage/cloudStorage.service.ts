@@ -63,15 +63,16 @@ export class CloudStorageService {
             });
 
             const response = await this.client.send(getObjectCommand);
-
-            // Convert the stream to a buffer that sharp can process
             const buffer = await this.streamToBuffer(response.Body);
-
-            // Use sharp to extract dimensions from the image header
             const metadata = await sharp(buffer).metadata();
 
+            const filename = key.split('/').pop();
+            const fullUrl = `${this.baseUrl}/${key}`;
+            const mobileUrl = `https://api.momentkaph.sk/cloud_storage/${galleryType}/mobile/${filename}`;
+
             return {
-              fullUrl: `${this.baseUrl}/${key}`,
+              fullUrl,
+              mobileUrl,
               width: metadata.width,
               height: metadata.height,
             };
@@ -83,6 +84,7 @@ export class CloudStorageService {
             // Return with default dimensions so the gallery still works
             return {
               fullUrl: `${this.baseUrl}/${key}`,
+              mobileUrl: `${this.baseUrl}/${key.replace('/full/', '/mobile/')}`,
               width: 200, // fallback dimensions
               height: 200,
             };
@@ -97,6 +99,32 @@ export class CloudStorageService {
     }
   }
 
+  async fetchGalleryMobileImagesLinks(
+    galleryType: GalleryTypeEnum): Promise<any> {
+    try {
+      const fullCommand = new ListObjectsV2Command({
+        Bucket: this.configService.get('BUCKET_NAME'),
+        Prefix: `${galleryType}/full/`,
+      });
+
+      const fullResponse = await this.client.send(fullCommand);
+
+      if (!fullResponse.Contents || fullResponse.Contents.length === 0) {
+        this.logger.warn(`No images found for gallery type: ${galleryType}`);
+        return [];
+      }
+
+      const fullImages = (fullResponse.Contents)
+        .filter((item) => !item.Key.endsWith('/')) // i manage cloud storage, so i know that i have no folders on that level, but just in case 
+        .map((item) => item.Key);
+
+      
+
+    } catch (error) {
+      this.logger.error('Error fetching mobile images:', error);
+      throw error;
+    }
+  }
   // Helper method to convert S3 stream to buffer -> need to understand this better
   private async streamToBuffer(stream: any): Promise<Buffer> {
     return new Promise((resolve, reject) => {

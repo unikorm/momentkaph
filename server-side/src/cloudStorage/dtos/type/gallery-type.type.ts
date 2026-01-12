@@ -1,7 +1,3 @@
-export type GalleryTypeImageType = {
-  fullUrl: string;
-};
-
 export enum GalleryTypeEnum {
   WEDDINGS = 'weddings',
   PORTRAIT = 'portrait',
@@ -15,7 +11,7 @@ export enum GalleryTypeEnum {
 
 export type PostGalleryTypeImageTypeResponseType = {
   fullUrl: string;
+  mobileUrl: string;
   width: number;
   height: number;
-  
 };
