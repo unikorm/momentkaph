@@ -75,18 +75,20 @@ export class CloudStorageService {
               mobileUrl,
               width: metadata.width,
               height: metadata.height,
+              mobileWidth: Math.round(metadata.width / 3),
+              mobileHeight: Math.round(metadata.height / 3),
             };
           } catch (error) {
-            // If we fail to get dimensions for a specific image, log it but don't
-            // fail the entire request. You could also set default dimensions here.
+            // If we fail to get dimensions for a specific image, log it but don't fail
             this.logger.error(`Error processing image ${key}:`, error);
 
-            // Return with default dimensions so the gallery still works
             return {
               fullUrl: `${this.baseUrl}/${key}`,
-              mobileUrl: `${this.baseUrl}/${key.replace('/full/', '/mobile/')}`,
-              width: 200, // fallback dimensions
-              height: 200,
+              mobileUrl: `${this.baseUrl}/${key}`,
+              width: 0,
+              height: 0,
+              mobileWidth: 0,
+              mobileHeight: 0,
             };
           }
         })
@@ -99,8 +101,7 @@ export class CloudStorageService {
     }
   }
 
-  async fetchGalleryMobileImagesLinks(
-    galleryType: GalleryTypeEnum): Promise<any> {
+  async warmCache(galleryType: GalleryTypeEnum): Promise<any> {
     try {
       const fullCommand = new ListObjectsV2Command({
         Bucket: this.configService.get('BUCKET_NAME'),
@@ -111,20 +112,88 @@ export class CloudStorageService {
 
       if (!fullResponse.Contents || fullResponse.Contents.length === 0) {
         this.logger.warn(`No images found for gallery type: ${galleryType}`);
-        return [];
+        return { cached: 0 };
       }
 
-      const fullImages = (fullResponse.Contents)
-        .filter((item) => !item.Key.endsWith('/')) // i manage cloud storage, so i know that i have no folders on that level, but just in case 
+      const fullImages = fullResponse.Contents
+        .filter((item) => !item.Key.endsWith('/'))
         .map((item) => item.Key);
 
-      
+      // Instead of processing images here, make HTTP requests to the mobile endpoint
+      // This way Nginx will cache the responses
+      const cacheResults = await Promise.all(
+        fullImages.map(async (key) => {
+          try {
+            const filename = key.split('/').pop();
+            const mobileUrl = `http://localhost:${this.configService.get('PORT') || 3000}/cloud_storage/${galleryType}/mobile/${filename}`;
 
+            // Make a request to our own mobile endpoint
+            // Nginx sitting in front will cache this response
+            const response = await fetch(mobileUrl);
+
+            if (!response.ok) {
+              throw new Error(`HTTP ${response.status}`);
+            }
+
+            this.logger.log(`Cached mobile version: ${filename}`);
+            return { success: true, filename };
+          } catch (error) {
+            this.logger.error(`Error caching image ${key}:`, error);
+            return { success: false, filename: key.split('/').pop() };
+          }
+        })
+      );
+
+      const successCount = cacheResults.filter(r => r.success).length;
+
+      return {
+        total: fullImages.length,
+        cached: successCount,
+        failed: fullImages.length - successCount,
+      };
     } catch (error) {
-      this.logger.error('Error fetching mobile images:', error);
+      this.logger.error('Error warming cache:', error);
       throw error;
     }
   }
+
+  async getMobileImage(
+    galleryType: GalleryTypeEnum,
+    filename: string,
+  ): Promise<Buffer> {
+    try {
+      // Construct the S3 key for the full-size image
+      const key = `${galleryType}/full/${filename}`;
+
+      const getObjectCommand = new GetObjectCommand({
+        Bucket: this.configService.get('BUCKET_NAME'),
+        Key: key,
+      });
+
+      const response = await this.client.send(getObjectCommand);
+      const buffer = await this.streamToBuffer(response.Body);
+
+      // Get the original dimensions to calculate the resize ratio
+      const metadata = await sharp(buffer).metadata();
+
+      // Resize to 1/3 of original dimensions, maintaining aspect ratio
+      const resizedBuffer = await sharp(buffer)
+        .resize({
+          width: Math.round(metadata.width / 3),
+          fit: 'inside',
+        })
+        .toBuffer();
+
+      return resizedBuffer;
+    } catch (error) {
+      this.logger.error(
+        `Error generating mobile image for ${galleryType}/${filename}:`,
+        error
+      );
+      throw error;
+    }
+  }
+
   // Helper method to convert S3 stream to buffer -> need to understand this better
   private async streamToBuffer(stream: any): Promise<Buffer> {
     return new Promise((resolve, reject) => {

@@ -14,4 +14,6 @@ export type PostGalleryTypeImageTypeResponseType = {
   mobileUrl: string;
   width: number;
   height: number;
+  mobileWidth: number;
+  mobileHeight: number;
 };
