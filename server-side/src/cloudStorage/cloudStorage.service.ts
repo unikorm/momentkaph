@@ -53,17 +53,14 @@ export class CloudStorageService {
       const imagesWithDimensions = await Promise.all(
         fullImages.map(async (key) => {
           try {
-            // Fetch just enough of the image to read its header
-            // The Range header requests only the first 10KB, which is typically
-            // enough to read image metadata without downloading the full file
             const getObjectCommand = new GetObjectCommand({
               Bucket: this.configService.get('BUCKET_NAME'),
               Key: key,
-              Range: 'bytes=0-10239', // First 10KB should be enough for headers
+              Range: 'bytes=0-10239', // look at response, if it could be reduced further and what specificly is in those bytes
             });
 
             const response = await this.client.send(getObjectCommand);
-            const buffer = await this.streamToBuffer(response.Body);
+            const buffer = await this.streamToBuffer(response.Body); // what does streamToBuffer do? for what streams bytes to buffer, any possibel optimizations?
             const metadata = await sharp(buffer).metadata();
 
             const filename = key.split('/').pop();
@@ -71,24 +68,19 @@ export class CloudStorageService {
             const mobileUrl = `https://api.momentkaph.sk/cloud_storage/${galleryType}/mobile/${filename}`;
 
             return {
+              // i want to cache this too, not actual data of course, but the urls with dimensions
               fullUrl,
               mobileUrl,
-              width: metadata.width,
-              height: metadata.height,
+              width: 0,
+              height: 0,
               mobileWidth: Math.round(metadata.width / 3),
               mobileHeight: Math.round(metadata.height / 3),
             };
           } catch (error) {
-            // If we fail to get dimensions for a specific image, log it but don't fail
             this.logger.error(`Error processing image ${key}:`, error);
-
             return {
               fullUrl: `${this.baseUrl}/${key}`,
               mobileUrl: `${this.baseUrl}/${key}`,
-              width: 0,
-              height: 0,
-              mobileWidth: 0,
-              mobileHeight: 0,
             };
           }
         })
@@ -97,7 +89,7 @@ export class CloudStorageService {
       return imagesWithDimensions;
     } catch (error) {
       this.logger.error('Error fetching images:', error);
-      throw error;
+      return [];
     }
   }
 
@@ -184,6 +176,7 @@ export class CloudStorageService {
         })
         .toBuffer();
 
+      this.logger.log(resizedBuffer);
       return resizedBuffer;
     } catch (error) {
       this.logger.error(

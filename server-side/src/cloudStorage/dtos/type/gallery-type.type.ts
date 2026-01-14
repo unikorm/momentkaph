@@ -12,8 +12,8 @@ export enum GalleryTypeEnum {
 export type PostGalleryTypeImageTypeResponseType = {
   fullUrl: string;
   mobileUrl: string;
-  width: number;
-  height: number;
-  mobileWidth: number;
-  mobileHeight: number;
+  width?: number;
+  height?: number;
+  mobileWidth?: number;
+  mobileHeight?: number;
 };
