@@ -48,7 +48,6 @@ export class GalleryTypeComponent implements OnInit {
   );
   readonly columnImages = signal<ColumnImages[]>([]);
   readonly COLUMN_COUNT = signal<number>(3);
-  readonly loading = signal(true);
   readonly error = signal<boolean>(false);
   readonly validTypes = Object.values(GalleryTypeEnum);
   readonly currentTipIndex = signal<number>(0);
@@ -126,13 +125,11 @@ export class GalleryTypeComponent implements OnInit {
 
   private async loadGalleryImages(type: GalleryTypeEnum) {
     try {
-      this.loading.set(true);
       this.error.set(false);
 
       if (!this.validTypes.includes(type)) {
         this.error.set(true);
-        this.loading.set(false);
-        return; // Exit early to prevent the API call
+        return;
       }
 
       const images = await firstValueFrom(
@@ -156,8 +153,6 @@ export class GalleryTypeComponent implements OnInit {
       this.columnImages.set(columns);
     } catch (error) {
       this.error.set(true);
-    } finally {
-      this.loading.set(false);
     }
   }
 }

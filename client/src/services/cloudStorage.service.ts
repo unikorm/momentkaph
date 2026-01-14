@@ -20,10 +20,10 @@ export class CloudStorageService {
     return this.http.get<PostGalleryTypeImageTypeResponseType[]>(
       `${this.apiUrl}/cloud_storage/${galleryType}`
     ).pipe(
-      // Calculate aspect ratio for easier CSS handling
+      // calculate aspect ratio for easier CSS handling
       map(images => images.map(img => ({
         ...img,
-        aspectRatio: img.width / img.height
+        aspectRatio: img.width && img.height ? img.width / img.height : 0 // idk if 0 is the best fallback
       })))
     );
   }
