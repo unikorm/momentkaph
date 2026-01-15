@@ -60,7 +60,7 @@ export class CloudStorageService {
             });
 
             const response = await this.client.send(getObjectCommand);
-            const buffer = await this.streamToBuffer(response.Body); // what does streamToBuffer do? for what streams bytes to buffer, any possibel optimizations?
+            const buffer = await this.streamToBuffer(response.Body); // what does streamToBuffer do? for what streams bytes to buffer, any possible optimizations?
             const metadata = await sharp(buffer).metadata();
 
             const filename = key.split('/').pop();
@@ -111,8 +111,7 @@ export class CloudStorageService {
         .filter((item) => !item.Key.endsWith('/'))
         .map((item) => item.Key);
 
-      // Instead of processing images here, make HTTP requests to the mobile endpoint
-      // This way Nginx will cache the responses
+      // make HTTP requests to the mobile endpoint, this will trigger caching the response by nginx
       const cacheResults = await Promise.all(
         fullImages.map(async (key) => {
           try {
@@ -121,13 +120,12 @@ export class CloudStorageService {
 
             // Make a request to our own mobile endpoint
             // Nginx sitting in front will cache this response
-            const response = await fetch(mobileUrl);
+            const response = await fetch(mobileUrl).then((response) => !response.ok
+              ? Promise.reject(new Error(`Failed to fetch ${mobileUrl}: ${response.statusText}`))
+              : response.body
+            );
 
-            if (!response.ok) {
-              throw new Error(`HTTP ${response.status}`);
-            }
-
-            this.logger.log(`Cached mobile version: ${filename}`);
+            this.logger.log(`Cached mobile version: ${filename}`, `Response: ${response}`);
             return { success: true, filename };
           } catch (error) {
             this.logger.error(`Error caching image ${key}:`, error);
