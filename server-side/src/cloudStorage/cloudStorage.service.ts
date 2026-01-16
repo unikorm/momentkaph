@@ -71,8 +71,8 @@ export class CloudStorageService {
               // i want to cache this too, not actual data of course, but the urls with dimensions
               fullUrl,
               mobileUrl,
-              width: 0,
-              height: 0,
+              width: metadata.width,
+              height: metadata.height,
               mobileWidth: Math.round(metadata.width / 3),
               mobileHeight: Math.round(metadata.height / 3),
             };
