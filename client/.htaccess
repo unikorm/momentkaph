@@ -67,6 +67,10 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(sk|en|ua)/assets/(.+)$ /assets/$2 [L]
 
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(sk|en|ua)/fonts/(.+)$ /fonts/$2 [L]
+
     # Handle Angular routing for each language
     # If the requested file or directory does not exist, rewrite to the corresponding language's index.html
     # example: https://momentkaph.sk/en/gallery/love-story -> serves /en/index.html -> angular app handles routing client-side
@@ -98,7 +102,7 @@
 # headers module to set custom headers in HTTP response
 <IfModule mod_headers.c>
     # Content Security Policy (CSP)
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' momentkaph.fra1.cdn.digitaloceanspaces.com; font-src fonts.gstatic.com; connect-src 'self' api.momentkaph.sk; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self';"
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' momentkaph.fra1.cdn.digitaloceanspaces.com; font-src 'self'; connect-src 'self' api.momentkaph.sk; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self';"
     
     # before CSP frame-ancestors directive
     Header set X-Frame-Options "DENY"
