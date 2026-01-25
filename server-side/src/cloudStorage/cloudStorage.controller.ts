@@ -19,7 +19,7 @@ export class CloudStorageController {
     return await this.cloudStorageService.fetchGalleryImagesLinks(galleryType);
   }
 
-  @Get(':galleryType/mobile/:filename')
+  @Get(':galleryType/mobile/:filename') // only for warming up cache
   async serveMobileImage(
     @Param('galleryType') galleryType: GalleryTypeEnum,
     @Param('filename') filename: string,
@@ -39,7 +39,7 @@ export class CloudStorageController {
     return res.send(imageBuffer);
   }
 
-  @Get(':galleryType/warm_cache')
+  @Get(':galleryType/warm_cache') // only for warming up cache
   async warmCache(
     @Param('galleryType') galleryType: GalleryTypeEnum,
   ): Promise<[]> { // idk what it returns exactly right now

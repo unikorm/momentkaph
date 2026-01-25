@@ -1,3 +1,5 @@
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mobile_image_cache:10m max_size=10g inactive=60d use_temp_path=off;
+
 server {
     listen 443 ssl; # accept TCP connections on port 443 and and treat these connections as HTTPS (use SSL/TLS)
     server_name api.momentkaph.sk; # nginx looks for SNI (server name indication) on the request and finds that distinct server segment
@@ -61,7 +63,7 @@ server {
     proxy_set_header Connection ""; # disable connection header to allow keep-alive connections to backend
 
     # Email sending endpoint, 
-    location = /email_sending {
+    location = ~ /email_sending {
         limit_except POST { # allow only POST requests on this uri
             deny all;
         }
@@ -76,7 +78,15 @@ server {
         }
         # backend handling
         proxy_pass http://127.0.0.1:3000$uri$is_args$args;
-}
+    }
+
+    location ~ ^/cloud_storage/$ { # for cached images
+        proxy_pass http://127.0.0.1:3000$uri$is_args$args;
+        proxy_cache mobile_image_cache;
+        proxy_cache_valid 200 60d;
+        proxy_cache_key "$scheme$request_method$host$request_uri";
+        add_header X-Cache-Status $upstream_cache_status;
+    }
 
     location / { # all other uri-s
         return 404;

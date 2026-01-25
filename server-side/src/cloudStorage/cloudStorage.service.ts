@@ -116,7 +116,7 @@ export class CloudStorageService {
         fullImages.map(async (key) => {
           try {
             const filename = key.split('/').pop();
-            const mobileUrl = `http://localhost:${this.configService.get('PORT') || 3000}/cloud_storage/${galleryType}/mobile/${filename}`;
+            const mobileUrl = `http://127.0.0.1:${this.configService.get('PORT') || 3000}/cloud_storage/${galleryType}/mobile/${filename}`;
 
             // Make a request to our own mobile endpoint
             // Nginx sitting in front will cache this response
