@@ -1,4 +1,4 @@
-proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mobile_image_cache:10m max_size=10g inactive=60d use_temp_path=off;
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mobile_image_cache:10m max_size=5g inactive=60d use_temp_path=off;
 
 server {
     listen 443 ssl; # accept TCP connections on port 443 and and treat these connections as HTTPS (use SSL/TLS)
@@ -46,6 +46,9 @@ server {
     add_header Strict-Transport-Security "max-age=31536000" always; # enforce HTTPS for 1 year
     add_header X-Content-Type-Options "nosniff"; # prevents browsers from guessing MIME types and forces them to stick with the declared content type
 
+    # add caching headers for debugging and monitoring cache behavior -> for debugging purposes
+    add_header X-Cache-Status $upstream_cache_status always; # for debugging cache behavior; possible values: MISS (not in cache), BYPASS (cache bypassed), EXPIRED (cached response expired), STALE (stale response served due to backend failure), UPDATING (response is being updated in cache), HIT (cached response served)
+
     # Proxy setup
     proxy_http_version 1.1; # use HTTP/1.1 to support keep-alive connections to backend
 
@@ -63,7 +66,7 @@ server {
     proxy_set_header Connection ""; # disable connection header to allow keep-alive connections to backend
 
     # Email sending endpoint, 
-    location = ~ /email_sending {
+    location = /email_sending {
         limit_except POST { # allow only POST requests on this uri
             deny all;
         }
@@ -76,16 +79,11 @@ server {
         limit_except GET { # allow only GET requests on this uri
             deny all;
         }
+        proxy_cache mobile_image_cache;
+        proxy_cache_valid any 60d;          # cache successful responses for 60 days
+        proxy_ignore_headers Cache-Control; # override whatever upstream says
         # backend handling
         proxy_pass http://127.0.0.1:3000$uri$is_args$args;
-    }
-
-    location ~ ^/cloud_storage/$ { # for cached images
-        proxy_pass http://127.0.0.1:3000$uri$is_args$args;
-        proxy_cache mobile_image_cache;
-        proxy_cache_valid 200 60d;
-        proxy_cache_key "$scheme$request_method$host$request_uri";
-        add_header X-Cache-Status $upstream_cache_status;
     }
 
     location / { # all other uri-s
