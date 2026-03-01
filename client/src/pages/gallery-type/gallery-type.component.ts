@@ -4,7 +4,6 @@ import {
   signal,
   inject,
   effect,
-  AfterViewInit,
   OnInit,
 } from '@angular/core';
 import {
@@ -14,15 +13,18 @@ import {
 } from '@angular/router';
 import {
   GalleryTypeEnum,
+  DisplayImage,
   GalleryTypeImageType,
 } from '../../shared/dtos';
 import { CloudStorageService } from '../../services/cloudStorage.service';
 import { firstValueFrom } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators';
 
 interface ColumnImages {
   columnIndex: number;
-  images: GalleryTypeImageType[];
+  images: DisplayImage[];
 }
 
 @Component({
@@ -36,6 +38,7 @@ export class GalleryTypeComponent implements OnInit {
   readonly route = inject(ActivatedRoute);
   readonly router = inject(Router);
   readonly storageService = inject(CloudStorageService);
+  readonly breakpointObserver = inject(BreakpointObserver);
 
   readonly routeParams = toSignal(this.route.paramMap, {
     requireSync: true,
@@ -46,7 +49,6 @@ export class GalleryTypeComponent implements OnInit {
   readonly variant = computed(() =>
     this.routeParams().get('variant')
   );
-  readonly columnImages = signal<ColumnImages[]>([]);
   readonly COLUMN_COUNT = signal<number>(3);
   readonly error = signal<boolean>(false);
   readonly validTypes = Object.values(GalleryTypeEnum);
@@ -58,6 +60,47 @@ export class GalleryTypeComponent implements OnInit {
   readonly isAtEnd = computed(
     () => this.currentTipIndex() === this.totalTips
   );
+  // toSignal converts the observable into a signal — now isMobile is reactive
+  readonly isMobile = toSignal(
+    this.breakpointObserver.observe([Breakpoints.Handset]).pipe(
+      map(result => result.matches)
+    ),
+    { initialValue: false }
+  );
+  // Raw images from the API — just the data, no display logic here.
+  readonly rawImages = signal<GalleryTypeImageType[]>([]);
+
+  // columnImages is now fully derived — it reacts to both rawImages and isMobile.
+  // No manual re-fetch needed when the device type changes; computed handles it.
+  readonly columnImages = computed<ColumnImages[]>(() => {
+    const images = this.rawImages();
+    const mobile = this.isMobile();
+
+    if (!images.length) return [];
+
+    const columns: ColumnImages[] = Array.from(
+      { length: this.COLUMN_COUNT() },
+      (_, index) => ({ columnIndex: index, images: [] })
+    );
+
+    images.forEach((image, index) => {
+      const width = mobile ? image.mobileWidth : image.width;
+      const height = mobile ? image.mobileHeight : image.height;
+
+      const displayImage: DisplayImage = {
+        url: mobile ? image.mobileUrl : image.fullUrl,
+        width: width ?? undefined,
+        height: height ?? undefined,
+        aspectRatio: width && height ? `${width} / ${height}` : undefined,
+        originalFullUrl: image.fullUrl,
+      };
+
+      columns[index % this.COLUMN_COUNT()].images.push(displayImage);
+    });
+
+    return columns;
+  });
+
 
   constructor() {
     effect(
@@ -123,6 +166,8 @@ export class GalleryTypeComponent implements OnInit {
     }
   }
 
+  // loadGalleryImages is now lean — it only fetches and stores raw data.
+  // All display logic has been lifted into the columnImages computed signal.
   private async loadGalleryImages(type: GalleryTypeEnum) {
     try {
       this.error.set(false);
@@ -133,24 +178,11 @@ export class GalleryTypeComponent implements OnInit {
       }
 
       const images = await firstValueFrom(
-        // not right if it is good usage of firstValueFrom, but i need make promise from observable to store it in signal
         this.storageService.fetchGalleryImagesLinks(type)
       );
-      const columns: ColumnImages[] = Array.from(
-        { length: this.COLUMN_COUNT() },
-        (_, index) => ({
-          columnIndex: index,
-          images: [],
-        })
-      );
 
-      images.forEach((image, index) => {
-        columns[index % this.COLUMN_COUNT()].images.push(
-          image
-        );
-      });
-
-      this.columnImages.set(columns);
+      // Storing raw images triggers columnImages to recompute with correct device URLs
+      this.rawImages.set(images);
     } catch (error) {
       this.error.set(true);
     }

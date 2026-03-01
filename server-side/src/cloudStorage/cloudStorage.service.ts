@@ -65,10 +65,9 @@ export class CloudStorageService {
 
             const filename = key.split('/').pop();
             const fullUrl = `${this.baseUrl}/${key}`;
-            const mobileUrl = `https://api.momentkaph.sk/cloud_storage/${galleryType}/mobile/${filename}`;
+            const mobileUrl = `${this.baseUrl}/${galleryType}/mobile/${filename}`;
 
             return {
-              // i want to cache this too, not actual data of course, but the urls with dimensions
               fullUrl,
               mobileUrl,
               width: metadata.width,
@@ -80,7 +79,11 @@ export class CloudStorageService {
             this.logger.error(`Error processing image ${key}:`, error);
             return {
               fullUrl: `${this.baseUrl}/${key}`,
-              mobileUrl: `${this.baseUrl}/${key}`,
+              mobileUrl: `${this.baseUrl}/${galleryType}/mobile/${key.split('/').pop()}`,
+              width: null,
+              height: null,
+              mobileWidth: null,
+              mobileHeight: null,
             };
           }
         })

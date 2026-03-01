@@ -168,9 +168,9 @@
   <div class="image-grid">
     @for (column of columnImages(); track column.columnIndex) {
     <div class="image-column">
-      @for (image of column.images; track image.fullUrl) {
+      @for (image of column.images; track image.originalFullUrl) {
       <div class="image-card" [style.aspect-ratio]="image.aspectRatio">
-        <img [src]="image.fullUrl" [width]="image.width" [height]="image.height" loading="lazy"
+        <img [src]="image.url" [attr.width]="image.width  || null" [attr.height]="image.height || null" loading="lazy"
           alt="some photo of actual section" />
       </div>
       }

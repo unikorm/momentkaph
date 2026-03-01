@@ -8,6 +8,14 @@ export type GalleryTypeImageType = {
   aspectRatio?: number;
 };
 
+export type DisplayImage = {
+  url: string;
+  width?: number;
+  height?: number;
+  aspectRatio?: string; // precomputed for convenience
+  originalFullUrl: string; // keep for tracking identity
+};
+
 export enum GalleryTypeEnum {
   WEDDINGS = 'weddings',
   PORTRAIT = 'portrait',
