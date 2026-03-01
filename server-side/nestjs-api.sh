@@ -80,8 +80,13 @@ server {
             deny all;
         }
         proxy_cache mobile_image_cache;
-        proxy_cache_valid any 60d;          # cache successful responses for 60 days
+        proxy_cache_valid 200 301 60d;          # cache successful responses for 60 days
+        proxy_cache_valid 302 1h;              # cache temporary redirects for 1 hour
+        proxy_cache_valid 404 1m;              # cache not found responses for 1 minute to prevent cache pollution
         proxy_ignore_headers Cache-Control; # override whatever upstream says
+        proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504; # serve stale content if backend is down or returns error -> for better availability
+        proxy_cache_background_update on; # allow serving stale content while updating cache in background
+        proxy_cache_lock on; # prevent multiple requests for the same resource from overwhelming the backend when cache is expired
         # backend handling
         proxy_pass http://127.0.0.1:3000$uri$is_args$args;
     }
