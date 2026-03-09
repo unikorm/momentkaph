@@ -1,6 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { EmailService } from './email.service';
-import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
+import { SendEmailResponseServerType, SendEmailDto } from './dtos';
 
 @Controller('email_sending')
 export class EmailController {
@@ -8,7 +8,7 @@ export class EmailController {
 
   @Post()
   async sendEmail(
-    @Body() sendEmailType: SendEmailServerType,
+    @Body() sendEmailType: SendEmailDto,
   ): Promise<SendEmailResponseServerType> {
     return await this.emailService.sendEmail(sendEmailType);
   }

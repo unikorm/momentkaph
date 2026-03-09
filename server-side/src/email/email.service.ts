@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { SendEmailResponseServerType, SendEmailServerType } from './dtos';
+import { SendEmailResponseServerType, SendEmailDto } from './dtos';
 import { EmailFormTemplate } from './templates/email-form.template';
 import { Resend } from 'resend';
 import { ConfigService } from '@nestjs/config';
@@ -15,19 +15,20 @@ export class EmailService {
   }
 
   sendEmail = async (
-    sendEmailDto: SendEmailServerType,
+    sendEmailDto: SendEmailDto,
   ): Promise<SendEmailResponseServerType> => {
     try {
       const templateData = {
         ...sendEmailDto,
         timestamp: new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' }),
       };
+      const timestamp = new Date().toLocaleString('sk-SK', { timeZone: 'Europe/Bratislava' });
 
       const msg = {
         from: this.configService.get('EMAIL_SENDER'),
         to: this.configService.get('EMAIL_RECIPIENT'),
         subject: `New message from ${sendEmailDto.name} on momentkaph.sk`,
-        html: EmailFormTemplate.generateEmailFormTemplate(templateData),
+        html: EmailFormTemplate.generateEmailFormTemplate(templateData, timestamp),
       };
 
       const response = await this.resend.emails.send(msg);

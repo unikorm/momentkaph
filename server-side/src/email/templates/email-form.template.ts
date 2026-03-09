@@ -1,4 +1,4 @@
-import { SendEmailServerType } from '../dtos';
+import { SendEmailDto } from '../dtos';
 import { EmailFormStyles } from './email-form.styles';
 
 export class EmailFormTemplate {
@@ -9,11 +9,12 @@ export class EmailFormTemplate {
             .replace(/</g, "&lt;")
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+            .replace(/'/g, "&#039;")
+            .replace(/\//g, "&#x2F;"); 
     }
 
-    static generateEmailFormTemplate = (data: SendEmailServerType): string => {
-        const { name, email, phone, message, timestamp } = data;
+    static generateEmailFormTemplate = (data: SendEmailDto, timestamp: string): string => {
+        const { name, email, phone, message } = data;
 
         return `
          <!DOCTYPE html>
