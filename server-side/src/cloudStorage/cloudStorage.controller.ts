@@ -4,10 +4,8 @@ import {
   GalleryTypeEnum,
   PostGalleryTypeImageTypeResponseType,
 } from './dtos';
-import { CacheHeaderInterceptor } from 'src/interceptors/cache.interceptor';
 
 @Controller('cloud_storage')
-@UseInterceptors(CacheHeaderInterceptor)
 export class CloudStorageController {
   constructor(private readonly cloudStorageService: CloudStorageService) { }
 

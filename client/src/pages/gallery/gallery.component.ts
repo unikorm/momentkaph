@@ -8,7 +8,6 @@ import {
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
-import { FacebookReviewService } from '../../services/facebookReviews.service';
 import { GALLERY_REVIEWS } from '../../shared/gallery-reviews.data';
 
 @Component({
@@ -31,7 +30,6 @@ import { GALLERY_REVIEWS } from '../../shared/gallery-reviews.data';
 })
 export class GalleryComponent {
   readonly languageService = inject(LanguageService)
-  readonly facebookReviewService = inject(FacebookReviewService);
   readonly allReviews = signal<string[]>([GALLERY_REVIEWS[0].content, GALLERY_REVIEWS[1].content, GALLERY_REVIEWS[2].content, GALLERY_REVIEWS[3].content, GALLERY_REVIEWS[4].content, GALLERY_REVIEWS[5].content, GALLERY_REVIEWS[6].content, GALLERY_REVIEWS[7].content]);
   readonly currentReviewIndex = signal<number>(0);
   readonly totalReviews = computed(() => GALLERY_REVIEWS.length);
