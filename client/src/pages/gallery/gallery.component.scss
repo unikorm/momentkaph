@@ -131,12 +131,19 @@ a:not(:last-of-type) {
   text-decoration: line-through;
 }
 
-.review_section {
+.reviews {
   display: flex;
-  width: 100%;
-  max-width: 1300px;
   justify-content: center;
-  margin: 0 auto;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+
+  font: var(--FONT-PRIMARY);
+  font-size: 2.5rem;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  text-align: center;
 }
 
 .arrow-wrapper {
@@ -144,36 +151,83 @@ a:not(:last-of-type) {
   align-items: center;
   width: 100%;
   max-width: fit-content;
+  position: relative;
 }
 
 .arrow-left,
 .arrow-right {
   height: 5rem;
-  opacity: .15;
+  opacity: .19;
+  cursor: pointer;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.05;
+  }
 }
 
 .arrow-right {
   rotate: 180deg;
 }
 
-.gallery-reviews {
+.arrow-smaller-left,
+.arrow-smaller-right {
+  height: 2rem;
+  opacity: .19;
+  position: absolute;
+  cursor: pointer;
+  display: none;
+
+  &.disabled {
+    cursor: default;
+    opacity: 0.05;
+  }
+}
+
+.arrow-smaller-left {
+  top: calc(50% - 1rem);
+  left: -1.665rem;
+}
+
+.arrow-smaller-right {
+  top: calc(50% - 1rem);
+  right: -1.665rem;
+}
+
+
+.arrow-smaller-right {
+  rotate: 180deg;
+}
+
+.reviews-list {
   display: flex;
   gap: 2rem;
   width: 100%;
   max-width: 32rem;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   opacity: .85;
-  scroll-snap-type: x mandatory !important; // must be !important, otherwise it doesn't work
+
 
   .review {
-    width: 32rem;
+    font: var(--FONT-PRIMARY);
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    line-height: 1.2;
+    text-align: center;
+
+    max-width: 32rem;
+    width: 100%;
     padding: 0 2rem;
     flex-shrink: 0;
-    scroll-snap-align: start;
 
-    .review-border {
+    .review-header,
+    .review-bottom {
       font-weight: 700;
+    }
+
+    p {
+      margin: 0;
     }
   }
 }
@@ -303,5 +357,16 @@ a:not(:last-of-type) {
   .empty_section img {
     width: 300px !important;
     height: 300px !important;
+  }
+}
+
+// Hide scrollbar on touch devices only
+@media (hover: none) and (pointer: coarse) {
+  .reviews-list {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scrollbar-width: none;
   }
 }
