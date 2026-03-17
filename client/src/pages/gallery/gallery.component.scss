@@ -157,12 +157,12 @@ a:not(:last-of-type) {
 .arrow-left,
 .arrow-right {
   height: 5rem;
-  opacity: .19;
+  opacity: .3;
   cursor: pointer;
 
   &.disabled {
     cursor: default;
-    opacity: 0.05;
+    opacity: 0.15;
   }
 }
 
@@ -173,14 +173,14 @@ a:not(:last-of-type) {
 .arrow-smaller-left,
 .arrow-smaller-right {
   height: 2rem;
-  opacity: .19;
+  opacity: .3;
   position: absolute;
   cursor: pointer;
   display: none;
 
   &.disabled {
     cursor: default;
-    opacity: 0.05;
+    opacity: 0.15;
   }
 }
 
@@ -203,7 +203,7 @@ a:not(:last-of-type) {
   display: flex;
   gap: 2rem;
   width: 100%;
-  max-width: 32rem;
+  max-width: 38rem;
   overflow-x: hidden;
   overflow-y: hidden;
   opacity: .85;
@@ -215,8 +215,9 @@ a:not(:last-of-type) {
     letter-spacing: 1px;
     line-height: 1.2;
     text-align: center;
+    align-self: center;
 
-    max-width: 32rem;
+    max-width: 38rem;
     width: 100%;
     padding: 0 2rem;
     flex-shrink: 0;

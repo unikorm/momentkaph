@@ -30,7 +30,7 @@ import { GALLERY_REVIEWS } from '../../shared/gallery-reviews.data';
 })
 export class GalleryComponent {
   readonly languageService = inject(LanguageService)
-  readonly allReviews = signal<string[]>([GALLERY_REVIEWS[0].content, GALLERY_REVIEWS[1].content, GALLERY_REVIEWS[2].content, GALLERY_REVIEWS[3].content, GALLERY_REVIEWS[4].content, GALLERY_REVIEWS[5].content, GALLERY_REVIEWS[6].content, GALLERY_REVIEWS[7].content]);
+  readonly allReviews = signal<string[]>([GALLERY_REVIEWS[0].content, GALLERY_REVIEWS[1].content, GALLERY_REVIEWS[2].content, GALLERY_REVIEWS[3].content, GALLERY_REVIEWS[4].content, GALLERY_REVIEWS[5].content]);
   readonly currentReviewIndex = signal<number>(0);
   readonly totalReviews = computed(() => GALLERY_REVIEWS.length);
   readonly isAtStart = computed(
