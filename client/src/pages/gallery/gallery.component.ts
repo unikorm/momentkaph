@@ -30,14 +30,14 @@ import { GALLERY_REVIEWS } from '../../shared/gallery-reviews.data';
 })
 export class GalleryComponent {
   readonly languageService = inject(LanguageService)
-  readonly allReviews = signal<string[]>([GALLERY_REVIEWS[0].content, GALLERY_REVIEWS[1].content, GALLERY_REVIEWS[2].content, GALLERY_REVIEWS[3].content, GALLERY_REVIEWS[4].content, GALLERY_REVIEWS[5].content]);
+  readonly allReviews = GALLERY_REVIEWS.map(r => ({ content: r.content, author: r.author }));
   readonly currentReviewIndex = signal<number>(0);
-  readonly totalReviews = computed(() => GALLERY_REVIEWS.length);
+  readonly totalReviews = GALLERY_REVIEWS.length;
   readonly isAtStart = computed(
     () => this.currentReviewIndex() === 0
   );
   readonly isAtEnd = computed(
-    () => this.currentReviewIndex() === this.totalReviews() - 1
+    () => this.currentReviewIndex() === this.totalReviews - 1
   );
 
   imageStates = signal<{ [key: string]: string }>({
@@ -76,9 +76,9 @@ export class GalleryComponent {
     })
   }
 
-   // Navigation methods
+  // Navigation methods
   navigateToNextReview(): void {
-    if (this.currentReviewIndex() < this.totalReviews() - 1) {
+    if (this.currentReviewIndex() < this.totalReviews - 1) {
       this.currentReviewIndex.update((index) => index + 1);
       this.scrollToCurrentReview();
     }
@@ -101,16 +101,4 @@ export class GalleryComponent {
       });
     }
   }
-
-  /* private async fetchReviews() {
-    try {
-      const response = await this.facebookReviewService.fetchReviews().toPromise();
-      if (response && response.reviews) {
-        const reviews = response.reviews.map(review => review.text);
-        this.allReviews.set(reviews);
-      }
-    } catch (error) {
-      console.error('Error fetching Facebook reviews:', error);
-    }
-  } */
 }

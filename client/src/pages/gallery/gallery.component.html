@@ -80,13 +80,14 @@
     <img src="assets/arrow-smaller.svg" alt="arrow-smaller" class="arrow-smaller-left" [class.disabled]="isAtStart()"
       (click)="navigateToPreviousReview()" />
     <div class="reviews-list">
-      @for (review of allReviews(); track review) {
+      @for (review of allReviews; track $index) {
       <div class="review">
         <span class="review-header">---</span>
         <div>
-          <p>{{review}}</p>
+          <p>{{review.content}}</p>
         </div>
         <span class="review-bottom">---</span>
+        <p class="review-author">{{review.author}}</p>
       </div>
       }
     </div>

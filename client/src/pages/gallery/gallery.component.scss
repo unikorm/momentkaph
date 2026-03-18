@@ -137,7 +137,7 @@ a:not(:last-of-type) {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 3rem;
 
   font: var(--FONT-PRIMARY);
   font-size: 2.5rem;
@@ -162,7 +162,7 @@ a:not(:last-of-type) {
 
   &.disabled {
     cursor: default;
-    opacity: 0.15;
+    opacity: 0.12;
   }
 }
 
@@ -229,6 +229,10 @@ a:not(:last-of-type) {
 
     p {
       margin: 0;
+    }
+
+    .review-author {
+      font-weight: 800;
     }
   }
 }
@@ -342,7 +346,7 @@ a:not(:last-of-type) {
   .arrow-smaller-left,
   .arrow-smaller-right {
     height: 2rem;
-    opacity: .15;
+    opacity: .3;
     position: absolute;
     display: block;
   }
