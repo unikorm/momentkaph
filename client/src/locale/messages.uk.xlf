@@ -371,7 +371,7 @@
         <target>Підготуйте деталі заздалегідь.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">72,73</context>
+          <context context-type="linenumber">74,75</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8517275617619097515" datatype="html">
@@ -379,7 +379,7 @@
         <target>Підготуйте обручки, запрошення, парфуми, взуття чи весільний букет в одному місці. Це заощадить час, і я зможу красиво їх сфотографувати ще до вбрання.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">73,75</context>
+          <context context-type="linenumber">75,77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="155448962104228403" datatype="html">
@@ -387,7 +387,7 @@
         <target>Зупиніться.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">82,83</context>
+          <context context-type="linenumber">84,85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2468229067036266370" datatype="html">
@@ -395,7 +395,7 @@
         <target>Протягом дня свідомо дозвольте собі мить лише для себе. Усвідомте, що цей день про вас двох — а не лише про програму. Найкрасивіші моменти виникають саме в ці тихі, щирі миті.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">83,86</context>
+          <context context-type="linenumber">85,88</context>
         </context-group>
       </trans-unit>
       <trans-unit id="676764724653797670" datatype="html">
@@ -403,7 +403,7 @@
         <target>Залишіть собі більше часу на підготовку.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">93,94</context>
+          <context context-type="linenumber">95,96</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2671112703545727604" datatype="html">
@@ -411,7 +411,7 @@
         <target>Ранок завжди летить швидше, ніж здається. Зарезервуйте собі принаймні на 15–20 хвилин більше, ніж ви думаете, що вам потрібно — для спокою та комфорту.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">94,96</context>
+          <context context-type="linenumber">96,98</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2061142701586771811" datatype="html">
@@ -419,7 +419,7 @@
         <target>Не бійтеся емоцій.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">103,104</context>
+          <context context-type="linenumber">105,106</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3220267268646542488" datatype="html">
@@ -427,7 +427,7 @@
         <target>Плач, сміх, обійми — все це створює сильні та незабутні фотографії та кадри. Бути автентичним = бути красивим.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">103,104</context>
+          <context context-type="linenumber">106,107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6288302556823885158" datatype="html">
@@ -435,7 +435,7 @@
         <target>Довіряйте своєму фотографу.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">112,113</context>
+          <context context-type="linenumber">114,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4769433795332020445" datatype="html">
@@ -443,7 +443,7 @@
         <target>Деякі пози або місця можуть на перший погляд здаватися дивними, але результат буде того вартий. Іноді найнуднійша стіна дає найкрасивіше фото.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">113,115</context>
+          <context context-type="linenumber">115,117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2746684000851963894" datatype="html">
@@ -451,7 +451,7 @@
         <target>Золота година — ваш друг.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">122,123</context>
+          <context context-type="linenumber">124,125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2238653868281309012" datatype="html">
@@ -459,7 +459,7 @@
         <target>Плануйте парну фотосесію на час перед заходом сонця — світло буде м'яким, теплим і дуже лестивим.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">123,124</context>
+          <context context-type="linenumber">125,126</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1658961789374833284" datatype="html">
@@ -467,7 +467,7 @@
         <target>Майте план Б.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">131,132</context>
+          <context context-type="linenumber">133,134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5415255829408322968" datatype="html">
@@ -475,7 +475,7 @@
         <target>Якщо весілля на вулиці, подумайте також про парасольки, навіс або альтернативну локацію — щоб погода вас не застала зненацька.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">132,133</context>
+          <context context-type="linenumber">134,135</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8421670945928180985" datatype="html">
@@ -483,7 +483,7 @@
         <target>Фотографуємося також з гостями.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">140,141</context>
+          <context context-type="linenumber">142,143</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9207999033699969336" datatype="html">
@@ -491,7 +491,7 @@
         <target>Не забудьте створити список людей, з якими ви хочете спільне фото. У весільній метушні легко про когось забути.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">141,143</context>
+          <context context-type="linenumber">143,145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9006461252779415438" datatype="html">
@@ -499,7 +499,15 @@
         <target>Щось пішло не так, АДМІН вже знає про помилку і працює над її вирішенням. Будь ласка, спробуйте знову через кілька годин.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/pages/gallery-type/gallery-type.component.html</context>
-          <context context-type="linenumber">158,160</context>
+          <context context-type="linenumber">162,164</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2572727399212502966" datatype="html">
+        <source>recenzie</source>
+        <target>відгуки</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/pages/gallery/gallery.component.html</context>
+          <context context-type="linenumber">76,77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6628313228786963379" datatype="html">
