@@ -2,7 +2,7 @@
     "name": "momentkaphweb",
     "version": "1.0.0",
     "scripts": {
-      "start:client": "cd client && npm start",
-      "start:server": "cd server-side && npm run start:dev"
+        "start:client": "cd client && npm start",
+        "start:server": "cd server-side && npm run start:dev"
     }
-  }
+}
