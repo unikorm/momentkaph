@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { EmailService } from '../../services/email.service';
 import { SendEmailType } from '../../shared/dtos';
-import { catchError, finalize, tap } from 'rxjs';
+import { catchError, EMPTY, finalize, tap } from 'rxjs';
 import {
   animate,
   state,
@@ -59,24 +59,20 @@ export class ContactComponent {
             .sendEmail(data)
             .pipe(
               tap((response) => {
-                // The response object contains { status: true } or { status: false }
-                if (response.status === true) {
+                if (response.status === 200) {
                   // Email was sent successfully by Resend
                   this.submitStatus.set('success');
-                  this.newMessageForm.reset();
-                  this.formSubmitted.set(false);
                 } else {
-                  // Backend returned status: false, meaning Resend couldn't send the email
                   this.submitStatus.set('error');
-                  this.newMessageForm.reset();
-                  this.formSubmitted.set(false);
                 }
+                this.newMessageForm.reset();
+                this.formSubmitted.set(false);
               }),
               catchError((error) => {
                 this.submitStatus.set('error');
                 this.newMessageForm.reset();
                 this.formSubmitted.set(false);
-                return error;
+                return EMPTY;
               }),
               finalize(() => {
                 setTimeout(() => (this.submitStatus.set('idle')), 3000);

@@ -4,8 +4,3 @@ export type SendEmailType = {
   phone: string;
   message: string;
 };
-
-export type SendEmailResponseType = {
-  status: boolean;
-  error?: string;
-};
