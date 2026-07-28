@@ -1,21 +1,11 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { SendEmailType } from '../shared/dtos';
-import { Observable } from 'rxjs';
-import { environment } from '../environments/environment';
+import { apiUrl } from '../config/env.js';
+import type { SendEmailType } from '../shared/types/send-email.type.js';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class EmailService {
-  readonly http = inject(HttpClient);
-  private apiUrl = environment.apiUrl;
-
-  sendEmail(data: SendEmailType): Observable<HttpResponse<unknown>> {
-    return this.http.post<unknown>(
-      `${this.apiUrl}/email_sending`,
-      data,
-      { observe: 'response' }
-    );
-  }
+export async function sendEmail(data: SendEmailType): Promise<{ status: number }> {
+  const res = await fetch(`${apiUrl}/email_sending`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return { status: res.status };
 }

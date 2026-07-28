@@ -6,11 +6,11 @@
     # Enable rewrite engine
     RewriteEngine On
     # Set the base path for all subsequent rewrite rules, relative to the document root -> in my case already in /web/
-    RewriteBase / 
+    RewriteBase /
 
     # block common exploit attempts -> heavy-lifting filter is i believe managed by root configuration
     # no essential to filter wide spectrum of different threats
-    # WordPress, PHP, CMS-specific paths, 
+    # WordPress, PHP, CMS-specific paths,
     RewriteRule ^wp- - [F,L]
     RewriteRule ^wordpress - [F,L]
     RewriteRule \.php$ - [F,L]
@@ -33,7 +33,7 @@
     RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
     RewriteCond %{HTTP_USER_AGENT} (semrush|ahrefs|mj12bot|majestic) [NC]
     RewriteRule .* - [F,L]
-    
+
     # Handle social media and tracking parameters
     RewriteCond %{QUERY_STRING} ^(.*&)?fbclid=[^&]+(&.*)?$ [OR]
     RewriteCond %{QUERY_STRING} ^(.*&)?utm_[^&]+(&.*)?$ [OR]
@@ -46,37 +46,13 @@
     RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
     RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
 
-    # Language detection and redirect for root URL only
-    # This checks if someone visits exactly momentkaph.sk (no language prefix)
-    RewriteCond %{HTTP:Accept-Language} ^(uk|ru) [NC]
-    RewriteRule ^$ /ua/index.html [R=302,L]
-    
-    RewriteCond %{HTTP:Accept-Language} ^en [NC]
-    RewriteRule ^$ /en/index.html [R=302,L]
-
-    # Redirect root URL momentkaph.sk/ to momentkaph.sk/sk/index.html
-    # if REQUEST_URI would be / -> evaluates to empty after normalize in per-directory context, redirect to sk version
-    # fallback for other languages or no Accept-Language header
-    RewriteRule ^$ /sk/index.html [R=301,L]
-
-    # Serve assets directly from /assets/ for all languages
-    # check if the requested file or directory does not exist before rewriting 
-    # -> this will evaluate to true for non-existing files, cause i have them in /assets/ only
-    # example: https://momentkaph.sk/en/assets/image.avif -> serves /assets/image.avif
+    # Single flat build now (no more per-locale /sk /en /ua directories — language is
+    # client-side state, see src/services/i18n.service.ts). Any request that isn't a
+    # real file or directory is a client-side route: serve index.html and let the
+    # vanilla router handle it.
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(sk|en|ua)/assets/(.+)$ /assets/$2 [L]
-
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(sk|en|ua)/fonts/(.+)$ /fonts/$2 [L]
-
-    # Handle Angular routing for each language
-    # If the requested file or directory does not exist, rewrite to the corresponding language's index.html
-    # example: https://momentkaph.sk/en/gallery/love-story -> serves /en/index.html -> angular app handles routing client-side
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(sk|en|ua)(/.*)?$ /$1/index.html [L]
+    RewriteRule ^(.*)$ /index.html [L]
 
     #notes:
     # F flag: returns 403 Forbidden
@@ -85,7 +61,7 @@
     # NC flag: Case-insensitive match
 </IfModule>
 
-# Module used to assign correct content metadata (Content-Type) to the corresponding content 
+# Module used to assign correct content metadata (Content-Type) to the corresponding content
 # selected for HTTP response by mapping file extensions/patterns in the URI to MIME types.
 # this metadata is also used in content negotiation
 # also this module runs earlier in the processing chain to properly set Content-Type before other modules would act on it
@@ -102,8 +78,14 @@
 # headers module to set custom headers in HTTP response
 <IfModule mod_headers.c>
     # Content Security Policy (CSP)
-    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' momentkaph.fra1.cdn.digitaloceanspaces.com; font-src 'self'; connect-src 'self' api.momentkaph.sk; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self';"
-    
+    # img-src: gallery images are private now, served as SigV4 presigned URLs
+    # straight from the regional Spaces endpoint (path-style: fra1.digitaloceanspaces.com/momentkaph/...),
+    # not the old CDN alias (momentkaph.fra1.cdn.digitaloceanspaces.com) — DigitalOcean
+    # Spaces presigned auth requires path-style addressing on the origin, see
+    # momentkaph_be src/lib/aws.ts presignUrl(). Static site assets (about-me.avif etc.)
+    # stay same-origin under 'self'.
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' fra1.digitaloceanspaces.com; font-src 'self'; connect-src 'self' api.momentkaph.sk; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; form-action 'self';"
+
     # before CSP frame-ancestors directive
     Header set X-Frame-Options "DENY"
 
@@ -132,12 +114,13 @@
         Header set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
 
-    # cache js/css - long cache => 31536000 seconds ~ 1 year
-    # these files are content-hashed, so they can be cached for a long time
+    # js/css are NOT content-hashed (tsc-only build, no bundler to fingerprint
+    # filenames) — same no-cache/must-revalidate treatment as html, otherwise a
+    # deploy could leave returning visitors on stale JS indefinitely.
     <FilesMatch "\.(js|css)$">
-        Header set Cache-Control "public, max-age=31536000, immutable"
+        Header set Cache-Control "no-cache, must-revalidate"
     </FilesMatch>
-    
+
     # cache control for static assets - long cache => 31536000 seconds ~ 1 year
     <FilesMatch "\.(avif|png|svg)$">
         Header set Cache-Control "public, max-age=31536000, immutable"
