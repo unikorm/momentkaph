@@ -110,7 +110,7 @@
     # X-Content-Type-Options - prevents MIME type sniffing
     # Browsers will trust your Content-Type headers and won't try to guess
     # This prevents attacks where malicious content is disguised as safe files
-    Header X-Content-Type-Options: nosniff
+    Header always set X-Content-Type-Options "nosniff"
 
     # Referrer-Policy - controls how much information is sent in Referer header
     # 'strict-origin-when-cross-origin' (default) sends full URL for same-origin requests
