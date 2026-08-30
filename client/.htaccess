@@ -110,12 +110,16 @@
     # X-Content-Type-Options - prevents MIME type sniffing
     # Browsers will trust your Content-Type headers and won't try to guess
     # This prevents attacks where malicious content is disguised as safe files
-    X-Content-Type-Options: nosniff
+    Header X-Content-Type-Options: nosniff
 
     # Referrer-Policy - controls how much information is sent in Referer header
     # 'strict-origin-when-cross-origin' (default) sends full URL for same-origin requests
     # but only the origin for cross-origin requests, protecting user privacy
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # HSTS - force HTTPS for 1 year, including subdomains
+    # only add "preload" once you're sure and intend to submit to hstspreload.org
+    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
     # Permissions-Policy - (experimental, low support) controls which browser features your site can use
     # This limits the attack surface by disabling features you don't need
